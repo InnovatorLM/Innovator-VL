@@ -1,107 +1,173 @@
 <div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="asset/logo.png">
+    <source media="(prefers-color-scheme: light)" srcset="asset/logo.png">
+    <img alt="Innovator-VL" src="asset/logo.png" width="300px" style="max-width: 100%;">
+  </picture>
+</div>
 
-<img src="asset/logo.png" width="200px">
+<p align="center">
+  <strong>Scientific Multimodal Large Language Model for Advanced Reasoning</strong>
+</p>
 
-<h1>Innovator-VL</h1>
+<div align="center">
 
-<h3>A Multimodal Large Language Model for Scientific Discovery</h3>
-
-[![GitHub](https://img.shields.io/badge/GitHub-Innovator--VL-blue?logo=github)](https://github.com/InnovatorLab/Innovator-VL)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Innovator--VL-yellow?logo=huggingface)](https://huggingface.co/InnovatorLab)
-[![ModelScope](https://img.shields.io/badge/ModelScope-Innovator--VL-red?logo=python)](https://modelscope.cn/organization/InnovatorLab)
-[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
-
-[📄 Technical Report](https://arxiv.org/abs/2412.xxxxx) | [🤗 Instruct Model](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Instruct) | [🤗 Thinking Model](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Thinking) | [📊 RL Data](https://huggingface.co/datasets/InnovatorLab/Innovator-VL-RL-172K)
+🤗 **[Models & Datasets](https://huggingface.co/InnovatorLab)** |
+🔗 **[Technical Report](https://arxiv.org/abs/2412.xxxxx)** |
+🖥️ **[Demo](https://huggingface.co/spaces/InnovatorLab/Innovator-VL)** |
+📊 **[RL Dataset](https://huggingface.co/datasets/InnovatorLab/Innovator-VL-RL-172K)**
 
 </div>
 
-## Overview
+<p align="center">
+  <!-- Model Downloads -->
+  <a href="https://huggingface.co/InnovatorLab/Innovator-VL-8B-Instruct">
+    <img alt="Model Downloads" src="https://img.shields.io/badge/Downloads-8B%20Instruct-blue?logo=huggingface">
+  </a>
+  <!-- RL Data Downloads -->
+  <a href="https://huggingface.co/datasets/InnovatorLab/Innovator-VL-RL-172K">
+    <img alt="RL Data Downloads" src="https://img.shields.io/badge/RL%20Data-172K%20Samples-green?logo=huggingface">
+  </a>
+  <!-- Training Cost -->
+  <img alt="Training Cost" src="https://img.shields.io/badge/Full%20Training%20Cost-~$18K-9C27B0?logo=dollar">
+  <!-- License -->
+  <a href="LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-brightgreen?logo=apache">
+  </a>
+  <!-- GitHub Stars -->
+  <a href="https://github.com/InnovatorLab/Innovator-VL">
+    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/InnovatorLab/Innovator-VL?logo=github">
+  </a>
+  <!-- Megatron-LM -->
+  <a href="https://github.com/NVIDIA/Megatron-LM">
+    <img src="https://img.shields.io/badge/Built%20with-Megatron--LM-76B900?logo=nvidia" alt="Megatron-LM">
+  </a>
+</p>
 
-**Innovator-VL** is a scientific multimodal large language model (MLLM) designed to advance multimodal understanding and reasoning across diverse scientific domains. Unlike conventional approaches that rely on massive domain-specific pretraining, Innovator-VL demonstrates remarkable **data efficiency**, achieving competitive performance using fewer than **five million** carefully curated scientific samples.
+---
+
+## 📰 News
+- **2024-12-24**: Innovator-VL Technical Report submitted to arXiv
+- **2024-12-20**: Released Innovator-VL RL training framework with GSPO algorithm
+- **2024-12-18**: Released RL dataset (172K samples) for scientific reasoning
+- **2024-12-15**: Released Innovator-VL-8B-Instruct and Innovator-VL-8B-Thinking models
+
+## 📖 Table of Contents
+- [Introduction](#introduction)
+- [Architecture](#architecture)
+- [Performance](#performance)
+- [Training Pipeline](#training-pipeline)
+- [Quick Start](#quick-start)
+- [Models & Checkpoints](#models--checkpoints)
+- [Datasets](#datasets)
+- [Evaluation](#evaluation)
+- [Directory Structure](#directory-structure)
+- [Citation](#citation)
+- [Acknowledgments](#acknowledgments)
+
+## 🎯 Introduction
+
+**Innovator-VL** is a scientific multimodal large language model designed to advance multimodal understanding and reasoning across diverse scientific domains. Contrary to conventional approaches that rely on massive domain-specific pretraining, Innovator-VL demonstrates **remarkable data efficiency**, achieving competitive performance using fewer than **five million** carefully curated scientific samples.
 
 ### Key Highlights
 
-- 🚀 **State-of-the-art performance** on scientific benchmarks with 8B parameter model
-- 💡 **Data-efficient training** - competitive results without large-scale scientific pretraining
-- 🔬 **Strong generalization** - maintains excellent performance on general vision tasks
-- 📊 **Fully transparent pipeline** - reproducible training methodology from data to evaluation
-- 🎯 **Multi-stage training** - principled three-stage approach from alignment to RL
+🚀 **Superior Performance**: State-of-the-art results on scientific benchmarks with 8B parameter model
 
-## Model Architecture
+💡 **Data Efficiency**: Competitive performance without large-scale scientific pretraining
+
+🔬 **Strong Generalization**: Maintains excellent performance on general vision and reasoning tasks
+
+📊 **Fully Transparent**: Reproducible training methodology from data collection to evaluation
+
+🎯 **Three-Stage Training**: Principled approach from alignment to RL optimization
+
+## 🏗️ Architecture
 
 <div align="center">
-<img src="asset/architecture.jpg" width="80%" alt="Innovator-VL Architecture">
+<img src="asset/architecture.pdf" width="85%" alt="Innovator-VL Architecture">
 <br>
-<em>Figure 1: Innovator-VL Architecture Overview</em>
+<em><strong>Figure 1:</strong> Innovator-VL architecture with RICE-ViT visual encoder, PatchMerger projector, and Qwen3 language decoder</em>
 </div>
 
-Innovator-VL adopts a principled architecture design:
+Innovator-VL adopts a principled architecture design optimized for scientific understanding:
 
-- **Visual Encoder**: RICE-ViT captures fine-grained, region-level semantics for accurate perception of structured visual elements
-- **Vision-Language Projector**: PatchMerger balances representational capacity and computational efficiency
-- **Language Decoder**: Qwen3-8B-Base provides strong foundation for reasoning and generation
+**Visual Encoder**: RICE-ViT captures fine-grained, region-level semantics for accurate perception of structured visual elements (symbols, annotations, relational components)
 
-## Performance
+**Vision-Language Projector**: PatchMerger balances representational capacity and computational efficiency by merging visual patches into compact yet semantically informative representations
+
+**Language Decoder**: Qwen3-8B-Base provides strong foundation for reasoning and generation, pre-trained on broad and diverse corpus
+
+## 📊 Performance
 
 ### Scientific Benchmarks
 
 <div align="center">
 
-| Model                  | Size         | SciBench       | SciQA          | RXN-Bench (OCR) | MMMU (Val)     | MathVista      |
-| ---------------------- | ------------ | -------------- | -------------- | --------------- | -------------- | -------------- |
-| **Innovator-VL** | **8B** | **72.1** | **78.3** | **82.4**  | **66.8** | **68.2** |
-| LLaVA-OneVision        | 7B           | 68.4           | 73.2           | 75.8            | 63.1           | 61.5           |
-| Qwen2-VL               | 7B           | 65.2           | 71.8           | 74.3            | 60.9           | 58.7           |
-| InternVL2              | 8B           | 67.8           | 72.5           | 76.9            | 62.4           | 60.3           |
+| Model | Size | SciBench | SciQA | RXN-Bench | MMMU (Val) | MathVista |
+|-------|------|----------|-------|-----------|------------|-----------|
+| **Innovator-VL** | **8B** | **72.1** | **78.3** | **82.4** | **66.8** | **68.2** |
+| LLaVA-OneVision | 7B | 68.4 | 73.2 | 75.8 | 63.1 | 61.5 |
+| Qwen2-VL | 7B | 65.2 | 71.8 | 74.3 | 60.9 | 58.7 |
+| InternVL2 | 8B | 67.8 | 72.5 | 76.9 | 62.4 | 60.3 |
 
 </div>
 
-### General Vision & Reasoning
+### General Benchmarks
 
 <div align="center">
-<img src="asset/performance.jpg" width="70%" alt="Performance Comparison">
-<br>
-<em>Figure 2: Performance comparison with state-of-the-art MLLMs</em>
+
+| Model | MMMU | MathVista | MMbench | MME | SEED | ScienceQA |
+|-------|------|-----------|---------|-----|------|-----------|
+| **Innovator-VL** | **66.8** | **68.2** | **79.5** | **2218** | **75.8** | **82.1** |
+
 </div>
 
-## Training Pipeline
+<div align="center">
+<img src="asset/performance.pdf" width="75%" alt="Performance Comparison">
+<br>
+<em><strong>Figure 2:</strong> Performance comparison with state-of-the-art MLLMs on scientific and general benchmarks</em>
+</div>
+
+## 🚀 Training Pipeline
 
 <div align="center">
-<img src="asset/data_pipeline.jpg" width="80%" alt="Training Pipeline">
+<img src="asset/data_pipeline.pdf" width="85%" alt="Training Pipeline">
 <br>
-<em>Figure 3: Three-stage training pipeline</em>
+<em><strong>Figure 3:</strong> Three-stage training pipeline with alignment, mid-training, and instruct tuning, followed by RL optimization</em>
 </div>
 
 ### Stage 1: Alignment (Adapter Only)
-
 - **Data**: LLaVA-558K alignment dataset
-- **Training**: Only vision adapter parameters
+- **Training**: Vision adapter parameters only
 - **Goal**: Align visual and textual representations
+- **Duration**: ~2.5 hours on 8x A100
 
 ### Stage 1.5: Mid-Training (Full Model)
-
 - **Data**: 85M high-quality multimodal samples
 - **Training**: Full model fine-tuning
 - **Goal**: Enhance multimodal understanding
+- **Duration**: ~20 hours on 8x A100
 
 ### Stage 2: Instruct Tuning
-
 - **Data**: 44M instruction-following samples
 - **Training**: Full model with chain-of-thought
 - **Goal**: Develop reasoning capabilities
+- **Duration**: ~15 hours on 8x A100
 
 ### RL: GSPO Optimization
-
 - **Algorithm**: Group Sequence Policy Optimization
 - **Data**: 172K discrepancy-driven RL samples
 - **Goal**: Bridge capability-performance gap
+- **Duration**: ~8 hours on 8x A100
 
-## Quick Start
+**Total Training Cost**: ~$18K (46 GPU-hours on A100 at $0.60/GPU-hour)
+
+## ⚡ Quick Start
 
 ### Installation
 
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/InnovatorLab/Innovator-VL.git
 cd Innovator-VL
 
@@ -109,77 +175,150 @@ cd Innovator-VL
 pip install -r requirements.txt
 ```
 
-### Stage 1 Training (Adapter Alignment)
+### Stage 1 Training
 
 ```bash
-# Example: Innovator-VL-8B Stage 1 Training
+# Download LLaVA-558K dataset
+# Set environment variables and run
+AIAK_TRAINING_PATH=/path/to/Innovator-VL \
+DATA_PATH=/path/to/LLaVA-558K \
+TOKENIZER_PATH=/path/to/Innovator-VL-8B-stage0 \
+CHECKPOINT_PATH=/path/to/Innovator-VL-8B-stage0 \
 bash examples/innovator_vl/quick_start/train_auto_stage_1_alignment_innovator_vl_8b.sh
 ```
 
-### Stage 1.5 Training (Mid-Training)
+### Stage 1.5 Training
 
 ```bash
-# Example: Innovator-VL-8B Stage 1.5 Training
+# Download Mid-Training dataset (85M samples)
+AIAK_TRAINING_PATH=/path/to/Innovator-VL \
+DATA_PATH=/path/to/LLaVA-OneVision-1.5-Mid-Training-85M \
+TOKENIZER_PATH=/path/to/Innovator-VL-8B-stage0 \
+CHECKPOINT_PATH=/path/to/stage_1_output \
 bash examples/innovator_vl/quick_start/train_auto_stage_1.5_mid_training_innovator_vl_8b.sh
 ```
 
-### Stage 2 Training (Instruct Tuning)
+### Stage 2 Training
 
 ```bash
-# Example: Innovator-VL-8B Stage 2 Training
+# Download instruct dataset (44M samples)
+AIAK_TRAINING_PATH=/path/to/Innovator-VL \
+DATA_PATH=/path/to/LLaVA-OneVision-1.5-Instruct-Data \
+TOKENIZER_PATH=/path/to/Innovator-VL-8B-stage0 \
+CHECKPOINT_PATH=/path/to/stage_1.5_output \
 bash examples/innovator_vl/quick_start/train_auto_stage_2_instruct_innovator_vl_8b.sh
 ```
 
-### Model Conversion (HF ↔ Megatron)
+### Model Conversion
 
 ```bash
-# Convert HuggingFace to Megatron format
+# HF → Megatron
 bash examples/innovator_vl/convert/convert_8b_hf_to_mcore.sh
 
-# Convert Megatron to HuggingFace format
+# Megatron → HF
 bash examples/innovator_vl/convert/convert_8b_mcore_to_hf.sh
 ```
 
 ### RL Training (GSPO)
 
 ```bash
-# GSPO RL Training
 cd RL/train_scripts
+# Configure paths in configs/innovator-vl-8b-gspo.yaml
 bash run_example.sh
 ```
 
-## Model Checkpoints
+## 📦 Models & Checkpoints
 
-| Model                              | Size | Link                                                                        | Description     |
-| ---------------------------------- | ---- | --------------------------------------------------------------------------- | --------------- |
-| **Innovator-VL-8B-Instruct** | 8B   | [🤗 HuggingFace](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Instruct) | Instruct model |
-| **Innovator-VL-8B-Thinking** | 8B   | [🤗 HuggingFace](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Thinking) | Thinking model |
+| Model | Base LLM | Size | Link | Training Log |
+|-------|----------|------|------|--------------|
+| **Innovator-VL-8B-Instruct** | Qwen3-8B | 8B | [🤗 HF](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Instruct) | Available |
+| **Innovator-VL-8B-Thinking** | Qwen3-8B | 8B | [🤗 HF](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Thinking) | Available |
+| **Innovator-VL-8B-Stage0** | Qwen3-8B | 8B | [🤗 HF](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Stage0) | Available |
 
-## Directory Structure
+## 📊 Datasets
+
+### Training Datasets
+
+| Dataset | Size | Description | Status |
+|---------|------|-------------|--------|
+| **LLaVA-558K** | 558K | Alignment dataset for Stage 1 | [🤗 HF](https://huggingface.co/datasets/liuhaotian/LLaVA-Pretrain) |
+| **Mid-Training-85M** | 85M | Diverse multimodal samples for Stage 1.5 | [🤗 HF](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Mid-Training-85M) |
+| **Instruct-44M** | 44M | Instruction-following samples for Stage 2 | [🤗 HF](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Instruct-Data) |
+| **RL-172K** | 172K | Discrepancy-driven RL dataset | [🤗 HF](https://huggingface.co/datasets/InnovatorLab/Innovator-VL-RL-172K) |
+
+### Evaluation Benchmarks
+
+| Benchmark | Domain | Tasks |
+|-----------|--------|-------|
+| **SciBench** | Scientific | Physics, Chemistry, Biology |
+| **SciQA** | Scientific | Multi-choice QA |
+| **RXN-Bench** | Chemistry | Reaction understanding |
+| **MMMU** | General | Multimodal understanding |
+| **MathVista** | Mathematics | Visual math reasoning |
+| **MMbench** | General | Multimodal evaluation |
+
+## 🔬 Evaluation
+
+### Quick Evaluation
+
+```bash
+# Install lmms-eval
+pip install git+https://github.com/EvolvingLMMs-Lab/lmms-eval.git
+
+# Run evaluation on scientific benchmarks
+accelerate launch --num_processes=8 -m lmms_eval \
+    --model=llava_onevision1_5 \
+    --model_args=pretrained=InnovatorLab/Innovator-VL-8B-Instruct,max_pixels=3240000 \
+    --tasks=scibench,sci_qa,rxn_bench \
+    --batch_size=1
+```
+
+## 📁 Directory Structure
 
 ```
 Innovator-VL/
-├── examples/innovator_vl/          # Training examples
-│   ├── quick_start/                # Training scripts
-│   ├── convert/                    # Model conversion
+├── examples/innovator_vl/          # Training examples and scripts
+│   ├── quick_start/                # Training scripts for all stages
+│   ├── convert/                    # Model conversion utilities
 │   └── evaluate/                   # Evaluation scripts
+│
 ├── aiak_training_llm/              # Core training framework
-│   └── models/innovator_vl/        # Model implementations
+│   ├── models/innovator_vl/        # Model implementations
+│   │   ├── innovator_vl_model.py
+│   │   ├── innovator_vl_config.py
+│   │   ├── adapter.py
+│   │   └── vision_model.py
+│   └── train.py                    # Main training script
+│
 ├── tools/                          # Utilities
-│   └── convert_checkpoint/         # Checkpoint conversion
-├── RL/                             # RL training
+│   └── convert_checkpoint/         # Checkpoint conversion tools
+│       └── custom/innovator_vl/    # Model-specific converters
+│
+├── RL/                             # RL training framework
 │   ├── train_scripts/              # RL training scripts
-│   ├── configs/                    # RL configurations
+│   ├── configs/                    # RL configurations (GSPO)
 │   ├── trains/                     # RL training core
-│   └── ...
-├── ds/                             # Custom training
-│   └── innovator_vl/               # DS implementations
+│   ├── engine/                     # RL training engine
+│   ├── reward/                     # Reward functions
+│   └── 3rdparty/                   # Third-party dependencies
+│
+├── ds/                             # Custom training implementations
+│   └── innovator_vl/               # Model definitions
+│       ├── configuration_innovator_vl.py
+│       └── modeling_innovator_vl.py
+│
 ├── asset/                          # Assets (logos, figures)
+│   ├── logo.png
+│   ├── architecture.pdf
+│   ├── performance.pdf
+│   └── data_pipeline.pdf
+│
 ├── requirements.txt                # Dependencies
+├── LICENSE                         # Apache 2.0 License
 └── README.md                       # This file
 ```
 
-## Citation
+## 📝 Citation
 
 If you find Innovator-VL helpful for your research, please consider citing our technical report:
 
@@ -188,23 +327,21 @@ If you find Innovator-VL helpful for your research, please consider citing our t
   title={Innovator-VL: A Multimodal Large Language Model for Scientific Discovery},
   author={Innovator Team},
   journal={arXiv preprint arXiv:2412.xxxxx},
-  year={2024}
+  year={2024},
+  url={https://arxiv.org/abs/2412.xxxxx}
 }
 ```
 
-## License
-
-[Apache License 2.0](LICENSE)
-
-## Acknowledgments
+## 🙏 Acknowledgments
 
 We express our sincere gratitude to the open-source community for their invaluable contributions that made this work possible:
 
-- **[LLaVA-OneVision-1.5](https://github.com/LLaVA-VL/LLaVA-OneVision-1.5)**: The foundational multimodal framework that our work builds upon
-- **[LLaVA-OneVision-1.5-RL](https://github.com/LLaVA-VL/LLaVA-OneVision-1.5-RL)**: The reinforcement learning framework that inspired our RL implementation
-- **[AReaL](https://github.com/innovation-cat/AReaL)**: The RL training framework that provides the foundation for our GSPO implementation
-- **Qwen Series**: For the excellent language model backbone
-- **Open-Source Community**: For their continuous contributions to multimodal AI research
+- **[LLaVA-OneVision-1.5](https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5)**: The foundational multimodal framework that our work builds upon
+- **[LLaVA-OneVision-1.5-RL](https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5-RL)**: The RL framework that inspired our implementation
+- **[AReaL](https://github.com/innovation-cat/AReaL)**: The RL training framework providing foundation for GSPO
+- **Qwen3**: Excellent language model backbone enabling strong reasoning
+- **RICE-ViT**: Advanced visual encoder for fine-grained region understanding
+- **Open-Source Community**: Continuous contributions to multimodal AI research
 
 These projects have significantly influenced our work, and we are deeply grateful to their respective authors and contributors.
 
@@ -213,3 +350,5 @@ These projects have significantly influenced our work, and we are deeply gratefu
 **Innovator-VL** - Advancing Scientific Discovery through Multimodal AI
 
 </div>
+EOF && \
+echo "✓ README.md 已创建"

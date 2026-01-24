@@ -30,7 +30,7 @@
 ## Model Architecture
 
 <div align="center">
-<img src="asset/architecture.pdf" width="80%" alt="Innovator-VL Architecture">
+<img src="asset/architecture.jpg" width="80%" alt="Innovator-VL Architecture">
 <br>
 <em>Figure 1: Innovator-VL Architecture Overview</em>
 </div>
@@ -47,19 +47,19 @@ Innovator-VL adopts a principled architecture design:
 
 <div align="center">
 
-| Model | Size | SciBench | SciQA | RXN-Bench (OCR) | MMMU (Val) | MathVista |
-|-------|------|----------|-------|-----------------|------------|-----------|
-| **Innovator-VL** | **8B** | **72.1** | **78.3** | **82.4** | **66.8** | **68.2** |
-| LLaVA-OneVision | 7B | 68.4 | 73.2 | 75.8 | 63.1 | 61.5 |
-| Qwen2-VL | 7B | 65.2 | 71.8 | 74.3 | 60.9 | 58.7 |
-| InternVL2 | 8B | 67.8 | 72.5 | 76.9 | 62.4 | 60.3 |
+| Model                  | Size         | SciBench       | SciQA          | RXN-Bench (OCR) | MMMU (Val)     | MathVista      |
+| ---------------------- | ------------ | -------------- | -------------- | --------------- | -------------- | -------------- |
+| **Innovator-VL** | **8B** | **72.1** | **78.3** | **82.4**  | **66.8** | **68.2** |
+| LLaVA-OneVision        | 7B           | 68.4           | 73.2           | 75.8            | 63.1           | 61.5           |
+| Qwen2-VL               | 7B           | 65.2           | 71.8           | 74.3            | 60.9           | 58.7           |
+| InternVL2              | 8B           | 67.8           | 72.5           | 76.9            | 62.4           | 60.3           |
 
 </div>
 
 ### General Vision & Reasoning
 
 <div align="center">
-<img src="asset/performance.pdf" width="70%" alt="Performance Comparison">
+<img src="asset/performance.jpg" width="70%" alt="Performance Comparison">
 <br>
 <em>Figure 2: Performance comparison with state-of-the-art MLLMs</em>
 </div>
@@ -67,27 +67,31 @@ Innovator-VL adopts a principled architecture design:
 ## Training Pipeline
 
 <div align="center">
-<img src="asset/data_pipeline.pdf" width="80%" alt="Training Pipeline">
+<img src="asset/data_pipeline.jpg" width="80%" alt="Training Pipeline">
 <br>
 <em>Figure 3: Three-stage training pipeline</em>
 </div>
 
 ### Stage 1: Alignment (Adapter Only)
+
 - **Data**: LLaVA-558K alignment dataset
 - **Training**: Only vision adapter parameters
 - **Goal**: Align visual and textual representations
 
 ### Stage 1.5: Mid-Training (Full Model)
+
 - **Data**: 85M high-quality multimodal samples
 - **Training**: Full model fine-tuning
 - **Goal**: Enhance multimodal understanding
 
 ### Stage 2: Instruct Tuning
+
 - **Data**: 44M instruction-following samples
 - **Training**: Full model with chain-of-thought
 - **Goal**: Develop reasoning capabilities
 
 ### RL: GSPO Optimization
+
 - **Algorithm**: Group Sequence Policy Optimization
 - **Data**: 172K discrepancy-driven RL samples
 - **Goal**: Bridge capability-performance gap
@@ -132,10 +136,10 @@ bash run_example.sh
 
 ## Model Checkpoints
 
-| Model | Size | Link | Description |
-|-------|------|------|-------------|
-| **Innovator-VL-8B-Instruct** | 8B | [🤗 HuggingFace](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Instruct) | Instruction-tuned model |
-| **Innovator-VL-8B-Thinking** | 8B | [🤗 HuggingFace](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Thinking) | CoT-enabled model |
+| Model                              | Size | Link                                                                        | Description     |
+| ---------------------------------- | ---- | --------------------------------------------------------------------------- | --------------- |
+| **Innovator-VL-8B-Instruct** | 8B   | [🤗 HuggingFace](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Instruct) | Instruct model |
+| **Innovator-VL-8B-Thinking** | 8B   | [🤗 HuggingFace](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Thinking) | Thinking model |
 
 ## Directory Structure
 

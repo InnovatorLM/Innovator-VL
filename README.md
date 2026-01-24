@@ -1,14 +1,7 @@
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="asset/logo.png">
-    <source media="(prefers-color-scheme: light)" srcset="asset/logo.png">
-    <img alt="Innovator-VL" src="asset/logo.png" width="300px" style="max-width: 100%;">
-  </picture>
-</div>
-
-<p align="center">
-  <strong>Scientific Multimodal Large Language Model for Advanced Reasoning</strong>
-</p>
+<h1 align="center">
+  <img src="asset/logo.png" width="80" align="left">
+  Scientific Multimodal Large Language Model for Advanced Reasoning
+</h1>
 
 <div align="center">
 
@@ -20,16 +13,23 @@
 </div>
 
 <p align="center">
-  <!-- Model Downloads -->
+  <!-- Instruct Model Downloads -->
   <a href="https://huggingface.co/InnovatorLab/Innovator-VL-8B-Instruct">
-    <img alt="Model Downloads" src="https://img.shields.io/badge/Downloads-8B%20Instruct-blue?logo=huggingface">
+    <img alt="HF Model Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/InnovatorLab/Innovator-VL-8B-Instruct&amp;query=downloads&amp;label=Innovator-VL-8B-Instruct%20Downloads&amp;color=yellow&amp;logo=huggingface&amp">
+  </a>
+  <!-- Thinking Model Downloads -->
+  <a href="https://huggingface.co/InnovatorLab/Innovator-VL-8B-Thinking">
+    <img alt="HF Model Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/InnovatorLab/Innovator-VL-8B-Thinking&amp;query=downloads&amp;label=Innovator-VL-8B-Thinking%20Downloads&amp;color=yellow&amp;logo=huggingface&amp">
+  </a>
+  <!-- Instruct Dataset Downloads -->
+  <a href="https://huggingface.co/datasets/InnovatorLab/Innovator-VL-
+Instruct-46M">
+    <img alt="HF Instruct Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/InnovatorLab/Innovator-VL-RL-172K&amp;query=downloads&amp;label=Instruct%20DATA%20Downloads&amp;color=blue&amp;logo=huggingface&amp">
   </a>
   <!-- RL Data Downloads -->
   <a href="https://huggingface.co/datasets/InnovatorLab/Innovator-VL-RL-172K">
-    <img alt="RL Data Downloads" src="https://img.shields.io/badge/RL%20Data-172K%20Samples-green?logo=huggingface">
+    <img alt="RL Data Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/InnovatorLab/Innovator-VL-RL-172K&amp;query=downloads&amp;label=RL%20DATA%20Downloads&amp;color=blue&amp;logo=huggingface&amp">
   </a>
-  <!-- Training Cost -->
-  <img alt="Training Cost" src="https://img.shields.io/badge/Full%20Training%20Cost-~$18K-9C27B0?logo=dollar">
   <!-- License -->
   <a href="LICENSE">
     <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-brightgreen?logo=apache">
@@ -37,6 +37,10 @@
   <!-- GitHub Stars -->
   <a href="https://github.com/InnovatorLab/Innovator-VL">
     <img alt="GitHub Stars" src="https://img.shields.io/github/stars/InnovatorLab/Innovator-VL?logo=github">
+  </a>
+  <!-- Contributors -->
+  <a href="https://github.com/InnovatorLM/Innovator-VL/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/InnovatorLM/Innovator-VL?logo=github&amp">
   </a>
   <!-- Megatron-LM -->
   <a href="https://github.com/NVIDIA/Megatron-LM">
@@ -47,19 +51,16 @@
 ---
 
 ## 📰 News
-- **2024-12-24**: Innovator-VL Technical Report submitted to arXiv
-- **2024-12-20**: Released Innovator-VL RL training framework with GSPO algorithm
-- **2024-12-18**: Released RL dataset (172K samples) for scientific reasoning
-- **2024-12-15**: Released Innovator-VL-8B-Instruct and Innovator-VL-8B-Thinking models
+...
 
 ## 📖 Table of Contents
 - [Introduction](#introduction)
+- [Models & Checkpoints](#models--checkpoints)
+- [Datasets](#datasets)
 - [Architecture](#architecture)
 - [Performance](#performance)
 - [Training Pipeline](#training-pipeline)
 - [Quick Start](#quick-start)
-- [Models & Checkpoints](#models--checkpoints)
-- [Datasets](#datasets)
 - [Evaluation](#evaluation)
 - [Directory Structure](#directory-structure)
 - [Citation](#citation)
@@ -81,10 +82,28 @@
 
 🎯 **Three-Stage Training**: Principled approach from alignment to RL optimization
 
+## 📦 Models & Checkpoints
+
+| Model | Base LLM | Size | Link | Training Log |
+|-------|----------|------|------|--------------|
+| **Innovator-VL-8B-Instruct** | Qwen3-8B | 8B | [🤗 HF](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Instruct) | Available |
+| **Innovator-VL-8B-Thinking** | Qwen3-8B | 8B | [🤗 HF](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Thinking) | Available |
+
+## 📊 Datasets
+
+### Training Datasets
+
+| Dataset | Size | Description | Status |
+|---------|------|-------------|--------|
+| **LLaVA-558K** | 558K | Alignment dataset for Stage 1 | [🤗 HF](https://huggingface.co/datasets/liuhaotian/LLaVA-Pretrain) |
+| **Mid-Training-85M** | 85M | Diverse multimodal samples for Stage 1.5 | [🤗 HF](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Mid-Training-85M) |
+| **Innovator-VL-Instruct-46M** | 46M | Instruction-following samples for Stage 2 | [🤗 HF](https://huggingface.co/datasets/InnovatorLab/Innovator-VL-Instruct-46M) |
+| **Innovator-VL-RL-172K** | 172K | Discrepancy-driven RL dataset | [🤗 HF](https://huggingface.co/datasets/InnovatorLab/Innovator-VL-RL-172K) |
+
 ## 🏗️ Architecture
 
 <div align="center">
-<img src="asset/architecture.pdf" width="85%" alt="Innovator-VL Architecture">
+<img src="asset/architecture.jpg" width="85%" alt="Innovator-VL Architecture">
 <br>
 <em><strong>Figure 1:</strong> Innovator-VL architecture with RICE-ViT visual encoder, PatchMerger projector, and Qwen3 language decoder</em>
 </div>
@@ -95,7 +114,7 @@ Innovator-VL adopts a principled architecture design optimized for scientific un
 
 **Vision-Language Projector**: PatchMerger balances representational capacity and computational efficiency by merging visual patches into compact yet semantically informative representations
 
-**Language Decoder**: Qwen3-8B-Base provides strong foundation for reasoning and generation, pre-trained on broad and diverse corpus
+**Language Decoder**: Qwen3-8B-Base provides a strong foundation for reasoning and generation, pre-trained on broad and diverse corpus
 
 ## 📊 Performance
 
@@ -123,7 +142,7 @@ Innovator-VL adopts a principled architecture design optimized for scientific un
 </div>
 
 <div align="center">
-<img src="asset/performance.pdf" width="75%" alt="Performance Comparison">
+<img src="asset/performance.jpg" width="75%" alt="Performance Comparison">
 <br>
 <em><strong>Figure 2:</strong> Performance comparison with state-of-the-art MLLMs on scientific and general benchmarks</em>
 </div>
@@ -131,9 +150,9 @@ Innovator-VL adopts a principled architecture design optimized for scientific un
 ## 🚀 Training Pipeline
 
 <div align="center">
-<img src="asset/data_pipeline.pdf" width="85%" alt="Training Pipeline">
+<img src="asset/data_pipeline.jpg" width="85%" alt="Training Pipeline">
 <br>
-<em><strong>Figure 3:</strong> Three-stage training pipeline with alignment, mid-training, and instruct tuning, followed by RL optimization</em>
+<em><strong>Figure 3:</strong> Three-stage training pipeline with alignment, mid-training, and instruction tuning, followed by RL optimization</em>
 </div>
 
 ### Stage 1: Alignment (Adapter Only)
@@ -227,25 +246,6 @@ cd RL/train_scripts
 bash run_example.sh
 ```
 
-## 📦 Models & Checkpoints
-
-| Model | Base LLM | Size | Link | Training Log |
-|-------|----------|------|------|--------------|
-| **Innovator-VL-8B-Instruct** | Qwen3-8B | 8B | [🤗 HF](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Instruct) | Available |
-| **Innovator-VL-8B-Thinking** | Qwen3-8B | 8B | [🤗 HF](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Thinking) | Available |
-| **Innovator-VL-8B-Stage0** | Qwen3-8B | 8B | [🤗 HF](https://huggingface.co/InnovatorLab/Innovator-VL-8B-Stage0) | Available |
-
-## 📊 Datasets
-
-### Training Datasets
-
-| Dataset | Size | Description | Status |
-|---------|------|-------------|--------|
-| **LLaVA-558K** | 558K | Alignment dataset for Stage 1 | [🤗 HF](https://huggingface.co/datasets/liuhaotian/LLaVA-Pretrain) |
-| **Mid-Training-85M** | 85M | Diverse multimodal samples for Stage 1.5 | [🤗 HF](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Mid-Training-85M) |
-| **Instruct-44M** | 44M | Instruction-following samples for Stage 2 | [🤗 HF](https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-1.5-Instruct-Data) |
-| **RL-172K** | 172K | Discrepancy-driven RL dataset | [🤗 HF](https://huggingface.co/datasets/InnovatorLab/Innovator-VL-RL-172K) |
-
 ### Evaluation Benchmarks
 
 | Benchmark | Domain | Tasks |
@@ -323,13 +323,7 @@ Innovator-VL/
 If you find Innovator-VL helpful for your research, please consider citing our technical report:
 
 ```bibtex
-@article{innovator-vl-2024,
-  title={Innovator-VL: A Multimodal Large Language Model for Scientific Discovery},
-  author={Innovator Team},
-  journal={arXiv preprint arXiv:2412.xxxxx},
-  year={2024},
-  url={https://arxiv.org/abs/2412.xxxxx}
-}
+
 ```
 
 ## 🙏 Acknowledgments
@@ -337,11 +331,9 @@ If you find Innovator-VL helpful for your research, please consider citing our t
 We express our sincere gratitude to the open-source community for their invaluable contributions that made this work possible:
 
 - **[LLaVA-OneVision-1.5](https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5)**: The foundational multimodal framework that our work builds upon
-- **[LLaVA-OneVision-1.5-RL](https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5-RL)**: The RL framework that inspired our implementation
-- **[AReaL](https://github.com/innovation-cat/AReaL)**: The RL training framework providing foundation for GSPO
-- **Qwen3**: Excellent language model backbone enabling strong reasoning
-- **RICE-ViT**: Advanced visual encoder for fine-grained region understanding
-- **Open-Source Community**: Continuous contributions to multimodal AI research
+- **[RICE-ViT](https://github.com/deepglint/MVT)**: Advanced visual encoder for fine-grained region understanding
+- **[Qwen3](https://github.com/QwenLM/Qwen3)**: Excellent language model backbone
+- **[AReaL](https://github.com/inclusionAI/AReaL)**: A Large-Scale Asynchronous Reinforcement Learning Freamwork
 
 These projects have significantly influenced our work, and we are deeply grateful to their respective authors and contributors.
 
@@ -350,5 +342,3 @@ These projects have significantly influenced our work, and we are deeply gratefu
 **Innovator-VL** - Advancing Scientific Discovery through Multimodal AI
 
 </div>
-EOF && \
-echo "✓ README.md 已创建"

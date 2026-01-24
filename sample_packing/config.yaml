@@ -1,0 +1,48 @@
+hosts: "host_1.txt"
+hf_data: "/mnt/vision/llava/LLaVA-One-Vision-1.5-Mid-Training-85M"
+data:
+  directory: "/mnt/innovator/data/wenzichen/LLaVA-One-Vision-1.5-Mid-Training-85M-webdataset/"
+  max_samples: 5000000 # Add this line. Set to a number to limit samples, or null for no limit.
+  # Temporary file to store paired file names
+  output_base: "base_name_v2_vqa_85m_datas.txt"
+  # Final output file (contains token length information)
+  output_token: "token_info_v2_vqa_85m_datas.txt"
+  filter_with_caption: false
+  filter_with_image: false
+# Model path
+model:
+  checkpoint: "/root/innovator_model_wenzichen/Innovator-VL-8B-stage0"
+sample:
+  # Maximum length of training data
+  max_len: 8192
+  task_type: sft
+  max_prompt: null
+  max_answer: null
+# Image processing parameters
+image:
+  min_pixels: 3136
+  max_pixels: 2560000
+  # Whether to process images for WebDataset (resize, compress, etc.)
+  effective_in_wds: false
+  # Maximum aspect ratio limit (images exceeding this value will be filtered)
+# Parallel processing parameters
+processing:
+  # Sample chunk size processed by each process
+  chunk_size: 5000
+  # Merge parameter (sorting), merge every N stage0 files into 1 stage1 file
+  stage1_merge_chunk: 20
+  n_workers: 64
+  # Minimum number of threads in the thread pool
+  min_workers: 10
+  # Maximum number of threads in the thread pool
+  max_workers: 32
+  # Timeout setting (set according to data volume, estimate 1M data as 45 minutes (2700s))
+  time_out: 20000
+# Logging and temporary files
+logging:
+  # Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  level: "INFO"
+  # Log file path
+  file: "s1_processing_vqa_85m_datas.log"
+  # Whether to use /dev/shm as a temporary directory
+  use_shm: false

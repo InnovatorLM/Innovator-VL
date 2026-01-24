@@ -198,7 +198,15 @@ If you find Innovator-VL helpful for your research, please consider citing our t
 
 ## Acknowledgments
 
-We thank the contributors to the Qwen series, LLaVA series, and other open-source multimodal projects that made this work possible.
+We express our sincere gratitude to the open-source community for their invaluable contributions that made this work possible:
+
+- **[LLaVA-OneVision-1.5](https://github.com/LLaVA-VL/LLaVA-OneVision-1.5)**: The foundational multimodal framework that our work builds upon
+- **[LLaVA-OneVision-1.5-RL](https://github.com/LLaVA-VL/LLaVA-OneVision-1.5-RL)**: The reinforcement learning framework that inspired our RL implementation
+- **[AReaL](https://github.com/innovation-cat/AReaL)**: The RL training framework that provides the foundation for our GSPO implementation
+- **Qwen Series**: For the excellent language model backbone
+- **Open-Source Community**: For their continuous contributions to multimodal AI research
+
+These projects have significantly influenced our work, and we are deeply grateful to their respective authors and contributors.
 
 <div align="center">
 

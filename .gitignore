@@ -66,3 +66,4 @@ stage_1_alignment_llava_ov_8b/*
 stage_1_alignment_llava_ov_8b*
 
 *.zip
+*.DS_Store

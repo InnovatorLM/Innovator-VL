@@ -116,6 +116,20 @@ pip install -r requirements.txt
 bash examples/innovator_vl/quick_start/train_auto_stage_1_alignment_innovator_vl_8b.sh
 ```
 
+### Stage 1.5 Training (Mid-Training)
+
+```bash
+# Example: Innovator-VL-8B Stage 1.5 Training
+bash examples/innovator_vl/quick_start/train_auto_stage_1.5_mid_training_innovator_vl_8b.sh
+```
+
+### Stage 2 Training (Instruct Tuning)
+
+```bash
+# Example: Innovator-VL-8B Stage 2 Training
+bash examples/innovator_vl/quick_start/train_auto_stage_2_instruct_innovator_vl_8b.sh
+```
+
 ### Model Conversion (HF ↔ Megatron)
 
 ```bash

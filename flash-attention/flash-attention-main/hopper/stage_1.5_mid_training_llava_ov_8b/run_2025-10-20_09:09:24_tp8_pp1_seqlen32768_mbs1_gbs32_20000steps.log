@@ -1,0 +1,205 @@
+W1020 09:09:26.879000 82777 site-packages/torch/distributed/run.py:803] 
+W1020 09:09:26.879000 82777 site-packages/torch/distributed/run.py:803] *****************************************
+W1020 09:09:26.879000 82777 site-packages/torch/distributed/run.py:803] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1020 09:09:26.879000 82777 site-packages/torch/distributed/run.py:803] *****************************************
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 14, in <module>
+    from megatron.training.arguments import (
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/__init__.py", line 5, in <module>
+    from .global_vars import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/global_vars.py", line 15, in <module>
+    from megatron.training.tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/__init__.py", line 4, in <module>
+    from .tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/tokenizer.py", line 15, in <module>
+    from .bert_tokenization import FullTokenizer as FullBertTokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/bert_tokenization.py", line 25, in <module>
+    import six
+ModuleNotFoundError: No module named 'six'
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 14, in <module>
+    from megatron.training.arguments import (
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/__init__.py", line 5, in <module>
+    from .global_vars import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/global_vars.py", line 15, in <module>
+    from megatron.training.tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/__init__.py", line 4, in <module>
+    from .tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/tokenizer.py", line 15, in <module>
+    from .bert_tokenization import FullTokenizer as FullBertTokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/bert_tokenization.py", line 25, in <module>
+    import six
+ModuleNotFoundError: No module named 'six'
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 14, in <module>
+    from megatron.training.arguments import (
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/__init__.py", line 5, in <module>
+    from .global_vars import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/global_vars.py", line 15, in <module>
+    from megatron.training.tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/__init__.py", line 4, in <module>
+    from .tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/tokenizer.py", line 15, in <module>
+    from .bert_tokenization import FullTokenizer as FullBertTokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/bert_tokenization.py", line 25, in <module>
+    import six
+ModuleNotFoundError: No module named 'six'
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 14, in <module>
+    from megatron.training.arguments import (
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/__init__.py", line 5, in <module>
+    from .global_vars import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/global_vars.py", line 15, in <module>
+    from megatron.training.tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/__init__.py", line 4, in <module>
+    from .tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/tokenizer.py", line 15, in <module>
+    from .bert_tokenization import FullTokenizer as FullBertTokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/bert_tokenization.py", line 25, in <module>
+    import six
+ModuleNotFoundError: No module named 'six'
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 14, in <module>
+    from megatron.training.arguments import (
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/__init__.py", line 5, in <module>
+    from .global_vars import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/global_vars.py", line 15, in <module>
+    from megatron.training.tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/__init__.py", line 4, in <module>
+    from .tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/tokenizer.py", line 15, in <module>
+    from .bert_tokenization import FullTokenizer as FullBertTokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/bert_tokenization.py", line 25, in <module>
+    import six
+ModuleNotFoundError: No module named 'six'
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 14, in <module>
+    from megatron.training.arguments import (
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/__init__.py", line 5, in <module>
+    from .global_vars import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/global_vars.py", line 15, in <module>
+    from megatron.training.tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/__init__.py", line 4, in <module>
+    from .tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/tokenizer.py", line 15, in <module>
+    from .bert_tokenization import FullTokenizer as FullBertTokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/bert_tokenization.py", line 25, in <module>
+    import six
+ModuleNotFoundError: No module named 'six'
+[W1020 09:09:39.859980222 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 14, in <module>
+    from megatron.training.arguments import (
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/__init__.py", line 5, in <module>
+    from .global_vars import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/global_vars.py", line 15, in <module>
+    from megatron.training.tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/__init__.py", line 4, in <module>
+    from .tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/tokenizer.py", line 15, in <module>
+    from .bert_tokenization import FullTokenizer as FullBertTokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/bert_tokenization.py", line 25, in <module>
+    import six
+ModuleNotFoundError: No module named 'six'
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 14, in <module>
+    from megatron.training.arguments import (
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/__init__.py", line 5, in <module>
+    from .global_vars import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/global_vars.py", line 15, in <module>
+    from megatron.training.tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/__init__.py", line 4, in <module>
+    from .tokenizer import build_tokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/tokenizer.py", line 15, in <module>
+    from .bert_tokenization import FullTokenizer as FullBertTokenizer
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/tokenizer/bert_tokenization.py", line 25, in <module>
+    import six
+ModuleNotFoundError: No module named 'six'
+[W1020 09:09:39.984753587 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+[W1020 09:09:39.006241129 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+W1020 09:09:39.950000 82777 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82844 closing signal SIGTERM
+W1020 09:09:39.951000 82777 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82845 closing signal SIGTERM
+W1020 09:09:39.951000 82777 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82846 closing signal SIGTERM
+W1020 09:09:39.952000 82777 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82848 closing signal SIGTERM
+W1020 09:09:39.952000 82777 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82849 closing signal SIGTERM
+W1020 09:09:39.952000 82777 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82850 closing signal SIGTERM
+W1020 09:09:39.953000 82777 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82851 closing signal SIGTERM
+E1020 09:09:40.262000 82777 site-packages/torch/distributed/elastic/multiprocessing/api.py:882] failed (exitcode: 1) local_rank: 3 (pid: 82847) of binary: /mnt/public/yangboxue/miniconda3/envs/llava_flav3/bin/python3.10
+Traceback (most recent call last):
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/torch/distributed/run.py", line 936, in main
+    run(args)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/torch/distributed/run.py", line 927, in run
+    elastic_launch(
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 156, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 293, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-10-20_09:09:39
+  host      : is-dbxunxx7qvljox46-devmachine-0
+  rank      : 3 (local_rank: 3)
+  exitcode  : 1 (pid: 82847)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+[W1020 09:09:40.569190254 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

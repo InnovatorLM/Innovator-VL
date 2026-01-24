@@ -1,0 +1,399 @@
+W1020 09:13:34.901000 82885 site-packages/torch/distributed/run.py:803] 
+W1020 09:13:34.901000 82885 site-packages/torch/distributed/run.py:803] *****************************************
+W1020 09:13:34.901000 82885 site-packages/torch/distributed/run.py:803] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1020 09:13:34.901000 82885 site-packages/torch/distributed/run.py:803] *****************************************
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/utils.py:20: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_l2norm
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/utils.py:20: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_l2norm
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/__init__.py:18: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(f'Transformer Engine and Apex are not installed. Falling back to Torch optimizers.')
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/__init__.py:18: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(f'Transformer Engine and Apex are not installed. Falling back to Torch optimizers.')
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/utils.py:20: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_l2norm
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/__init__.py:18: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(f'Transformer Engine and Apex are not installed. Falling back to Torch optimizers.')
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/utils.py:20: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_l2norm
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/__init__.py:18: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(f'Transformer Engine and Apex are not installed. Falling back to Torch optimizers.')
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/utils.py:20: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_l2norm
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/utils.py:20: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_l2norm
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/__init__.py:18: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(f'Transformer Engine and Apex are not installed. Falling back to Torch optimizers.')
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/__init__.py:18: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(f'Transformer Engine and Apex are not installed. Falling back to Torch optimizers.')
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/utils.py:20: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_l2norm
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/__init__.py:18: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(f'Transformer Engine and Apex are not installed. Falling back to Torch optimizers.')
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/training/utils.py:20: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_l2norm
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/__init__.py:18: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(f'Transformer Engine and Apex are not installed. Falling back to Torch optimizers.')
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_megatron/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+INFO:datasets:PyTorch version 2.9.0+cu129 available.
+INFO:datasets:PyTorch version 2.9.0+cu129 available.
+INFO:datasets:PyTorch version 2.9.0+cu129 available.
+INFO:datasets:PyTorch version 2.9.0+cu129 available.
+INFO:datasets:PyTorch version 2.9.0+cu129 available.
+INFO:datasets:PyTorch version 2.9.0+cu129 available.
+INFO:datasets:PyTorch version 2.9.0+cu129 available.
+INFO:datasets:PyTorch version 2.9.0+cu129 available.
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+Traceback (most recent call last):
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+Traceback (most recent call last):
+    from .initialize import parse_arguments, initialize_aiak_megatron  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 37, in <module>
+    from aiak_training_llm.train import parse_train_args    
+from aiak_training_llm.train import parse_train_args  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+Traceback (most recent call last):
+        from aiak_training_llm.train import parse_train_argsfrom aiak_training_llm.train import parse_train_args
+
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py", line 3, in <module>
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from .global_vars import set_aiak_extra_global_vars
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/global_vars.py", line 12, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from aiak_training_llm.utils import get_args
+      File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from aiak_training_llm.train import parse_train_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/__init__.py", line 3, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 37, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+        from aiak_training_llm.utils import get_argsfrom aiak_training_llm.utils import get_args
+
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+      File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+from .global_vars import set_aiak_extra_global_vars
+    from .initialize import parse_arguments, initialize_aiak_megatron  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/global_vars.py", line 12, in <module>
+
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 37, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 37, in <module>
+        from aiak_training_llm.utils import get_argsfrom aiak_training_llm.data import ChatTemplate
+
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/__init__.py", line 6, in <module>
+    from aiak_training_llm.utils import get_args
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/__init__.py", line 8, in <module>
+    from aiak_training_llm.data import ChatTemplate
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/__init__.py", line 6, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+    from .global_vars import set_aiak_extra_global_vars  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 37, in <module>
+
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/global_vars.py", line 12, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 37, in <module>
+    from .global_vars import set_aiak_extra_global_vars
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/global_vars.py", line 12, in <module>
+    from .initialize import parse_arguments, initialize_aiak_megatron
+    from .initialize import parse_arguments, initialize_aiak_megatron
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 37, in <module>
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/initialize.py", line 37, in <module>
+    from aiak_training_llm.data import ChatTemplate
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/__init__.py", line 6, in <module>
+    from aiak_training_llm.data import ChatTemplate
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/__init__.py", line 6, in <module>
+    from .sft_dataset import SFTDataset, SFTDatasetConfig    
+from .global_vars import set_aiak_extra_global_vars
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/sft_dataset.py", line 15, in <module>
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/global_vars.py", line 12, in <module>
+    from .global_vars import set_aiak_extra_global_vars
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/global_vars.py", line 12, in <module>
+    from .sft_dataset import SFTDataset, SFTDatasetConfig
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/sft_dataset.py", line 15, in <module>
+    from .sft_dataset import SFTDataset, SFTDatasetConfig    
+    from .sft_dataset import SFTDataset, SFTDatasetConfigfrom .global_vars import set_aiak_extra_global_vars  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/sft_dataset.py", line 15, in <module>
+
+
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/sft_dataset.py", line 15, in <module>
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/global_vars.py", line 12, in <module>
+    from .global_vars import set_aiak_extra_global_vars
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/utils/global_vars.py", line 12, in <module>
+    from aiak_training_llm.data import ChatTemplate
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/__init__.py", line 6, in <module>
+    from aiak_training_llm.data import ChatTemplate
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/__init__.py", line 6, in <module>
+    from aiak_training_llm.data import ChatTemplate
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/__init__.py", line 6, in <module>
+    from aiak_training_llm.data import ChatTemplate
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/__init__.py", line 6, in <module>
+    from .sft_dataset import SFTDataset, SFTDatasetConfig
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/sft_dataset.py", line 15, in <module>
+    from .sft_dataset import SFTDataset, SFTDatasetConfig
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/sft_dataset.py", line 15, in <module>
+    from .sft_dataset import SFTDataset, SFTDatasetConfig
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/sft_dataset.py", line 15, in <module>
+    from .sft_dataset import SFTDataset, SFTDatasetConfig
+  File "/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/data/sft_dataset.py", line 15, in <module>
+    from transformers import ProcessorMixin
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2154, in __getattr__
+    from transformers import ProcessorMixin
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2154, in __getattr__
+    from transformers import ProcessorMixin
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2154, in __getattr__
+    from transformers import ProcessorMixin
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2154, in __getattr__
+    from transformers import ProcessorMixin
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2154, in __getattr__
+    from transformers import ProcessorMixin
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2154, in __getattr__
+    from transformers import ProcessorMixin
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2154, in __getattr__
+    from transformers import ProcessorMixin
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2154, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2184, in _get_module
+    module = self._get_module(self._class_to_module[name])
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2184, in _get_module
+    module = self._get_module(self._class_to_module[name])
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2184, in _get_module
+    module = self._get_module(self._class_to_module[name])
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2184, in _get_module
+    module = self._get_module(self._class_to_module[name])
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2184, in _get_module
+    module = self._get_module(self._class_to_module[name])
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2184, in _get_module
+    module = self._get_module(self._class_to_module[name])
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2184, in _get_module
+    module = self._get_module(self._class_to_module[name])
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2184, in _get_module
+    raise e
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2182, in _get_module
+    raise e
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2182, in _get_module
+    raise e
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2182, in _get_module
+    raise e
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2182, in _get_module
+    raise e
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2182, in _get_module
+    raise e
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2182, in _get_module
+    raise e
+      File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2182, in _get_module
+raise e
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/utils/import_utils.py", line 2182, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/importlib/__init__.py", line 126, in import_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/importlib/__init__.py", line 126, in import_module
+        return importlib.import_module("." + module_name, self.__name__)return importlib.import_module("." + module_name, self.__name__)
+
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/importlib/__init__.py", line 126, in import_module
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/importlib/__init__.py", line 126, in import_module
+        return _bootstrap._gcd_import(name[level:], package, level)return _bootstrap._gcd_import(name[level:], package, level)
+
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/processing_utils.py", line 73, in <module>
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/processing_utils.py", line 73, in <module>
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/processing_utils.py", line 73, in <module>
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/processing_utils.py", line 73, in <module>
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/processing_utils.py", line 73, in <module>
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/processing_utils.py", line 73, in <module>
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/processing_utils.py", line 73, in <module>
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/processing_utils.py", line 73, in <module>
+    from .modeling_utils import PreTrainedAudioTokenizerBase
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_utils.py", line 59, in <module>
+    from .modeling_utils import PreTrainedAudioTokenizerBase
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_utils.py", line 59, in <module>
+    from .modeling_utils import PreTrainedAudioTokenizerBase
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_utils.py", line 59, in <module>
+    from .modeling_utils import PreTrainedAudioTokenizerBase
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_utils.py", line 59, in <module>
+    from .modeling_utils import PreTrainedAudioTokenizerBase
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_utils.py", line 59, in <module>
+    from .modeling_utils import PreTrainedAudioTokenizerBase
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_utils.py", line 59, in <module>
+    from .modeling_utils import PreTrainedAudioTokenizerBase
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_utils.py", line 59, in <module>
+    from .modeling_utils import PreTrainedAudioTokenizerBase
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_utils.py", line 59, in <module>
+    from .integrations.flash_attention import flash_attention_forward
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/integrations/flash_attention.py", line 5, in <module>
+    from .integrations.flash_attention import flash_attention_forward
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/integrations/flash_attention.py", line 5, in <module>
+    from .integrations.flash_attention import flash_attention_forward
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/integrations/flash_attention.py", line 5, in <module>
+    from .integrations.flash_attention import flash_attention_forward
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/integrations/flash_attention.py", line 5, in <module>
+    from .integrations.flash_attention import flash_attention_forward
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/integrations/flash_attention.py", line 5, in <module>
+    from .integrations.flash_attention import flash_attention_forward
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/integrations/flash_attention.py", line 5, in <module>
+    from .integrations.flash_attention import flash_attention_forward
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/integrations/flash_attention.py", line 5, in <module>
+    from .integrations.flash_attention import flash_attention_forward
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/integrations/flash_attention.py", line 5, in <module>
+    from ..modeling_flash_attention_utils import _flash_attention_forward, flash_attn_supports_top_left_mask
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_flash_attention_utils.py", line 117, in <module>
+    from ..modeling_flash_attention_utils import _flash_attention_forward, flash_attn_supports_top_left_mask
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_flash_attention_utils.py", line 117, in <module>
+    from ..modeling_flash_attention_utils import _flash_attention_forward, flash_attn_supports_top_left_mask
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_flash_attention_utils.py", line 117, in <module>
+    from ..modeling_flash_attention_utils import _flash_attention_forward, flash_attn_supports_top_left_mask
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_flash_attention_utils.py", line 117, in <module>
+    from ..modeling_flash_attention_utils import _flash_attention_forward, flash_attn_supports_top_left_mask
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_flash_attention_utils.py", line 117, in <module>
+    from ..modeling_flash_attention_utils import _flash_attention_forward, flash_attn_supports_top_left_mask
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_flash_attention_utils.py", line 117, in <module>
+    from ..modeling_flash_attention_utils import _flash_attention_forward, flash_attn_supports_top_left_mask
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_flash_attention_utils.py", line 117, in <module>
+    from ..modeling_flash_attention_utils import _flash_attention_forward, flash_attn_supports_top_left_mask
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/transformers/modeling_flash_attention_utils.py", line 117, in <module>
+    from flash_attn_interface import flash_attn_func as flash_attn_3_func
+  File "/mnt/innovator/code/wenzichen/LLaVA-OneVision-1.5/flash-attention/flash-attention-main/hopper/flash_attn_interface.py", line 10, in <module>
+    from flash_attn_interface import flash_attn_func as flash_attn_3_func
+  File "/mnt/innovator/code/wenzichen/LLaVA-OneVision-1.5/flash-attention/flash-attention-main/hopper/flash_attn_interface.py", line 10, in <module>
+    from flash_attn_interface import flash_attn_func as flash_attn_3_func
+  File "/mnt/innovator/code/wenzichen/LLaVA-OneVision-1.5/flash-attention/flash-attention-main/hopper/flash_attn_interface.py", line 10, in <module>
+    import flash_attn_3._C # Registers operators with PyTorch
+ImportError: /mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/flash_attn_3/_C.abi3.so: undefined symbol: _ZNK3c106SymInt6sym_neERKS0_
+    from flash_attn_interface import flash_attn_func as flash_attn_3_func
+  File "/mnt/innovator/code/wenzichen/LLaVA-OneVision-1.5/flash-attention/flash-attention-main/hopper/flash_attn_interface.py", line 10, in <module>
+    import flash_attn_3._C # Registers operators with PyTorch    
+import flash_attn_3._C # Registers operators with PyTorch
+    ImportErrorfrom flash_attn_interface import flash_attn_func as flash_attn_3_funcImportError
+  File "/mnt/innovator/code/wenzichen/LLaVA-OneVision-1.5/flash-attention/flash-attention-main/hopper/flash_attn_interface.py", line 10, in <module>
+: /mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/flash_attn_3/_C.abi3.so: undefined symbol: _ZNK3c106SymInt6sym_neERKS0_: 
+/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/flash_attn_3/_C.abi3.so: undefined symbol: _ZNK3c106SymInt6sym_neERKS0_
+    from flash_attn_interface import flash_attn_func as flash_attn_3_func
+  File "/mnt/innovator/code/wenzichen/LLaVA-OneVision-1.5/flash-attention/flash-attention-main/hopper/flash_attn_interface.py", line 10, in <module>
+    import flash_attn_3._C # Registers operators with PyTorch
+ImportError    import flash_attn_3._C # Registers operators with PyTorch
+    from flash_attn_interface import flash_attn_func as flash_attn_3_func: ImportError
+/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/flash_attn_3/_C.abi3.so: undefined symbol: _ZNK3c106SymInt6sym_neERKS0_
+  File "/mnt/innovator/code/wenzichen/LLaVA-OneVision-1.5/flash-attention/flash-attention-main/hopper/flash_attn_interface.py", line 10, in <module>
+: /mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/flash_attn_3/_C.abi3.so: undefined symbol: _ZNK3c106SymInt6sym_neERKS0_
+    from flash_attn_interface import flash_attn_func as flash_attn_3_func
+  File "/mnt/innovator/code/wenzichen/LLaVA-OneVision-1.5/flash-attention/flash-attention-main/hopper/flash_attn_interface.py", line 10, in <module>
+    import flash_attn_3._C # Registers operators with PyTorch
+ImportError: /mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/flash_attn_3/_C.abi3.so: undefined symbol: _ZNK3c106SymInt6sym_neERKS0_
+    import flash_attn_3._C # Registers operators with PyTorch
+    import flash_attn_3._C # Registers operators with PyTorch
+ImportErrorImportError: : /mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/flash_attn_3/_C.abi3.so: undefined symbol: _ZNK3c106SymInt6sym_neERKS0_/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/flash_attn_3/_C.abi3.so: undefined symbol: _ZNK3c106SymInt6sym_neERKS0_
+
+[W1020 09:13:56.369675293 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+[W1020 09:13:56.416730619 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+[W1020 09:13:56.435687583 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+[W1020 09:13:56.454117596 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+[W1020 09:13:56.454276053 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+[W1020 09:13:56.454453511 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+[W1020 09:13:56.468393219 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+[W1020 09:13:56.501876968 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())
+W1020 09:13:56.502000 82885 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82952 closing signal SIGTERM
+W1020 09:13:56.503000 82885 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82953 closing signal SIGTERM
+W1020 09:13:56.503000 82885 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82954 closing signal SIGTERM
+W1020 09:13:56.503000 82885 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82955 closing signal SIGTERM
+W1020 09:13:56.503000 82885 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82958 closing signal SIGTERM
+W1020 09:13:56.503000 82885 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 82959 closing signal SIGTERM
+E1020 09:13:56.744000 82885 site-packages/torch/distributed/elastic/multiprocessing/api.py:882] failed (exitcode: 1) local_rank: 4 (pid: 82956) of binary: /mnt/public/yangboxue/miniconda3/envs/llava_flav3/bin/python3.10
+Traceback (most recent call last):
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/bin/torchrun", line 7, in <module>
+    sys.exit(main())
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/torch/distributed/run.py", line 936, in main
+    run(args)
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/torch/distributed/run.py", line 927, in run
+    elastic_launch(
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 156, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/mnt/public/yangboxue/miniconda3/envs/llava_flav3/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 293, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/mnt/innovator/code/yangboxue/LLaVA-OneVision-1.5/aiak_training_llm/train.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2025-10-20_09:13:56
+  host      : is-dbxunxx7qvljox46-devmachine-0
+  rank      : 5 (local_rank: 5)
+  exitcode  : 1 (pid: 82957)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-10-20_09:13:56
+  host      : is-dbxunxx7qvljox46-devmachine-0
+  rank      : 4 (local_rank: 4)
+  exitcode  : 1 (pid: 82956)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+[W1020 09:13:56.065206650 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

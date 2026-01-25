@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="Innovator-VL: A Multimodal Large Language Model for Scientific Discovery">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="We present Innovator-VL, a scientific multimodal large language model (MLLM) designed to advance multimodal understanding and reasoning across diverse scientific domains while still maintaining excellent performance on general vision tasks. Contrary to the prevailing trend of relying on massive domain-specific pretraining data and opaque training pipelines, our work demonstrates that principled training design and transparent methodology can yield strong scientific multimodal intelligence with substantially reduced data requirements.">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="MLLMs, science, reinforcement learning">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="Zichen Wen*†, Boxue Yang*, Shuang Chen, Yaojie Zhang, Yuhang Han, Junlong Ke, Linfeng Zhang‡">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="Innovator">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="Innovator-VL: A Multimodal Large Language Model for Scientific Discovery">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="We present Innovator-VL, a scientific multimodal large language model (MLLM) designed to advance multimodal understanding and reasoning across diverse scientific domains while still maintaining excellent performance on general vision tasks. Contrary to the prevailing trend of relying on massive domain-specific pretraining data and opaque training pipelines, our work demonstrates that principled training design and transparent methodology can yield strong scientific multimodal intelligence with substantially reduced data requirements.">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://innovator-vl.github.io/">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Innovator-VL: A Multimodal Large Language Model for Scientific Discovery - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="Innovator-VL: A Multimodal Large Language Model for Scientific Discovery">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="We present Innovator-VL, a scientific multimodal large language model (MLLM) designed to advance multimodal understanding and reasoning across diverse scientific domains while still maintaining excellent performance on general vision tasks.">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="Innovator-VL: A Multimodal Large Language Model for Scientific Discovery - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PAPER_TITLE">
+  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
+  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_conference_title" content="CONFERENCE_NAME">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>Innovator-VL: A Multimodal Large Language Model for Scientific Discovery</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PAPER_TITLE",
+    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- TODO: Replace with your paper title -->
+            <h1 class="title is-1 publication-title" style="display: flex; align-items: up; gap: 0px;">
+              <img
+                src="static/images/logo.png"
+                alt="Innovator-VL logo"
+                style="height: 70px; width: auto;"
+              >
+              Innovator-VL: A Multimodal Large Language Model for Scientific Discovery
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <!-- TODO: Replace with your paper authors and their personal links -->
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=N-aPFvEAAAAJ&hl=zh-CN" target="_blank">Zichen Wen</a><sup>*†¹</sup>,</span>
+                <span class="author-block">
+                  <a href="2 AUTHOR PERSONAL LINK" target="_blank">Boxue yang</a><sup>*¹</sup>,</span>
+                  <span class="author-block">
+                    <a href="3 AUTHOR PERSONAL LINK" target="_blank">Shuang Chen</a><sup>¹</sup>,</span>
+                    <span class="author-block">
+                      <a href="https://yaro1214.github.io/" target="_blank">Yaojie Zhang</a><sup>¹</sup>,</span>
+                      <span class="author-block">
+                        <a href="https://kawhiiiileo.github.io/" target="_blank">Yuhang Han</a><sup>¹</sup>,</span>
+                        <span class="author-block">
+                          <a href="https://scholar.google.com/citations?user=kDTGZkMAAAAJ&hl=zh-CN" target="_blank">Junjie Ke</a><sup>¹</sup>,</span>
+                          <span class="author-block">
+                            <a href="https://scholar.google.com/citations?hl=zh-CN&user=AK9VF30AAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Linfeng Zhang</a><sup>¹</sup>‡</span>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- TODO: Replace with your institution and conference/journal info -->
+                    <span class="author-block">¹ Shanghai Jiao Tong University<br>Technical Report</span>
+                    <!-- TODO: Remove this line if no equal contribution -->
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <span class="eql-cntrb"><small><sup>†</sup>Indicates Project Head</small></span>
+                    <span class="eql-cntrb"><small><sup>‡</sup>Indicates Corresponding Author</small></span>
+                  </div>
+
+                <div class="column has-text-centered">
+                  <div class="publication-links">
+
+                    <!-- arXiv -->
+                    <span class="link-block">
+                      <a href="https://arxiv.org/abs/<ARXIV_PAPER_ID>" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="ai ai-arxiv"></i>
+                        </span>
+                        <span>arXiv</span>
+                      </a>
+                    </span>
+                    <!-- GitHub -->
+                    <span class="link-block">
+                      <a href="https://github.com/InnovatorLM/Innovator-VL" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fab fa-github"></i>
+                        </span>
+                        <span>Code</span>
+                      </a>
+                    </span>
+
+                    <!-- HuggingFace Instruct Model -->
+                    <span class="link-block">
+                      <a href="https://huggingface.co/InnovatorLab/Innovator-VL-8B-Instruct" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-robot"></i>
+                        </span>
+                        <span>Instruct Model</span>
+                      </a>
+                    </span>
+
+                    <!-- HuggingFace Thinking Model -->
+                    <span class="link-block">
+                      <a href="https://huggingface.co/InnovatorLab/Innovator-VL-8B-Thinking" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-brain"></i>
+                        </span>
+                        <span>Thinking Model</span>
+                      </a>
+                    </span>
+
+                    <!-- HuggingFace Instruct Data -->
+                    <span class="link-block">
+                      <a href="https://huggingface.co/datasets/InnovatorLab/Innovator-VL-Instruct-46M" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-database"></i>
+                        </span>
+                        <span>Instruct Data</span>
+                      </a>
+                    </span>
+
+                    <!-- HuggingFace RL Data -->
+                    <span class="link-block">
+                      <a href="https://huggingface.co/datasets/InnovatorLab/Innovator-VL-RL-172K" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-database"></i>
+                        </span>
+                        <span>RL Data</span>
+                      </a>
+                    </span>
+                                        <!-- HuggingFace RL Data -->
+                    <span class="link-block">
+                      <a href="https://huggingface.co/datasets/InnovatorLab/OpenRxn" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-chart-line"></i>
+                        </span>
+                        <span>Benchmark: OpenRxn</span>
+                      </a>
+                    </span>
+
+                    <span class="link-block">
+                      <a href="https://huggingface.co/datasets/InnovatorLab/EMVista" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-trophy"></i>
+                        </span>
+                        <span>Benchmark: EMVista</span>
+                      </a>
+                    </span>
+
+                    <span class="link-block">
+                      <a href="https://huggingface.co/datasets/InnovatorLab/MolParse" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-chart-bar"></i>
+                        </span>
+                        <span>Benchmark: MolParse</span>
+                      </a>
+                    </span>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser image-->
+<!-- Teaser image -->
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img
+        src="static/images/overall.png"
+        alt="Overall illustration of Innovator-VL"
+        style="display: block; margin: auto; max-width: 100%; height: auto;"
+      >
+
+      <h2 class="subtitle has-text-centered">
+        Overall illustration of Innovator-VL.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+          <p>
+             We present Innovator-VL, a scientific multimodal large language model (MLLM) designed to advance multimodal understanding and reasoning across diverse scientific domains while still maintaining excellent performance on general vision tasks. Contrary to the prevailing trend of relying on massive domain-specific pretraining data and opaque training pipelines, our work demonstrates that principled training design and transparent methodology can yield strong scientific multimodal intelligence with substantially reduced data requirements. (i) First, we provide a fully transparent and end-to-end reproducible training pipeline for scientific multimodal modeling, covering all stages from data collection and cleaning to preprocessing, supervised fine-tuning, reinforcement learning, and evaluation, together with detailed optimization and hyperparameter recipes. This enables faithful reproduction of our results and facilitates systematic extension and adaptation by the community. (ii) Second, Innovator-VL exhibits remarkable data efficiency, achieving competitive performance on a wide range of scientific tasks using fewer than five million carefully curated scientific training samples, despite not relying on large-scale scientific pretraining. These results highlight that effective scientific multimodal reasoning can be achieved through principled data selection and training strategies rather than indiscriminate data scaling. (iii) Third, Innovator-VL demonstrates strong generalization beyond scientific domains, achieving competitive performance among MLLMs of comparable size on general vision benchmarks, multimodal reasoning benchmarks, and scientific benchmarks. This indicates that scientific alignment can be integrated into a unified multimodal model without compromising general-purpose capabilities. Together, our practices suggest that, in the absence of large-scale scientific data, efficient, reproducible, and high-performing scientific multimodal models can be built, thereby providing a practical and transparent foundation for future research in scientific multimodal modeling.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Image section (static) -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Overall Illustration</h2>
+
+      <div class="columns is-centered">
+        <div class="column is-four-fifths has-text-centered">
+          <!-- Image -->
+          <img
+            src="static/images/overall.png"
+            alt="Overall illustration of Innovator-VL"
+            style="max-width: 100%; height: auto;"
+            loading="lazy"
+          >
+
+          <!-- Figure caption -->
+          <p class="has-text-grey is-size-6">
+            Figure 1: Overall illustration of Innovator-VL.
+          </p>
+
+          <!-- Description -->
+          <ul class="content has-text-left" style="margin-top: 1rem;">
+            <li>
+              <strong>Scientific MLLM:</strong>
+              A unified multimodal large language model for scientific understanding and reasoning.
+            </li>
+            <li>
+              <strong>General + Scientific:</strong>
+              Strong general vision–language capability without sacrificing scientific specialization.
+            </li>
+            <li>
+              <strong>Data-Efficient Training:</strong>
+              Competitive scientific performance achieved with carefully curated data instead of large-scale domain-specific pretraining.
+            </li>
+            <li>
+              <strong>Transparent Pipeline:</strong>
+              End-to-end reproducible training covering data curation, instruction tuning, and reinforcement learning.
+            </li>
+            <li>
+              <strong>Strong Generalization:</strong>
+              Consistent performance across general vision, multimodal reasoning, and diverse scientific benchmarks.
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- End image carousel -->
+
+
+
+
+<!-- Youtube video -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Performance</h2>
+
+      <div class="columns is-centered">
+        <div class="column is-four-fifths has-text-centered">
+          <!-- Image -->
+          <img
+            src="static/images/performance.png"
+            alt="Performance of Innovator-VL"
+            style="max-width: 100%; height: auto;"
+            loading="lazy"
+          >
+
+          <!-- Figure caption -->
+          <p class="has-text-grey is-size-6">
+            Figure 2: Performance of Innovator-VL across general, reasoning, and scientific benchmarks.
+          </p>
+
+          <!-- Description -->
+          <p class="content has-text-left" style="margin-top: 1rem;">
+            <strong>General:</strong> Innovator-VL-8B-Instruct achieves top-tier performance on general multimodal benchmarks, matching or surpassing leading open-source models in visual perception, OCR, document understanding, and real-world reasoning.
+            <br><br>
+            <strong>Math & Reasoning:</strong> Innovator-VL-8B-Thinking further improves multimodal reasoning, attaining the highest average scores on visual math and reasoning benchmarks among comparable 8B models through reinforcement learning–enhanced long-horizon reasoning.
+            <br><br>
+            <strong>Science:</strong> Innovator-VL consistently outperforms general-purpose baselines, delivering strong results on chemistry, reaction understanding, molecular parsing, microscopy analysis, and scientific VQA tasks.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- End youtube video -->
+
+
+<!-- Video carousel -->
+<!-- Youtube video -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Training Data</h2>
+
+      <div class="columns is-centered">
+        <div class="column is-four-fifths has-text-centered">
+          <!-- Image -->
+          <img
+            src="static/images/data.png"
+            alt="Data distribution across different training stages of Innovator-VL"
+            style="max-width: 100%; height: auto;"
+            loading="lazy"
+          >
+
+          <!-- Figure caption -->
+          <p class="has-text-grey is-size-6">
+            Figure 3: Data distribution across different training stages of Innovator-VL.
+            (a) Innovator-VL-Mid-Training-85M,
+            (b) Innovator-VL-Instruct-46M,
+            (c) Innovator-VL-RL-172K.
+          </p>
+
+          <!-- Description -->
+          <p class="content has-text-left" style="margin-top: 1rem;">
+            <strong>Mid-Training:</strong> The mid-training stage focuses on large-scale multimodal alignment, combining diverse general-domain and scientific data to establish robust visual perception and cross-modal representation learning.
+            <br><br>
+            <strong>Instruction Tuning:</strong> The instruction-tuning stage emphasizes high-quality supervised data, integrating general instruction-following samples with carefully curated scientific tasks to enhance controllability and domain-specific understanding.
+            <br><br>
+            <strong>Reinforcement Learning:</strong> The reinforcement learning stage uses a compact but targeted dataset to further refine long-horizon reasoning, response consistency, and decision-making quality, particularly for complex scientific and multimodal reasoning tasks.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Data Construction Pipeline</h2>
+
+      <div class="columns is-centered">
+        <div class="column is-four-fifths has-text-centered">
+          <!-- Image -->
+          <img
+            src="static/images/pipeline.png"
+            alt="Data construction pipeline of Innovator-VL"
+            style="max-width: 80%; height: auto;"
+            loading="lazy"
+          >
+
+          <!-- Figure caption -->
+          <p class="has-text-grey is-size-6">
+            Figure 4: Overview of data construction pipelines for scientific multimodal training.
+          </p>
+
+          <!-- Description -->
+          <p class="content has-text-left" style="margin-top: 1rem;">
+            <strong>Optical Chemical Structure Recognition (OCSR):</strong> A human-in-the-loop pipeline combines large-scale synthetic bootstrapping with active-learning-driven expansion on real patent and paper data, using E-SMILES as a unified annotation format to represent complex chemical structures.
+            <br><br>
+            <strong>Chemical Reaction Understanding:</strong> Reaction datasets are constructed from scientific PDFs via automated layout parsing and expert-verified question generation, covering both fine-grained reaction perception and document-level multimodal reasoning.
+            <br><br>
+            <strong>Electron Microscopy (EM) Microstructures:</strong> Large-scale EM datasets are built through iterative expert annotation and model-assisted refinement, with dense instance-level segmentation and structured attribute descriptions to support microstructural analysis.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
+  title={Your Paper Title Here},
+  author={First Author and Second Author and Third Author},
+  journal={Conference/Journal Name},
+  year={2024},
+  url={https://your-domain.com/your-project-page}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>

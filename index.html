@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <!-- Primary Meta Tags -->
   <!-- TODO: Replace with your paper title and author names -->
   <meta name="title" content="Innovator-VL: A Multimodal Large Language Model for Scientific Discovery">
@@ -15,7 +15,7 @@
   <meta name="author" content="Zichen Wen*†, Boxue Yang*, Shuang Chen, Yaojie Zhang, Yuhang Han, Junlong Ke, Linfeng Zhang‡">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
-  
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
   <!-- TODO: Replace with your institution or lab name -->
@@ -58,13 +58,13 @@
   <meta name="citation_publication_date" content="2024">
   <meta name="citation_conference_title" content="CONFERENCE_NAME">
   <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
+
   <!-- Additional SEO -->
   <meta name="theme-color" content="#2563eb">
   <meta name="msapplication-TileColor" content="#2563eb">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
+
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,24 +72,23 @@
   <link rel="preconnect" href="https://documentcloud.adobe.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
-
   <!-- TODO: Replace with your paper title and authors -->
   <title>Innovator-VL: A Multimodal Large Language Model for Scientific Discovery</title>
-  
+
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
+
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  
+
   <!-- Non-critical CSS - Load asynchronously -->
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
+
   <!-- Fallback for browsers that don't support preload -->
   <noscript>
     <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
@@ -97,10 +96,10 @@
     <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   </noscript>
-  
+
   <!-- Fonts - Optimized loading -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+
   <!-- Defer non-critical JavaScript -->
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -108,7 +107,10 @@
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-  
+
+  <!-- Charts (for the new Scientific Data section) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
   <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
   {
@@ -156,13 +158,13 @@
         "name": "RESEARCH_AREA_1"
       },
       {
-        "@type": "Thing", 
+        "@type": "Thing",
         "name": "RESEARCH_AREA_2"
       }
     ]
   }
   </script>
-  
+
   <!-- Website/Organization Structured Data -->
   <script type="application/ld+json">
   {
@@ -177,18 +179,330 @@
     ]
   }
   </script>
+
+  <!-- ===================== -->
+  <!-- Academic Visual Upgrade -->
+  <!-- (No changes to existing content; only styling + new section below) -->
+  <!-- ===================== -->
+  <style>
+    :root{
+      --ink:#0b1220;
+      --muted:#5b6476;
+      --paper:#ffffff;
+      --paper-2:#f6f8fc;
+      --line:rgba(15,23,42,.10);
+      --shadow:0 10px 30px rgba(2,6,23,.08);
+      --shadow-2:0 14px 50px rgba(2,6,23,.10);
+      --radius:18px;
+      --radius-2:24px;
+      --accent:#2563eb;
+      --accent-2:#7c3aed;
+      --accent-3:#06b6d4;
+    }
+
+    html, body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+      color: var(--ink);
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(37,99,235,.16), transparent 60%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(124,58,237,.14), transparent 55%),
+                  linear-gradient(180deg, #ffffff 0%, #fbfcff 40%, #f6f8fc 100%);
+    }
+
+    /* Subtle academic texture */
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(rgba(2,6,23,.045) 1px, transparent 1px);
+      background-size: 22px 22px;
+      opacity:.45;
+      mix-blend-mode:multiply;
+      z-index:-1;
+    }
+
+    /* Improved section rhythm */
+    section.section, section.hero{
+      position:relative;
+    }
+    .hero.is-light{
+      background: linear-gradient(180deg, rgba(246,248,252,.92), rgba(246,248,252,.62)) !important;
+    }
+
+    /* Sticky top nav for academic sites */
+    .academic-nav{
+      position: sticky;
+      top:0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255,255,255,.68);
+      border-bottom:1px solid var(--line);
+    }
+    .academic-nav .navbar{
+      background: transparent;
+    }
+    .academic-nav .navbar-item,
+    .academic-nav .navbar-link{
+      font-weight: 600;
+      color: rgba(11,18,32,.82);
+    }
+    .academic-nav .navbar-item:hover,
+    .academic-nav .navbar-link:hover{
+      color: var(--ink);
+      background: rgba(37,99,235,.06);
+      border-radius: 12px;
+    }
+    .academic-nav .navbar-brand .navbar-item{
+      gap:.6rem;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.45rem;
+      font-size:.78rem;
+      font-weight:700;
+      color: rgba(11,18,32,.84);
+      background: rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.14);
+      padding:.25rem .6rem;
+      border-radius:999px;
+      margin-left:.25rem;
+      white-space:nowrap;
+    }
+
+    /* Hero polish without changing content */
+    .publication-title{
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+    .publication-authors a{
+      font-weight: 600;
+    }
+    .publication-links .button.is-dark{
+      background: linear-gradient(135deg, rgba(11,18,32,.92), rgba(11,18,32,.82)) !important;
+      border: 1px solid rgba(255,255,255,.08) !important;
+      box-shadow: 0 10px 24px rgba(2,6,23,.14);
+      transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+    .publication-links .button.is-dark:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(2,6,23,.18);
+      filter: saturate(1.08);
+    }
+
+    /* Figure cards */
+    .figure-card{
+      background: rgba(255,255,255,.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      box-shadow: var(--shadow);
+      padding: 1.15rem 1.15rem 1rem 1.15rem;
+    }
+    .figure-card img{
+      border-radius: 16px;
+      border: 1px solid rgba(15,23,42,.08);
+      box-shadow: 0 12px 36px rgba(2,6,23,.10);
+    }
+    .figure-card .has-text-grey{
+      color: rgba(91,100,118,.9) !important;
+    }
+
+    /* Academic list styling */
+    .content ul{
+      margin-top: .75rem;
+    }
+    .content ul li{
+      margin-bottom: .55rem;
+    }
+
+    /* Scroll-to-top */
+    .scroll-to-top{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 12px 28px rgba(2,6,23,.12);
+      color: rgba(11,18,32,.84);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition: transform .18s ease, opacity .18s ease, background .18s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .scroll-to-top:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.92);
+    }
+
+    /* BibTeX copy button polish (keeps your structure) */
+    .copy-bibtex-btn{
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.86);
+      padding: .55rem .9rem;
+      cursor: pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      box-shadow: 0 10px 24px rgba(2,6,23,.10);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .copy-bibtex-btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 36px rgba(2,6,23,.14);
+    }
+
+    /* New: Scientific Data section */
+    .data-hero{
+      background: radial-gradient(900px 500px at 10% -10%, rgba(6,182,212,.16), transparent 55%),
+                  radial-gradient(900px 500px at 95% 0%, rgba(124,58,237,.14), transparent 55%),
+                  linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,248,252,.72));
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .data-kpis{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin-top: 1.1rem;
+    }
+    .kpi{
+      grid-column: span 4;
+      background: rgba(255,255,255,.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      box-shadow: var(--shadow);
+      padding: 1rem 1rem .95rem 1rem;
+    }
+    .kpi .label{
+      font-size: .86rem;
+      color: rgba(91,100,118,.95);
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      margin-bottom: .35rem;
+    }
+    .kpi .value{
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+    .kpi .hint{
+      margin-top: .45rem;
+      color: rgba(91,100,118,.92);
+      font-size: .95rem;
+      line-height: 1.35;
+    }
+    .data-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .panel{
+      grid-column: span 6;
+      background: rgba(255,255,255,.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      box-shadow: var(--shadow);
+      padding: 1rem;
+    }
+    .panel h3{
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: .5rem;
+    }
+    .panel p{
+      color: rgba(91,100,118,.95);
+      margin-top: .25rem;
+      margin-bottom: .75rem;
+      font-size: .98rem;
+    }
+    .panel canvas{
+      width: 100% !important;
+      height: 320px !important;
+    }
+    .panel.wide{
+      grid-column: span 12;
+    }
+    .table.is-striped tbody tr:nth-child(odd){
+      background: rgba(37,99,235,.04);
+    }
+
+    @media (max-width: 1024px){
+      .kpi{ grid-column: span 6; }
+      .panel{ grid-column: span 12; }
+      .panel canvas{ height: 300px !important; }
+    }
+    @media (max-width: 768px){
+      .kpi{ grid-column: span 12; }
+    }
+
+    /* Make your existing image sections look like “figure cards” without changing HTML */
+    section.hero.is-small .hero-body > .container > .columns.is-centered > .column.is-four-fifths{
+      background: rgba(255,255,255,.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-2);
+      box-shadow: var(--shadow);
+      padding: 1.15rem;
+    }
+  </style>
 </head>
+
 <body>
 
+  <!-- Sticky academic nav (adds polish; does not modify existing content blocks) -->
+  <div class="academic-nav">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container is-max-desktop">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="#main-content">
+            <img src="static/images/logo.png" alt="Innovator-VL" style="height: 28px; width: auto;">
+            <span style="font-weight:800; letter-spacing:-0.02em;">Innovator-VL</span>
+            <span class="badge"><i class="ai ai-arxiv"></i> Technical Report</span>
+          </a>
+
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="#Abstract">Abstract</a>
+            <a class="navbar-item" href="#Overall">Overall</a>
+            <a class="navbar-item" href="#Performance">Performance</a>
+            <a class="navbar-item" href="#TokenEfficiency">Token Efficiency</a>
+            <a class="navbar-item" href="#TrainingData">Training Data</a>
+            <a class="navbar-item" href="#DataPipeline">Pipeline</a>
+            <a class="navbar-item" href="#ScientificData">Scientific Data</a>
+            <a class="navbar-item" href="#BibTeX">BibTeX</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
 
   <!-- Scroll to Top Button -->
   <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  
-
   <main id="main-content">
+
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
@@ -360,7 +674,7 @@
 <!-- End teaser video -->
 
 <!-- Paper abstract -->
-<section class="section hero is-light">
+<section class="section hero is-light" id="Abstract">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -379,16 +693,19 @@
 
 
 <!-- Image section (static) -->
-<section class="hero is-small">
+<section class="hero is-small" id="Overall">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Overall Illustration</h2>
+
+      <!-- Title: centered -->
+      <h2 class="title is-3 has-text-centered">Overall Illustration</h2>
 
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
+
           <!-- Image -->
           <img
-            src="static/images/overall.png"
+            src="static/images/architecture_01.png"
             alt="Overall illustration of Innovator-VL"
             style="max-width: 100%; height: auto;"
             loading="lazy"
@@ -399,7 +716,7 @@
             Figure 1: Overall illustration of Innovator-VL.
           </p>
 
-          <!-- Description -->
+          <!-- Description (keep LEFT for readability) -->
           <ul class="content has-text-left" style="margin-top: 1rem;">
             <li>
               <strong>Scientific MLLM:</strong>
@@ -431,22 +748,22 @@
 
 
 
+
 <!-- End image carousel -->
 
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
+<section class="hero is-small" id="Performance">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Performance</h2>
+
+      <!-- Title: centered -->
+      <h2 class="title is-3 has-text-centered">Performance</h2>
 
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
+
           <!-- Image -->
           <img
-            src="static/images/performance.png"
+            src="static/images/bar_figure_01.png"
             alt="Performance of Innovator-VL"
             style="max-width: 100%; height: auto;"
             loading="lazy"
@@ -457,38 +774,88 @@
             Figure 2: Performance of Innovator-VL across general, reasoning, and scientific benchmarks.
           </p>
 
-          <!-- Description -->
+          <!-- Description (keep LEFT, more academic) -->
           <p class="content has-text-left" style="margin-top: 1rem;">
             <strong>General:</strong> Innovator-VL-8B-Instruct achieves top-tier performance on general multimodal benchmarks, matching or surpassing leading open-source models in visual perception, OCR, document understanding, and real-world reasoning.
             <br><br>
-            <strong>Math & Reasoning:</strong> Innovator-VL-8B-Thinking further improves multimodal reasoning, attaining the highest average scores on visual math and reasoning benchmarks among comparable 8B models through reinforcement learning–enhanced long-horizon reasoning.
+            <strong>Math &amp; Reasoning:</strong> Innovator-VL-8B-Thinking further improves multimodal reasoning, attaining the highest average scores on visual math and reasoning benchmarks among comparable 8B models through reinforcement learning–enhanced long-horizon reasoning.
             <br><br>
             <strong>Science:</strong> Innovator-VL consistently outperforms general-purpose baselines, delivering strong results on chemistry, reaction understanding, molecular parsing, microscopy analysis, and scientific VQA tasks.
           </p>
 
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
 
-
 <!-- End youtube video -->
+<!-- ====================================================================== -->
+<!-- ================== SECTION: TOKEN EFFICIENCY OF REASONING ============== -->
+<!-- ====================================================================== -->
+ <section class="hero is-small is-centered" id="TokenEfficiency">
+
+<!-- <section class="section hero is-centered" id="TokenEfficiency"> -->
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-3 has-text-centered">On Token Efficiency of Reasoning</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Innovator-VL exhibits strong efficiency in reasoning token consumption. As shown in Figure&nbsp;5,
+            Innovator-VL-8B-Thinking achieves competitive or superior accuracy on mathematical reasoning benchmarks
+            while using substantially fewer tokens than comparable baselines, leading to lower inference cost
+            and reduced latency.
+          </p>
+
+          <p>
+            This efficiency is primarily driven by the reinforcement learning stage, which encourages the model
+            to focus on critical reasoning steps and eliminate redundant computation, resulting in more compact
+            and effective reasoning trajectories. Such token-efficient reasoning is particularly beneficial for
+            scientific applications involving long-context and multi-step reasoning.
+          </p>
+        </div>
 
 
-<!-- Video carousel -->
-<!-- Youtube video -->
-<section class="hero is-small">
+        <!-- Figure -->
+        <div class="has-text-centered" style="margin-top: 1.25rem;">
+          <!-- 请把图片放到这个路径（或改成你的实际路径） -->
+          <img
+            src="static/images/token_efficiency_01.png"
+            alt="Accuracy and token efficiency comparison on mathematical reasoning benchmarks"
+            style="max-width: 100%; height: auto;"
+            loading="lazy"
+          >
+          <p class="has-text-grey is-size-6" style="margin-top: 0.5rem;">
+            Figure 5: Accuracy and token efficiency comparison on mathematical reasoning benchmarks.
+            Innovator-VL-8B-Thinking achieves the highest accuracy while consuming the fewest tokens across benchmarks.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Training Data -->
+<section class="hero is-small" id="TrainingData">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Training Data</h2>
+
+      <!-- Title: centered -->
+      <h2 class="title is-3 has-text-centered">Training Data</h2>
 
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
+
           <!-- Image -->
           <img
-            src="static/images/data.png"
+            src="static/images/pie_figure_01.png"
             alt="Data distribution across different training stages of Innovator-VL"
             style="max-width: 100%; height: auto;"
             loading="lazy"
@@ -504,30 +871,45 @@
 
           <!-- Description -->
           <p class="content has-text-left" style="margin-top: 1rem;">
-            <strong>Mid-Training:</strong> The mid-training stage focuses on large-scale multimodal alignment, combining diverse general-domain and scientific data to establish robust visual perception and cross-modal representation learning.
+            <strong>Mid-Training:</strong>
+            The mid-training stage focuses on large-scale multimodal alignment, combining diverse general-domain
+            and scientific data to establish robust visual perception and cross-modal representation learning.
             <br><br>
-            <strong>Instruction Tuning:</strong> The instruction-tuning stage emphasizes high-quality supervised data, integrating general instruction-following samples with carefully curated scientific tasks to enhance controllability and domain-specific understanding.
+
+            <strong>Instruction Tuning:</strong>
+            The instruction-tuning stage emphasizes high-quality supervised data, integrating general
+            instruction-following samples with carefully curated scientific tasks to enhance controllability
+            and domain-specific understanding.
             <br><br>
-            <strong>Reinforcement Learning:</strong> The reinforcement learning stage uses a compact but targeted dataset to further refine long-horizon reasoning, response consistency, and decision-making quality, particularly for complex scientific and multimodal reasoning tasks.
+
+            <strong>Reinforcement Learning:</strong>
+            The reinforcement learning stage uses a compact but targeted dataset to further refine long-horizon
+            reasoning, response consistency, and decision-making quality.
           </p>
 
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-
-<section class="hero is-small is-light">
+<!-- ====================================================================== -->
+<!-- ================== DATA CONSTRUCTION PIPELINE ========================= -->
+<!-- ====================================================================== -->
+<section class="hero is-small is-light" id="DataPipeline">
   <div class="hero-body">
     <div class="container">
-      <h2 class="title is-3">Data Construction Pipeline</h2>
+
+      <!-- Title: centered -->
+      <h2 class="title is-3 has-text-centered">Data Construction Pipeline</h2>
 
       <div class="columns is-centered">
         <div class="column is-four-fifths has-text-centered">
+
           <!-- Image -->
           <img
-            src="static/images/pipeline.png"
+            src="static/images/data_pipeline_01.png"
             alt="Data construction pipeline of Innovator-VL"
             style="max-width: 80%; height: auto;"
             loading="lazy"
@@ -538,16 +920,189 @@
             Figure 4: Overview of data construction pipelines for scientific multimodal training.
           </p>
 
-          <!-- Description -->
+          <!-- Description (keep LEFT for readability) -->
           <p class="content has-text-left" style="margin-top: 1rem;">
-            <strong>Optical Chemical Structure Recognition (OCSR):</strong> A human-in-the-loop pipeline combines large-scale synthetic bootstrapping with active-learning-driven expansion on real patent and paper data, using E-SMILES as a unified annotation format to represent complex chemical structures.
+            <strong>Optical Chemical Structure Recognition (OCSR):</strong>
+            A human-in-the-loop pipeline combines large-scale synthetic bootstrapping with active-learning-driven expansion on real patent and paper data, using E-SMILES as a unified annotation format to represent complex chemical structures.
             <br><br>
-            <strong>Chemical Reaction Understanding:</strong> Reaction datasets are constructed from scientific PDFs via automated layout parsing and expert-verified question generation, covering both fine-grained reaction perception and document-level multimodal reasoning.
+            <strong>Chemical Reaction Understanding:</strong>
+            Reaction datasets are constructed from scientific PDFs via automated layout parsing and expert-verified question generation, covering both fine-grained reaction perception and document-level multimodal reasoning.
             <br><br>
-            <strong>Electron Microscopy (EM) Microstructures:</strong> Large-scale EM datasets are built through iterative expert annotation and model-assisted refinement, with dense instance-level segmentation and structured attribute descriptions to support microstructural analysis.
+            <strong>Electron Microscopy (EM) Microstructures:</strong>
+            Large-scale EM datasets are built through iterative expert annotation and model-assisted refinement, with dense instance-level segmentation and structured attribute descriptions to support microstructural analysis.
           </p>
 
         </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================================== -->
+<!-- ================== NEW SECTION: SCIENTIFIC DATA OVERVIEW =============== -->
+<!-- ====================================================================== -->
+<section class="section hero" id="ScientificData">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Scientific Data Overview</h2>
+        <p class="subtitle is-6 has-text-grey">
+          Curated multimodal scientific data supporting reproducible and data-efficient training
+        </p>
+      </div>
+    </div>
+
+    <!-- ================== DATA CARDS ================== -->
+    <div class="columns is-centered">
+      <div class="column is-3">
+        <div class="box has-text-centered">
+          <p class="heading">Total Scientific Samples</p>
+          <p class="title is-4">≈ 4.8M</p>
+        </div>
+      </div>
+      <div class="column is-3">
+        <div class="box has-text-centered">
+          <p class="heading">Scientific Domains</p>
+          <p class="title is-4">6+</p>
+        </div>
+      </div>
+      <div class="column is-3">
+        <div class="box has-text-centered">
+          <p class="heading">Modalities</p>
+          <p class="title is-4">Image · Text · Structure</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================== DOMAIN BREAKDOWN ================== -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">Domain-wise Composition</h3>
+
+        <table class="table is-fullwidth is-striped is-hoverable">
+          <thead>
+            <tr>
+              <th>Scientific Domain</th>
+              <th>Primary Tasks</th>
+              <th>Modalities</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chemistry</td>
+              <td>OCSR, reaction understanding, molecule parsing</td>
+              <td>Image + Structured Text</td>
+            </tr>
+            <tr>
+              <td>Materials Science</td>
+              <td>Microstructure analysis, EM interpretation</td>
+              <td>Microscopy Image + Text</td>
+            </tr>
+            <tr>
+              <td>Scientific Documents</td>
+              <td>Figure understanding, document-level reasoning</td>
+              <td>PDF Layout + Image + Text</td>
+            </tr>
+            <tr>
+              <td>General Science QA</td>
+              <td>Visual question answering, reasoning</td>
+              <td>Image + Natural Language</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ================== TRAINING STAGE DATA ================== -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">Training Stage Statistics</h3>
+
+        <table class="table is-fullwidth is-bordered">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Dataset</th>
+              <th>Scale</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mid-Training</td>
+              <td>Innovator-VL-Mid-Training</td>
+              <td>85M samples</td>
+              <td>Multimodal alignment and representation learning</td>
+            </tr>
+            <tr>
+              <td>Instruction Tuning</td>
+              <td>Innovator-VL-Instruct</td>
+              <td>46M samples</td>
+              <td>Instruction following and scientific controllability</td>
+            </tr>
+            <tr>
+              <td>Reinforcement Learning</td>
+              <td>Innovator-VL-RL</td>
+              <td>172K trajectories</td>
+              <td>Long-horizon reasoning and decision refinement</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- ====================================================================== -->
+<!-- ================== NEW SECTION: SCIENTIFIC DATA GALLERY (CAROUSEL) ===== -->
+<!-- ====================================================================== -->
+<!-- ====================================================================== -->
+<!-- ================== SCIENTIFIC DATA GALLERY ============================ -->
+<!-- ====================================================================== -->
+<section class="section hero is-light" id="scientific-gallery">
+  <div class="container is-max-desktop">
+
+    <!-- Title -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Scientific Data Gallery</h2>
+      </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <!-- IMPORTANT: unique id to avoid being overridden by other carousels -->
+        <div id="scientificCarousel"
+             class="carousel scientific-carousel"
+             data-autoplay="false"
+             data-loop="true">
+
+          <div class="item">
+            <img src="static/images/reaction1.png" alt="Reaction sample 1">
+          </div>
+
+          <div class="item">
+            <img src="static/images/reaction2.png" alt="Reaction sample 2">
+          </div>
+
+          <div class="item">
+            <img src="static/images/reaction3.png" alt="Reaction sample 3">
+          </div>
+
+          <div class="item">
+            <img src="static/images/reaction4.png" alt="Reaction sample 4">
+          </div>
+
+          <div class="item">
+            <img src="static/images/reaction5.png" alt="Reaction sample 5">
+          </div>
+
+          <div class="item">
+            <img src="static/images/reaction6.png" alt="Reaction sample 6">
+          </div>
+
+        </div>
+
       </div>
     </div>
   </div>
@@ -556,37 +1111,74 @@
 
 
 
+    <!-- ================== DATA QUALITY ================== -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">Data Quality & Curation Principles</h3>
 
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
+        <div class="content has-text-justified">
+          <ul>
+            <li>
+              <strong>Expert-in-the-loop Verification:</strong>
+              Scientific samples are iteratively reviewed and refined with domain experts to ensure correctness and semantic fidelity.
+            </li>
+            <li>
+              <strong>Structure-aware Annotation:</strong>
+              Chemical structures and reactions are represented using E-SMILES and structured descriptions to preserve scientific validity.
+            </li>
+            <li>
+              <strong>Minimal Redundancy, Maximal Coverage:</strong>
+              Data selection prioritizes diversity and task coverage over raw scale, improving data efficiency and generalization.
+            </li>
+            <li>
+              <strong>Reproducibility-first Design:</strong>
+              All datasets, preprocessing steps, and training configurations are explicitly documented and publicly released.
+            </li>
+          </ul>
+        </div>
       </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
     </div>
+
+  </div>
 </section>
+
+<!-- ====================================================================== -->
+<!-- ================== END OF NEW SCIENTIFIC DATA SECTION ================= -->
+<!-- ====================================================================== -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+
+    <div class="bibtex-header"
+         style="display:flex; align-items:center; justify-content:space-between; gap:1rem;">
+      <h2 class="title is-3">BibTeX</h2>
+
+      <!-- Copy button -->
+      <button
+        class="button is-small is-info is-light"
+        onclick="copyBibTeX()"
+        title="Copy BibTeX to clipboard"
+      >
+        <span class="icon is-small">
+          <i class="fas fa-copy"></i>
+        </span>
+        <span>Copy</span>
+      </button>
+    </div>
+
+<pre id="bibtex-code"><code>@article{innovator_vl_2024,
+  title   = {Innovator-VL: A Multimodal Large Language Model for Scientific Discovery},
+  author  = {Wen, Zichen and Yang, Boxue and Chen, Shuang and Zhang, Yaojie and Han, Yuhang and Ke, Junjie and Zhang, Linfeng},
+  journal = {Technical Report},
+  year    = {2024},
+  url     = {https://innovator-vl.github.io/}
+}</code></pre>
+
+  </div>
+</section>
+
 <!--End BibTex citation -->
 
+  <!-- ================== 原 BibTeX / Footer / Tracking 等内容继续保持 ================== -->
 
-
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>

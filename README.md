@@ -101,7 +101,7 @@ Instruct-46M">
 ## 🏗️ Architecture
 
 <div align="center">
-<img src="asset/architecture.jpg" width="85%" alt="Innovator-VL Architecture">
+<img src="asset/architecture_01.png" width="85%" alt="Innovator-VL Architecture">
 <br>
 <em><strong>Figure 1:</strong> Innovator-VL architecture with RICE-ViT visual encoder, PatchMerger, and Qwen3 language decoder</em>
 </div>
@@ -119,7 +119,7 @@ Innovator-VL adopts a principled architecture design optimized for scientific un
 ## 📊 Performance
 
 <div align="center">
-<img src="asset/performance.jpg" width="75%" alt="Performance Comparison">
+<img src="asset/bar_figure_01.png" width="75%" alt="Performance Comparison">
 <br>
 <em><strong>Figure 2:</strong> Performance comparison with state-of-the-art MLLMs on scientific and general benchmarks</em>
 </div>

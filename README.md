@@ -294,10 +294,15 @@ If you find Innovator-VL helpful for your research, please consider citing our t
 
 We express our sincere gratitude to the open-source community for their invaluable contributions that made this work possible:
 
-- **[LLaVA-OneVision-1.5](https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5)**: The foundational multimodal framework that our work builds upon
+- **[LLaVA-OneVision-1.5](https://github.com/EvolvingLMMs-Lab/LLaVA-OneVision-1.5)**: Fully Open Framework for Democratized Multimodal Training
 - **[RICE-ViT](https://github.com/deepglint/MVT)**: Advanced visual encoder for fine-grained region understanding
 - **[Qwen3](https://github.com/QwenLM/Qwen3)**: Excellent language model backbone
 - **[AReaL](https://github.com/inclusionAI/AReaL)**: A Large-Scale Asynchronous Reinforcement Learning Freamwork
+- **[lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval)**: A standardized evaluation framework for Large Multimodal Models
+- **[Megatron-LM](https://github.com/NVIDIA/Megatron-LM)**: Efficient, scalable training for large language models
+- **[OpenMMReasoner](https://github.com/EvolvingLMMs-Lab/OpenMMReasoner)**: Pushing the Frontiers for Multimodal Reasoning with an Open and General Recipe
+- **[SGLang](https://github.com/sgl-project/sglang)**: SGLang is a fast serving framework for large language models and vision language models
+- **[vllm](https://github.com/vllm-project/vllm)**: A high-throughput and memory-efficient inference and serving engine for LLMs
 
 These projects have significantly influenced our work, and we are deeply grateful to their respective authors and contributors.
 

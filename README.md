@@ -284,7 +284,7 @@ bash run_example.sh
 
 ## 🔬 Evaluation
 
-Innovator-VL is evaluated using the **[lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval)** framework, enabling standardized, reproducible evaluation across **general vision**, **mathematics reasoning**, and **scientific domains**.
+Innovator-VL is evaluated using the **[lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval)** framework, enabling standardized, reproducible evaluation across **general vision**, **mathematical reasoning**, and **scientific domains**.
 
 We provide an official evaluation script that covers all supported benchmarks.
 

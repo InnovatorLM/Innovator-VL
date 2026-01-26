@@ -307,8 +307,6 @@ cd lmms-eval
 bash eval_innovator_vl.sh
 ```
 
-This script uses **Accelerate** for multi-GPU distributed inference and evaluates **Innovator-VL** across multiple benchmark groups.
-
 ### 🧪 Supported Benchmarks
 
 The evaluation script is organized into three major categories.

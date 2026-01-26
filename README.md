@@ -277,9 +277,9 @@ Innovator-VL/
 │   ├── performance.pdf
 │   └── data_pipeline.pdf
 │
-├── requirements.txt                # Dependencies
-├── LICENSE                         # Apache 2.0 License
-└── README.md                       # This file
+├── requirements.txt                
+├── LICENSE                         
+└── README.md                      
 ```
 
 ## 📝 Citation
@@ -302,7 +302,7 @@ We express our sincere gratitude to the open-source community for their invaluab
 - **[Megatron-LM](https://github.com/NVIDIA/Megatron-LM)**: Efficient, scalable training for large language models
 - **[OpenMMReasoner](https://github.com/EvolvingLMMs-Lab/OpenMMReasoner)**: Pushing the Frontiers for Multimodal Reasoning with an Open and General Recipe
 - **[SGLang](https://github.com/sgl-project/sglang)**: SGLang is a fast serving framework for large language models and vision language models
-- **[vllm](https://github.com/vllm-project/vllm)**: A high-throughput and memory-efficient inference and serving engine for LLMs
+- **[vLLM](https://github.com/vllm-project/vllm)**: A high-throughput and memory-efficient inference and serving engine for LLMs
 
 These projects have significantly influenced our work, and we are deeply grateful to their respective authors and contributors.
 

@@ -1,0 +1,8 @@
+hf_datasets_cache/
+logs/
+*.tar.gz
+__pycache__/
+*.pyc
+*.egg-info
+.DS_Store
+build/

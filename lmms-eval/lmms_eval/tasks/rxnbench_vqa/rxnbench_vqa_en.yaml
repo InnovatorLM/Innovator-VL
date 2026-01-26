@@ -1,0 +1,31 @@
+group: rxnbench_vqa
+task: rxnbench_vqa_en
+dataset_path: UniParser/RxnBench
+dataset_name: RxnBench-VQA
+test_split: en
+output_type: generate_until
+doc_to_visual: !function utils.rxnbench_doc_to_visual
+doc_to_text: !function utils.rxnbench_doc_to_text
+doc_to_target: !function utils._get_target
+generation_kwargs:
+  max_new_tokens: 10
+  temperature: 0
+  do_sample: false
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+process_results: !function utils.rxnbench_process_results
+metadata:
+  - version: 1.0
+    language: en
+    license: cc-by-nc-4.0
+    task_categories: [visual-question-answering]
+    tags: [chemistry]
+
+lmms_eval_specific_kwargs:
+  default:
+    pre_prompt: ""
+    post_prompt: "\nBased on the image and the question, choose the most appropriate answer.\n**Only output a single letter (A, B, C, or D)**. Do NOT output any other text or explanation."

@@ -1,0 +1,4 @@
+group: rxnbench_vqa
+task:
+  - rxnbench_vqa_en
+  - rxnbench_vqa_zh

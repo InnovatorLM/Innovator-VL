@@ -313,7 +313,7 @@ This script uses **Accelerate** for multi-GPU distributed inference and evaluate
 
 The evaluation script is organized into three major categories.
 
-#### 🌍 General Vision & Multimodal Benchmarks
+#### 🌍 General Vision Benchmarks
 
 These benchmarks evaluate perception, OCR, document understanding, and real-world multimodal reasoning:
 
@@ -330,7 +330,7 @@ These benchmarks evaluate perception, OCR, document understanding, and real-worl
 - **SEEDBench**: `seedbench`, `seedbench_2_plus`
 - **RealWorldQA**
 
-### ➗ Math & Reasoning Benchmarks
+#### ➗ Math & Reasoning Benchmarks
 
 These benchmarks focus on mathematical reasoning and chain-of-thought multimodal problem solving:
 
@@ -339,7 +339,7 @@ These benchmarks focus on mathematical reasoning and chain-of-thought multimodal
 - **MathVista**: `mathvista_testmini_cot_reasoning`
 - **WeMath**: `wemath_testmini_reasoning`
 
-### 🔬 Scientific Benchmarks
+#### 🔬 Scientific Benchmarks
 
 These benchmarks evaluate Innovator-VL’s capabilities across chemistry, biology, medicine, earth science, and scientific document understanding:
 

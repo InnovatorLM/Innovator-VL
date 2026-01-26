@@ -322,7 +322,7 @@ These benchmarks evaluate perception, OCR, document understanding, and real-worl
 - **ChartQA**
 - **MMMU**: `mmmu_val`, `mmmu_pro_standard`
 - **MMStar**
-- **V\* Bench**
+- **VStar-Bench**
 - **MMBench**: `mmbench_en_dev`, `mmbench_en_test`
 - **MME-RealWorld**: `mmerealworld`, `mmerealworld_cn`
 - **DocVQA**: `docvqa_val`
@@ -343,15 +343,10 @@ These benchmarks focus on mathematical reasoning and chain-of-thought multimodal
 
 These benchmarks evaluate Innovator-VL’s capabilities across chemistry, biology, medicine, earth science, and scientific document understanding:
 
-- **ScienceQA**
-- **Reaction & Chemistry**: `rxnbench_vqa`, `OpenRxn`, `MolParse`, `SmolInstruct`
-- **Medical & Biomedical**: `EMVista`, `microvqa`
-- **Chemistry Understanding**: `superchem`, `superchem_cn`
-- **Biology & Protein**: `ProteinLMBench`
-- **Scientific Figure & Equation Understanding**: `sfe-en`, `sfe-zh`
-- **Earth & Environmental Science**: `msearth_mcq`
-- **Cross-lingual Science Reasoning**: `xlrs-lite`
-
+- **General Science & Scientific Cognition**: `sfe-en`, `sfe-zh`, `scienceqa`
+- **Chemistry & Molecular Science**: `rxnbench_vqa`, `OpenRxn`, `MolParse`, `SmolInstruct`, `superchem`, `superchem_cn`
+- **Biology, Medicine & Microscopy**: `EMVista`, `microvqa`, `ProteinLMBench`
+- **Earth Science & Remote Sensing**: `msearth_mcq`, `xlrs-lite`
 
 ## 📁 Directory Structure
 

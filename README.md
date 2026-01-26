@@ -33,8 +33,8 @@
     <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-brightgreen?logo=apache">
   </a>
   <!-- GitHub Stars -->
-  <a href="https://github.com/InnovatorLab/Innovator-VL">
-    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/InnovatorLab/Innovator-VL?logo=github">
+  <a href="https://github.com/InnovatorLM/Innovator-VL">
+    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/InnovatorLM/Innovator-VL?logo=github">
   </a>
   <!-- Contributors -->
   <a href="https://github.com/InnovatorLM/Innovator-VL/graphs/contributors">

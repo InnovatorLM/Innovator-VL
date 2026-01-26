@@ -21,9 +21,8 @@
     <img alt="HF Model Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/models/InnovatorLab/Innovator-VL-8B-Thinking&amp;query=downloads&amp;label=Innovator-VL-8B-Thinking%20Downloads&amp;color=yellow&amp;logo=huggingface&amp">
   </a>
   <!-- Instruct Dataset Downloads -->
-  <a href="https://huggingface.co/datasets/InnovatorLab/Innovator-VL-
-Instruct-46M">
-    <img alt="HF Instruct Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/InnovatorLab/Innovator-VL-RL-172K&amp;query=downloads&amp;label=Instruct%20DATA%20Downloads&amp;color=blue&amp;logo=huggingface&amp">
+  <a href="https://huggingface.co/datasets/InnovatorLab/Innovator-VL-Instruct-46M">
+    <img alt="HF Instruct Dataset Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/InnovatorLab/Innovator-VL-Instruct-46M&amp;query=downloads&amp;label=Instruct%20DATA%20Downloads&amp;color=blue&amp;logo=huggingface&amp">
   </a>
   <!-- RL Dataset Downloads -->
   <a href="https://huggingface.co/datasets/InnovatorLab/Innovator-VL-RL-172K">

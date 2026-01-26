@@ -30,7 +30,7 @@
   </a>
   <!-- License -->
   <a href="LICENSE">
-    <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-brightgreen?logo=apache">
+  <img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg">
   </a>
   <!-- GitHub Stars -->
   <a href="https://github.com/InnovatorLM/Innovator-VL">
@@ -39,6 +39,10 @@
   <!-- Contributors -->
   <a href="https://github.com/InnovatorLM/Innovator-VL/graphs/contributors">
     <img alt="Contributors" src="https://img.shields.io/github/contributors/InnovatorLM/Innovator-VL?logo=github&amp">
+  </a>
+  <!-- PRs Welcome -->
+  <a href="https://github.com/InnovatorLM/Innovator-VL/pulls">
+    <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?logo=github&amp">
   </a>
   <!-- Megatron-LM -->
   <a href="https://github.com/NVIDIA/Megatron-LM">
@@ -135,12 +139,12 @@ Innovator-VL adopts a principled architecture design optimized for scientific un
 
 ## 🚀 Training Pipeline
 
-### Stage 1: Alignment (Adapter Only)
+### Stage 1: Alignment
 - **Data**: LLaVA-558K alignment dataset
 - **Training**: Vision adapter parameters only
 - **Goal**: Align visual and textual representations
 
-### Stage 1.5: Mid-Training (Full Model)
+### Stage 1.5: Mid-Training
 - **Data**: 85M high-quality multimodal samples
 - **Training**: Full model
 - **Goal**: Enhance multimodal understanding
@@ -258,7 +262,7 @@ bash examples/innovator_vl/quick_start/train_auto_stage_1.5_mid_training_innovat
 ### Stage 2 Training
 
 ```bash
-# Download instruct dataset (44M samples)
+# Download instruct dataset (46M samples)
 AIAK_TRAINING_PATH=/path/to/Innovator-VL \
 DATA_PATH=/path/to/Innovator-VL-Instruct-46M \
 TOKENIZER_PATH=/path/to/Innovator-VL-8B-stage0 \

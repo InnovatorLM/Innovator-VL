@@ -91,7 +91,7 @@
 ### Training Datasets
 
 <div align="center">
-<img src="asset/dataset.jpg" width="100%" alt="Training Dataset">
+<img src="asset/dataset.png" width="100%" alt="Training Dataset">
 <br>
 <em><strong>Figure 1:</strong> Data distribution across different training stages</em>
 </div>

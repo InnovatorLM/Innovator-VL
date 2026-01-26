@@ -288,8 +288,6 @@ Innovator-VL is evaluated using the **[lmms-eval](https://github.com/EvolvingLMM
 
 We provide an official evaluation script that covers all supported benchmarks.
 
----
-
 ### 📜 Evaluation Script
 
 An official evaluation script is provided:
@@ -299,7 +297,7 @@ An official evaluation script is provided:
 Before running the evaluation, please set the model path:
 
 ```bash
-export INNOVATOR_VL_MODEL_PATH=/path/to/Innovator-VL-8B-Instruct (or Innovator-VL-8B-Thinking)
+export MODEL_PATH=/path/to/Innovator-VL-8B-Instruct (or Innovator-VL-8B-Thinking)
 ```
 
 Then launch the evaluation:
@@ -311,24 +309,20 @@ bash eval_innovator_vl.sh
 
 This script uses **Accelerate** for multi-GPU distributed inference and evaluates **Innovator-VL** across multiple benchmark groups.
 
----
-
-## 🧪 Supported Benchmarks
+### 🧪 Supported Benchmarks
 
 The evaluation script is organized into three major categories.
 
----
-
-### 🌍 General Vision & Multimodal Benchmarks
+#### 🌍 General Vision & Multimodal Benchmarks
 
 These benchmarks evaluate perception, OCR, document understanding, and real-world multimodal reasoning:
 
 - **AI2D**: `ai2d`, `ai2d_no_mask`
 - **OCRBench**
 - **ChartQA**
-- **MMMU**: `mmmu_val`, `mmmu_pro`
+- **MMMU**: `mmmu_val`, `mmmu_pro_standard`
 - **MMStar**
-- **V* Bench**: `vstar_bench`
+- **V\* Bench**
 - **MMBench**: `mmbench_en_dev`, `mmbench_en_test`
 - **MME-RealWorld**: `mmerealworld`, `mmerealworld_cn`
 - **DocVQA**: `docvqa_val`
@@ -336,73 +330,28 @@ These benchmarks evaluate perception, OCR, document understanding, and real-worl
 - **SEEDBench**: `seedbench`, `seedbench_2_plus`
 - **RealWorldQA**
 
----
-
 ### ➗ Math & Reasoning Benchmarks
 
 These benchmarks focus on mathematical reasoning and chain-of-thought multimodal problem solving:
 
-- **MathVision**
-  - `mathvision_reason_test_reasoning`
-  - `mathvision_reason_testmini_reasoning`
-- **MathVerse**
-  - `mathverse_testmini_reasoning`
-- **MathVista**
-  - `mathvista_testmini_cot_reasoning`
-- **WeMath**
-  - `wemath_testmini_reasoning`
-
-> These tasks enable `interleave_visuals=True` to better support multi-image and step-wise reasoning.
-
----
+- **MathVision**: `mathvision_reason_test_reasoning`, `mathvision_reason_testmini_reasoning`
+- **MathVerse**: `mathverse_testmini_reasoning`
+- **MathVista**: `mathvista_testmini_cot_reasoning`
+- **WeMath**: `wemath_testmini_reasoning`
 
 ### 🔬 Scientific Benchmarks
 
 These benchmarks evaluate Innovator-VL’s capabilities across chemistry, biology, medicine, earth science, and scientific document understanding:
 
 - **ScienceQA**
-- **Reaction & Chemistry**
-  - `rxnbench_vqa`
-  - `OpenRxn`
-  - `MolParse`
-  - `SmolInstruct`
-- **Medical & Biomedical**
-  - `EMVista`
-  - `microvqa`
-- **Chemistry Understanding**
-  - `superchem`
-  - `superchem_cn`
-- **Biology & Protein**
-  - `ProteinLMBench`
-- **Scientific Figure & Equation Understanding**
-  - `sfe-en`
-  - `sfe-zh`
-- **Earth & Environmental Science**
-  - `msearth_mcq`
-- **Cross-lingual Science Reasoning**
-  - `xlrs-lite`
+- **Reaction & Chemistry**: `rxnbench_vqa`, `OpenRxn`, `MolParse`, `SmolInstruct`
+- **Medical & Biomedical**: `EMVista`, `microvqa`
+- **Chemistry Understanding**: `superchem`, `superchem_cn`
+- **Biology & Protein**: `ProteinLMBench`
+- **Scientific Figure & Equation Understanding**: `sfe-en`, `sfe-zh`
+- **Earth & Environmental Science**: `msearth_mcq`
+- **Cross-lingual Science Reasoning**: `xlrs-lite`
 
----
-
-### ⚙️ Evaluation Details
-
-- **Framework**: lmms-eval
-- **Inference Engine**: HuggingFace + Accelerate
-- **Default Parallelism**: 8 GPUs
-- **Batch Size**: 1 (to support high-resolution images)
-- **Max Pixels**: 3,240,000
-- **Logging**: Sample-level outputs enabled (`--log_samples`)
-- **Results**: Saved under `lmms-eval/logs/innovator_vl_eval/`
-
----
-
-### 📌 Notes
-
-- Evaluation results may vary slightly depending on decoding settings and hardware.
-- For fair comparison, we recommend using the official evaluation script and default parameters.
-- Additional benchmarks supported by lmms-eval can be enabled by editing `eval_innovator_vl.sh`.
-
----
 
 ## 📁 Directory Structure
 

@@ -90,6 +90,14 @@
 
 ### Training Datasets
 
+<div align="center">
+<img src="asset/dataset.jpg" width="100%" alt="Training Dataset">
+<br>
+<em><strong>Figure 1:</strong> Data distribution across different training stages</em>
+</div>
+
+<br>
+
 | Dataset | Size | Description | Status |
 |---------|------|-------------|--------|
 | **LLaVA-558K** | 558K | Alignment dataset for Stage 1 | [🤗 HF](https://huggingface.co/datasets/liuhaotian/LLaVA-Pretrain) |
@@ -102,8 +110,10 @@
 <div align="center">
 <img src="asset/architecture_01.png" width="100%" alt="Innovator-VL Architecture">
 <br>
-<em><strong>Figure 1:</strong> Innovator-VL architecture with RICE-ViT visual encoder, PatchMerger, and Qwen3 language decoder</em>
+<em><strong>Figure 2:</strong> Innovator-VL architecture with RICE-ViT visual encoder, PatchMerger, and Qwen3 language decoder</em>
 </div>
+
+<br>
 
 Innovator-VL adopts a principled architecture design optimized for scientific understanding:
 
@@ -120,7 +130,7 @@ Innovator-VL adopts a principled architecture design optimized for scientific un
 <div align="center">
 <img src="asset/bar_figure_01.png" width="100%" alt="Performance Comparison">
 <br>
-<em><strong>Figure 2:</strong> Performance comparison with state-of-the-art MLLMs on scientific and general benchmarks</em>
+<em><strong>Figure 3:</strong> Performance comparison with state-of-the-art MLLMs on scientific and general benchmarks</em>
 </div>
 
 ## 🚀 Training Pipeline

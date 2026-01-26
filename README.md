@@ -28,6 +28,10 @@
   <a href="https://huggingface.co/datasets/InnovatorLab/Innovator-VL-RL-172K">
     <img alt="RL Data Downloads" src="https://img.shields.io/badge/dynamic/json?url=https://huggingface.co/api/datasets/InnovatorLab/Innovator-VL-RL-172K&amp;query=downloads&amp;label=RL%20DATA%20Downloads&amp;color=blue&amp;logo=huggingface&amp">
   </a>
+  <!-- Collection -->
+  <a href="https://huggingface.co/collections/InnovatorLab/innovator-vl" target="_blank">
+  <img alt="Hugging Face Collection" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Collection-ffd21e">
+  </a>
   <!-- License -->
   <a href="LICENSE">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg">

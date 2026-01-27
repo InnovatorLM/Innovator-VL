@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Innovator-VL: A Multimodal Large Language Model for Scientific Discovery">
+  <meta name="description" content="We present Innovator-VL, a scientific multimodal large language model (MLLM) designed to advance multimodal understanding and reasoning across diverse scientific domains while still maintaining excellent performance on general vision tasks.">
+  <meta name="keywords" content="MLLMs, science, reinforcement learning">
+  <meta name="author" content="Zichen Wen*†, Boxue Yang*, Shuang Chen, Yaojie Zhang, Yuhang Han, Junlong Ke, Linfeng Zhang‡">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Innovator">
+  <meta property="og:title" content="Innovator-VL: A Multimodal Large Language Model for Scientific Discovery">
+  <meta property="og:description" content="We present Innovator-VL, a scientific multimodal large language model (MLLM) designed to advance multimodal understanding and reasoning across diverse scientific domains.">
+  <meta property="og:url" content="https://innovator-vl.github.io/ ">
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png ">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Innovator-VL: A Multimodal Large Language Model for Scientific Discovery">
+  <meta name="twitter:description" content="We present Innovator-VL, a scientific multimodal large language model (MLLM) designed to advance multimodal understanding and reasoning across diverse scientific domains.">
+
+  <meta name="theme-color" content="#f0f4f8">
+  <meta name="msapplication-TileColor" content="#f0f4f8">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com ">
+  <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
+  
+  <title>Innovator-VL: A Multimodal Large Language Model for Scientific Discovery</title>
+  
+  <link rel="icon" type="image/x-icon" href="static/images/logo.png">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css ">
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js "></script>
+
+  <style>
+    :root {
+      /* Light Sci-Fi Palette */
+      --bg-primary: #fafbfc;
+      --bg-secondary: #f0f4f8;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --text-primary: #1a202c;
+      --text-secondary: #4a5568;
+      --text-muted: #718096;
+      --accent-blue: #0066ff;
+      --accent-cyan: #00d4aa;
+      --accent-purple: #7c3aed;
+      --accent-pink: #ec4899;
+      --border-light: rgba(0, 102, 255, 0.1);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+      --shadow-glow: 0 0 40px rgba(0, 102, 255, 0.15);
+      --radius: 16px;
+      --radius-lg: 24px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background Mesh */
+    .bg-mesh {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.4;
+      background-image: 
+        radial-gradient(at 40% 20%, rgba(0, 102, 255, 0.08) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, rgba(0, 212, 170, 0.08) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, rgba(124, 58, 237, 0.06) 0px, transparent 50%),
+        radial-gradient(at 80% 50%, rgba(236, 72, 153, 0.06) 0px, transparent 50%);
+      animation: meshMove 20s ease infinite;
+    }
+
+    @keyframes meshMove {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.05); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    /* Navigation */
+    .academic-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .navbar-brand img {
+      height: 32px;
+      filter: drop-shadow(0 0 10px rgba(0, 102, 255, 0.3));
+    }
+
+    .badge {
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 170, 0.1));
+      color: var(--accent-blue);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid rgba(0, 102, 255, 0.2);
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .navbar-item {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .navbar-item::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+      transition: width 0.3s ease;
+    }
+
+    .navbar-item:hover {
+      color: var(--accent-blue);
+    }
+
+    .navbar-item:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .publication-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .publication-authors {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.8;
+    }
+
+    .author-block {
+      display: inline-block;
+      margin: 0 0.25rem;
+    }
+
+    .author-block a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .author-block a:hover {
+      color: var(--accent-blue);
+    }
+
+    .affiliations {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .publication-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+    }
+
+    .button-secondary {
+      background: white;
+      color: var(--text-primary);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .button-secondary:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Sections */
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+      border-radius: 2px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-lg), var(--shadow-glow);
+      transform: translateY(-4px);
+    }
+
+    /* Abstract */
+    .abstract-section {
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.03), rgba(0, 212, 170, 0.03));
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      margin: 2rem auto;
+      max-width: 900px;
+      border: 1px solid var(--border-light);
+    }
+
+    .abstract-text {
+      text-align: justify;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* Image Sections */
+    .image-section {
+      margin: 3rem 0;
+    }
+
+    .figure-container {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    .figure-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .figure-caption {
+      margin-top: 1rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .feature-list {
+      margin-top: 1.5rem;
+      text-align: left;
+      list-style: none;
+    }
+
+    .feature-list li {
+      padding: 0.75rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-secondary);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-cyan);
+      font-weight: bold;
+    }
+
+    .feature-list strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Data Gallery - New Design */
+    .gallery-section {
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 102, 255, 0.02) 50%, transparent 100%);
+    }
+
+    .gallery-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .gallery-main {
+      position: relative;
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-light);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-main:hover {
+      box-shadow: var(--shadow-glow);
+      transform: scale(1.01);
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: 500px;
+      object-fit: contain;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      display: block;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .gallery-hint {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .gallery-main:hover .gallery-hint {
+      opacity: 1;
+    }
+
+    /* Q&A Panel */
+    .qa-panel {
+      margin-top: 2rem;
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-light);
+      max-height: 0;
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .qa-panel.active {
+      max-height: 2000px;
+      opacity: 1;
+    }
+
+    .qa-header {
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 212, 170, 0.05));
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .qa-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .qa-title i {
+      color: var(--accent-blue);
+    }
+
+    .close-qa {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.25rem;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-qa:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--text-primary);
+      transform: rotate(90deg);
+    }
+
+    .qa-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .qa-section {
+      padding: 2rem;
+    }
+
+    .qa-section:first-child {
+      border-right: 1px solid var(--border-light);
+      background: rgba(0, 102, 255, 0.02);
+    }
+
+    .qa-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-blue);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .qa-section:last-child .qa-label {
+      color: var(--accent-cyan);
+    }
+
+    .qa-text {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .qa-text strong {
+      color: var(--text-primary);
+    }
+
+    /* Navigation Dots */
+    .gallery-nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(0, 102, 255, 0.2);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .nav-dot.active {
+      background: var(--accent-blue);
+      transform: scale(1.2);
+    }
+
+    .nav-dot.active::after {
+      border-color: rgba(0, 102, 255, 0.3);
+    }
+
+    .nav-dot:hover:not(.active) {
+      background: rgba(0, 102, 255, 0.4);
+    }
+
+    /* Gallery Arrows */
+    .gallery-arrows {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 1rem;
+      pointer-events: none;
+    }
+
+    .gallery-arrow {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-light);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      pointer-events: auto;
+      box-shadow: var(--shadow-md);
+    }
+
+    .gallery-arrow:hover {
+      background: white;
+      color: var(--accent-blue);
+      transform: scale(1.1);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .gallery-arrow:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* Tables */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .data-table th {
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 212, 170, 0.05));
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid var(--border-light);
+    }
+
+    .data-table td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .data-table tr:hover td {
+      background: rgba(0, 102, 255, 0.02);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(0, 102, 255, 0.3);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* BibTeX */
+    .bibtex-section {
+      background: linear-gradient(135deg, rgba(0, 102, 255, 0.03), rgba(0, 212, 170, 0.03));
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      margin-top: 2rem;
+    }
+
+    pre {
+      background: #1a202c;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      overflow-x: auto;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Scroll to top */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: white;
+      border: 1px solid var(--border-light);
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      background: var(--accent-blue);
+      color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .publication-title {
+        font-size: 1.75rem;
+      }
+      
+      .qa-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .qa-section:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+      }
+      
+      .gallery-image {
+        height: 300px;
+      }
+      
+      .navbar-menu {
+        display: none;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-mesh"></div>
+
+  <!-- Navigation -->
+  <nav class="academic-nav">
+    <div class="navbar">
+      <a href="#" class="navbar-brand">
+        <img src="static/images/logo.png" alt="Innovator-VL">
+        <span>Innovator-VL</span>
+        <span class="badge">Technical Report</span>
+      </a>
+      <div class="navbar-menu">
+        <a href="#abstract" class="navbar-item">Abstract</a>
+        <a href="#overall" class="navbar-item">Overall</a>
+        <a href="#performance" class="navbar-item">Performance</a>
+        <a href="#training" class="navbar-item">Training Data</a>
+        <a href="#pipeline" class="navbar-item">Pipeline</a>
+        <a href="#gallery" class="navbar-item">Gallery</a>
+        <a href="#bibtex" class="navbar-item">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="publication-title">
+        Innovator-VL: A Multimodal Large Language Model for Scientific Discovery
+      </h1>
+      
+      <div class="publication-authors">
+        <span class="author-block">Zichen Wen</a><sup>*¹</sup>,</span>
+        <span class="author-block">Boxue Yang</a><sup>*¹</sup>,</span>
+        <span class="author-block">Shuang Chen</a><sup>¹</sup>,</span>
+        <span class="author-block">Yaojie Zhang</a><sup>¹</sup>,</span>
+        <span class="author-block">Yuhang Han</a><sup>¹</sup>,</span>
+        <span class="author-block">Junlong Ke</a><sup>¹</sup>,</span>
+        <span class="author-block">Cong Wang<sup>¹</sup>,</span>
+        <span class="author-block">Yicheng Fu<sup>¹</sup>,</span>
+        <span class="author-block">Jiawang Zhao<sup>¹</sup>,</span>
+        <span class="author-block">Jiangchao Yao<sup>¹</sup>,</span>
+        <span class="author-block">Xi Fang<sup>²</sup>,</span>
+        <span class="author-block">Zhen Wang<sup>²</sup>,</span>
+        <span class="author-block">Henxing Cai<sup>²</sup>,</span>
+        <span class="author-block">Lin Yao<sup>²</sup>,</span>
+        <span class="author-block">Zhifeng Gao<sup>²</sup>,</span>
+        <span class="author-block">Yanhui Hong<sup>²</sup>,</span>
+        <span class="author-block">Nang Yuan<sup>²</sup>,</span>
+        <span class="author-block">Yixuan Li<sup>²</sup>,</span>
+        <span class="author-block">Guojiang Zhao<sup>²</sup>,</span>
+        <span class="author-block">Haoyi Tao<sup>²</sup>,</span>
+        <span class="author-block">Nan Wang<sup>²</sup>,</span>
+        <span class="author-block">Han Lyu<sup>²</sup>,</span>
+        <span class="author-block">Guolin Ke<sup>²</sup>,</span>
+        <span class="author-block">Ning Liao<sup>³</sup>,</span>
+        <span class="author-block">Xiaoxing Wang<sup>³</sup>,</span>
+        <span class="author-block">Kai Chen<sup>³</sup>,</span>
+        <span class="author-block">Zhiyu Li<sup>³</sup>,</span>
+        <span class="author-block">Feiyu Xiong<sup>³</sup>,</span>
+        <span class="author-block">Sihan Hu<sup>⁴</sup>,</span>
+        <span class="author-block">Kun Chen<sup>⁴</sup>,</span>
+        <span class="author-block">Yanfeng Wang<sup>¹</sup>,</span>
+        <br>
+        <span class="author-block">Weinan E<sup>¹†</sup>,</span>
+        <span class="author-block">Linfeng Zhang<sup>²†</sup>,</span>
+        <span class="author-block">Linfeng Zhang<sup>¹†</sup></span>
+      </div>
+
+      <div class="affiliations">
+        <sup>1</sup> School of Artificial Intelligence, Shanghai Jiao Tong University &nbsp;|&nbsp;
+        <sup>2</sup> DP Technology &nbsp;|&nbsp;
+        <sup>3</sup> MemTensor &nbsp;|&nbsp;
+        <sup>4</sup> Institute of Theoretical Physics, Chinese Academy of Sciences<br>
+        <sup>*</sup> Equal Contribution &nbsp;|&nbsp; <sup>†</sup> Corresponding Author
+      </div>
+
+      <div class="publication-links">
+        <a href="#" class="button button-primary">
+          <i class="ai ai-arxiv"></i> arXiv
+        </a>
+        <a href="#" class="button button-secondary">
+          <i class="fab fa-github"></i> Code
+        </a>
+        <a href="#" class="button button-secondary">
+          <i class="fas fa-robot"></i> Instruct Model
+        </a>
+        <a href="#" class="button button-secondary">
+          <i class="fas fa-brain"></i> Thinking Model
+        </a>
+        <a href="#" class="button button-secondary">
+          <i class="fas fa-database"></i> Instruct Data
+        </a>
+        <a href="#" class="button button-secondary">
+          <i class="fas fa-database"></i> RL Data
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section id="abstract" class="section">
+    <div class="abstract-section card">
+      <h2 class="section-title">Abstract</h2>
+      <p class="abstract-text">
+        We present Innovator-VL, a scientific multimodal large language model (MLLM) designed to advance multimodal understanding and reasoning across diverse scientific domains while still maintaining excellent performance on general vision tasks. Contrary to the prevailing trend of relying on massive domain-specific pretraining data and opaque training pipelines, our work demonstrates that principled training design and transparent methodology can yield strong scientific multimodal intelligence with substantially reduced data requirements. (i) First, we provide a fully transparent and end-to-end reproducible training pipeline for scientific multimodal modeling, covering all stages from data collection and cleaning to preprocessing, supervised fine-tuning, reinforcement learning, and evaluation, together with detailed optimization and hyperparameter recipes. This enables faithful reproduction of our results and facilitates systematic extension and adaptation by the community. (ii) Second, Innovator-VL exhibits remarkable data efficiency, achieving competitive performance on a wide range of scientific tasks using fewer than five million carefully curated scientific training samples, despite not relying on large-scale scientific pretraining. These results highlight that effective scientific multimodal reasoning can be achieved through principled data selection and training strategies rather than indiscriminate data scaling. (iii) Third, Innovator-VL demonstrates strong generalization beyond scientific domains, achieving competitive performance among MLLMs of comparable size on general vision benchmarks, multimodal reasoning benchmarks, and scientific benchmarks. This indicates that scientific alignment can be integrated into a unified multimodal model without compromising general-purpose capabilities. Together, our practices suggest that, in the absence of large-scale scientific data, efficient, reproducible, and high-performing scientific multimodal models can be built, thereby providing a practical and transparent foundation for future research in scientific multimodal modeling.
+      </p>
+    </div>
+  </section>
+
+  <!-- Overall -->
+  <section id="overall" class="section">
+    <h2 class="section-title">Overall Illustration</h2>
+    <div class="figure-container">
+      <img src="static/images/architecture_01.png" alt="Overall illustration of Innovator-VL">
+      <p class="figure-caption">Figure 1: Overall illustration of Innovator-VL.</p>
+      
+      <ul class="feature-list">
+        <li><strong>Scientific MLLM:</strong> A unified multimodal large language model for scientific understanding and reasoning.</li>
+        <li><strong>General + Scientific:</strong> Strong general vision–language capability without sacrificing scientific specialization.</li>
+        <li><strong>Data-Efficient Training:</strong> Competitive scientific performance achieved with carefully curated data instead of large-scale domain-specific pretraining.</li>
+        <li><strong>Transparent Pipeline:</strong> End-to-end reproducible training covering data curation, instruction tuning, and reinforcement learning.</li>
+        <li><strong>Strong Generalization:</strong> Consistent performance across general vision, multimodal reasoning, and diverse scientific benchmarks.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Performance -->
+  <section id="performance" class="section">
+    <h2 class="section-title">Performance</h2>
+    <div class="figure-container">
+      <img src="static/images/bar_figure_01.png" alt="Performance of Innovator-VL">
+      <p class="figure-caption">Figure 2: Performance of Innovator-VL across general, reasoning, and scientific benchmarks.</p>
+      
+      <div style="margin-top: 2rem; text-align: left; color: var(--text-secondary); line-height: 1.8;">
+        <p><strong style="color: var(--accent-blue);">General:</strong> Innovator-VL-8B-Instruct achieves top-tier performance on general multimodal benchmarks, matching or surpassing leading open-source models in visual perception, OCR, document understanding, and real-world reasoning.</p>
+        <br>
+        <p><strong style="color: var(--accent-cyan);">Math & Reasoning:</strong> Innovator-VL-8B-Thinking further improves multimodal reasoning, attaining the highest average scores on visual math and reasoning benchmarks among comparable 8B models through reinforcement learning–enhanced long-horizon reasoning.</p>
+        <br>
+        <p><strong style="color: var(--accent-purple);">Science:</strong> Innovator-VL consistently outperforms general-purpose baselines, delivering strong results on chemistry, reaction understanding, molecular parsing, microscopy analysis, and scientific VQA tasks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Training Data -->
+  <section id="training" class="section">
+    <h2 class="section-title">Training Data</h2>
+    <div class="figure-container">
+      <img src="static/images/pie_figure_01.png" alt="Data distribution">
+      <p class="figure-caption">Figure 4: Data distribution across different training stages of Innovator-VL.</p>
+      
+      <div style="margin-top: 2rem; text-align: left; color: var(--text-secondary); line-height: 1.8;">
+        <p><strong>Mid-Training:</strong> The mid-training stage focuses on large-scale multimodal alignment, combining diverse general-domain and scientific data to establish robust visual perception and cross-modal representation learning.</p>
+        <br>
+        <p><strong>Instruction Tuning:</strong> The instruction-tuning stage emphasizes high-quality supervised data, integrating general instruction-following samples with carefully curated scientific tasks to enhance controllability and domain-specific understanding.</p>
+        <br>
+        <p><strong>Reinforcement Learning:</strong> The reinforcement learning stage uses a compact but targeted dataset to further refine long-horizon reasoning, response consistency, and decision-making quality.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pipeline -->
+  <section id="pipeline" class="section">
+    <h2 class="section-title">Data Construction Pipeline</h2>
+    <div class="figure-container">
+      <img src="static/images/data_pipeline_01.png" alt="Data pipeline" style="max-width: 80%;">
+      <p class="figure-caption">Figure 5: Overview of data construction pipelines for scientific multimodal training.</p>
+      
+      <div style="margin-top: 2rem; text-align: left; color: var(--text-secondary); line-height: 1.8;">
+        <p><strong>Optical Chemical Structure Recognition (OCSR):</strong> A human-in-the-loop pipeline combines large-scale synthetic bootstrapping with active-learning-driven expansion on real patent and paper data, using E-SMILES as a unified annotation format to represent complex chemical structures.</p>
+        <br>
+        <p><strong>Chemical Reaction Understanding:</strong> Reaction datasets are constructed from scientific PDFs via automated layout parsing and expert-verified question generation, covering both fine-grained reaction perception and document-level multimodal reasoning.</p>
+        <br>
+        <p><strong>Electron Microscopy (EM) Microstructures:</strong> Large-scale EM datasets are built through iterative expert annotation and model-assisted refinement, with dense instance-level segmentation and structured attribute descriptions to support microstructural analysis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scientific Data Overview -->
+  <section class="section">
+    <h2 class="section-title">Scientific Data Overview</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">
+      Curated multimodal scientific data supporting reproducible and data-efficient training
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Scientific Samples</div>
+        <div class="stat-value">≈4.8M</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Scientific Domains</div>
+        <div class="stat-value">6+</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Modalities</div>
+        <div class="stat-value">3</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 2rem;">
+      <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 1rem; color: var(--text-primary);">Domain-wise Composition</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Scientific Domain</th>
+            <th>Primary Tasks</th>
+            <th>Modalities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chemistry</strong></td>
+            <td>OCSR, reaction understanding, molecule parsing</td>
+            <td>Image + Structured Text</td>
+          </tr>
+          <tr>
+            <td><strong>Materials Science</strong></td>
+            <td>Microstructure analysis, EM interpretation</td>
+            <td>Microscopy Image + Text</td>
+          </tr>
+          <tr>
+            <td><strong>Scientific Documents</strong></td>
+            <td>Figure understanding, document-level reasoning</td>
+            <td>PDF Layout + Image + Text</td>
+          </tr>
+          <tr>
+            <td><strong>General Science QA</strong></td>
+            <td>Visual question answering, reasoning</td>
+            <td>Image + Natural Language</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top: 2rem;">
+      <h3 style="font-family: 'Space Grotesk', sans-serif; margin-bottom: 1rem; color: var(--text-primary);">Training Stage Statistics</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Dataset</th>
+            <th>Scale</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mid-Training</strong></td>
+            <td>Innovator-VL-Mid-Training</td>
+            <td>85M samples</td>
+            <td>Multimodal alignment and representation learning</td>
+          </tr>
+          <tr>
+            <td><strong>Instruction Tuning</strong></td>
+            <td>Innovator-VL-Instruct</td>
+            <td>46M samples</td>
+            <td>Instruction following and scientific controllability</td>
+          </tr>
+          <tr>
+            <td><strong>Reinforcement Learning</strong></td>
+            <td>Innovator-VL-RL</td>
+            <td>172K trajectories</td>
+            <td>Long-horizon reasoning and decision refinement</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Data Gallery - New Interactive Design -->
+  <section id="gallery" class="gallery-section">
+    <div class="gallery-container">
+      <h2 class="section-title">Data Gallery</h2>
+      <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">
+        <i class="fas fa-hand-pointer" style="margin-right: 0.5rem;"></i>
+        Click on the image to reveal the question and model response
+      </p>
+
+      <!-- Main Gallery -->
+      <div class="gallery-main" id="galleryMain">
+        <img id="galleryImage" src="static/case/math2.jpg" alt="Gallery image" class="gallery-image">
+        <div class="gallery-overlay">
+          <span id="imageCounter">1 / 6</span>
+        </div>
+        <div class="gallery-hint">
+          <i class="fas fa-expand"></i> Click to view Q&A
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <div class="gallery-arrows">
+          <button class="gallery-arrow" id="prevBtn" onclick="changeImage(-1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="gallery-arrow" id="nextBtn" onclick="changeImage(1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Q&A Panel (Hidden by default) -->
+      <div class="qa-panel" id="qaPanel">
+        <div class="qa-header">
+          <h3 class="qa-title">
+            <i class="fas fa-robot"></i>
+            Model Analysis
+          </h3>
+          <button class="close-qa" onclick="toggleQA()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="qa-content">
+          <div class="qa-section">
+            <div class="qa-label">
+              <i class="fas fa-question-circle"></i>
+              Question
+            </div>
+            <div class="qa-text" id="questionText">
+              Loading...
+            </div>
+          </div>
+          <div class="qa-section">
+            <div class="qa-label">
+              <i class="fas fa-lightbulb"></i>
+              Model Output
+            </div>
+            <div class="qa-text" id="outputText">
+              Loading...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Dots -->
+      <div class="gallery-nav" id="galleryNav">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Token Efficiency -->
+  <section class="section">
+    <h2 class="section-title">On Token Efficiency of Reasoning</h2>
+    <div class="figure-container">
+      <img src="static/images/token_efficiency_01.png" alt="Token efficiency">
+      <p class="figure-caption">Figure 3: Accuracy and token efficiency comparison on mathematical reasoning benchmarks.</p>
+      
+      <div style="margin-top: 2rem; text-align: left; color: var(--text-secondary); line-height: 1.8;">
+        <p>Innovator-VL exhibits strong efficiency in reasoning token consumption. As shown in Figure 5, Innovator-VL-8B-Thinking achieves competitive or superior accuracy on mathematical reasoning benchmarks while using substantially fewer tokens than comparable baselines, leading to lower inference cost and reduced latency.</p>
+        <br>
+        <p>This efficiency is primarily driven by the reinforcement learning stage, which encourages the model to focus on critical reasoning steps and eliminate redundant computation, resulting in more compact and effective reasoning trajectories.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section id="bibtex" class="section">
+    <div class="bibtex-section">
+      <h2 class="section-title">BibTeX</h2>
+      <pre id="bibtexCode"><code>@article{innovator_vl_2024,
+  title   = {Innovator-VL: A Multimodal Large Language Model for Scientific Discovery},
+  author  = {Wen, Zichen and Yang, Boxue and Chen, Shuang and Zhang, Yaojie and Han, Yuhang and Ke, Junlong and Zhang, Linfeng},
+  journal = {Technical Report},
+  year    = {2024},
+  url     = {https://innovator-vl.github.io/ }
+}</code><button class="copy-btn" onclick="copyBibTeX()"><i class="fas fa-copy"></i> Copy</button></pre>
+    </div>
+  </section>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Gallery Data
+    const galleryData = [
+      {
+        image: 'static/case/math2.jpg',
+        question: 'Five sparrows are sitting on a rope (see picture). Some of them are looking to the left, some of them are looking to the right. Every sparrow whistles as many times as the number of sparrows he can see sitting in front of him. For example, the third sparrow whistles exactly twice. How often do all sparrows whistle altogether?',
+        output: `To solve this problem, we need to determine how many times each sparrow whistles based on the number of sparrows it can see in front of it. Let's analyze the situation step by step.
+
+<strong>Step 1: Understand the Problem</strong><br>
+• There are 5 sparrows sitting on a rope.<br>
+• Each sparrow whistles as many times as the number of sparrows it can see in front of it.<br>
+• We need to calculate the total number of whistles from all sparrows.
+
+<strong>Step 2: Analyze Each Sparrow</strong><br>
+Let's label the sparrows from left to right as S₁, S₂, S₃, S₄, S₅.<br>
+• <strong>Sparrow S₁:</strong> It can see 0 sparrows in front of it, so it whistles 0 times.<br>
+• <strong>Sparrow S₂:</strong> It can see 1 sparrow (S₁) in front of it, so it whistles 1 time.<br>
+• <strong>Sparrow S₃:</strong> It can see 2 sparrows (S₁ and S₂) in front of it, so it whistles 2 times.<br>
+• <strong>Sparrow S₄:</strong> It can see 3 sparrows (S₁, S₂, S₃) in front of it, so it whistles 3 times.<br>
+• <strong>Sparrow S₅:</strong> It can see 4 sparrows (S₁, S₂, S₃, S₄) in front of it, so it whistles 4 times.
+
+<strong>Step 3: Calculate the Total Number of Whistles</strong><br>
+S₁: 0 &nbsp;&nbsp; S₂: 1 &nbsp;&nbsp; S₃: 2 &nbsp;&nbsp; S₄: 3 &nbsp;&nbsp; S₅: 4<br>
+Total whistles = 0 + 1 + 2 + 3 + 4 = <strong>10</strong>`
+      },
+      {
+        image: 'static/case/math1.jpg',
+        question: 'How many triangles can you find in the picture?',
+        output: `<strong>Step 1: Analyze the overall structure</strong><br>
+The image depicts a simple stick figure with a dress. The dress has a triangular skirt, and there are other triangular shapes in the figure's head and body.
+
+<strong>Step 2: Identify individual triangles</strong><br>
+<strong>Head:</strong><br>
+• The bow on top of the head is composed of two triangles.<br>
+• The face itself does not contain any triangles.<br><br>
+
+<strong>Dress:</strong><br>
+• The skirt of the dress is a large triangle.<br><br>
+
+<strong>Feet:</strong><br>
+• Each foot is a triangle (2 triangles total).<br><br>
+
+<strong>Step 3: Count the triangles</strong><br>
+• Bow: 2 triangles<br>
+• Skirt: 1 triangle<br>
+• Feet: 2 triangles<br><br>
+
+<strong>Total = 2 + 1 + 2 = 5 triangles</strong>`
+      },
+      {
+        image: 'static/case/sci1.png',
+        question: 'Carefully examine the electron microscopy image and answer the following question:<br><br>Is the particle-area distribution uniform?<br><br>(Define non-uniform as (max/min diameter) / mean > 30%)<br><br>Options:<br>A. Yes<br>B. No<br>C. Uncertain',
+        output: '<strong>B. No</strong><br><br>The particle-area distribution is not uniform. Based on the electron microscopy image analysis, the variation in particle diameters exceeds the 30% threshold defined for uniformity, indicating a heterogeneous distribution of particle sizes across the sample.'
+      },
+      {
+        image: 'static/case/sci2.png',
+        question: '该反应的总体转化通式是什么？请用结构简式描述主要底物和产物。<br><br>选项：<br>A. 底物苯基炔（Ph–C≡CH）与N-氧化亚胺1在Cu催化和Et3N作用下，最终生成五元环化合物3。<br>B. 底物苯基炔（Ph–C≡CH）与N-氧化亚胺1在Cu催化和Et3N作用下，最终生成四元环化合物3。<br>C. 底物苯基炔（Ph–C≡CH）与N-氧化亚胺1在Cu催化和吡啶作用下，最终生成四元环化合物3。<br>D. 底物苯基炔（Ph–C≡CH）与N-氧化亚胺1在Cu催化和Et3N作用下，最终生成桥环化合物3。<br><br>只输出单个字母（A, B, C 或 D），不要输出任何解释。',
+        output: '<strong>A</strong><br><br>The correct answer is A. The reaction involves phenylacetylene (Ph–C≡CH) reacting with N-oxide imine 1 under Cu catalysis and Et3N base to form a five-membered ring compound 3. This is consistent with the [3+2] cycloaddition mechanism typically observed in such copper-catalyzed reactions involving alkynes and nitrone equivalents.'
+      },
+      {
+        image: 'static/case/reaction1.png',
+        question: 'Return the ESMILES of the select example with label {q2}.<br><br><code>&lt;E-SMILES&gt; OC(=O)c1cc(I)cc2c1OC(C(=O)O)C=C2 &lt;/E-SMILES&gt;</code>',
+        output: '<code>OC(=O)c1cc(I)cc2c1OC(C(=O)O)C=C2</code><br><br>This E-SMILES represents a benzofuran derivative with two carboxylic acid groups and an iodine substituent on the aromatic ring.'
+      },
+      {
+        image: 'static/case/reaction2.png',
+        question: 'Question: Please summarize the four derivatization reactions (a--d) centered on 2-boryl-1,3-diene 2f in Scheme 4 and their corresponding products (3--6).<br><br>[Multiple choice options with detailed chemical reaction descriptions]',
+        output: '<strong>C</strong><br><br>Scheme 4 shows four reaction pathways starting from 2-boryl-1,3-diene 2f:<br><br>a) KHF₂/AcOH effects removal of Bpin to give the deborylated product 3 (yield 54%, >99:1 Z:E)<br>b) Pd₂(dba)₃/SPhos-catalyzed Suzuki coupling with 4-iodobenzonitrile affords the arylated product 4 (yield 74%, >95:5 Z:E)<br>c) H₂O₂/NaOH oxidation of the boronate gives the α,β,γ,δ-unsaturated ketone product 5 (yield 54%, >99:1 E:Z)<br>d) nBuLi/CH₂Br₂ insertion followed by H₂O₂ oxidation provides the allylic alcohol product 6 (yield 40%, >99:1 Z:E)'
+      }
+    ];
+
+    let currentIndex = 0;
+    let qaOpen = false;
+
+    // Initialize Gallery
+    function initGallery() {
+      // Create nav dots
+      const navContainer = document.getElementById('galleryNav');
+      galleryData.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = 'nav-dot' + (idx === 0 ? ' active' : '');
+        dot.onclick = () => goToImage(idx);
+        navContainer.appendChild(dot);
+      });
+
+      // Click on image to toggle QA
+      document.getElementById('galleryMain').addEventListener('click', toggleQA);
+      
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      const data = galleryData[currentIndex];
+      document.getElementById('galleryImage').src = data.image;
+      document.getElementById('imageCounter').textContent = `${currentIndex + 1} / ${galleryData.length}`;
+      
+      // Update dots
+      document.querySelectorAll('.nav-dot').forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+      });
+
+      // Update buttons
+      document.getElementById('prevBtn').disabled = currentIndex === 0;
+      document.getElementById('nextBtn').disabled = currentIndex === galleryData.length - 1;
+
+      // Update QA content
+      document.getElementById('questionText').innerHTML = data.question;
+      document.getElementById('outputText').innerHTML = data.output;
+      
+      // Render MathJax if available
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        MathJax.typesetPromise([document.getElementById('qaPanel')]).catch(() => {});
+      }
+    }
+
+    function changeImage(direction) {
+      const newIndex = currentIndex + direction;
+      if (newIndex >= 0 && newIndex < galleryData.length) {
+        currentIndex = newIndex;
+        updateDisplay();
+        // Close QA when changing images
+        if (qaOpen) {
+          toggleQA();
+        }
+      }
+    }
+
+    function goToImage(index) {
+      currentIndex = index;
+      updateDisplay();
+      if (qaOpen) toggleQA();
+    }
+
+    function toggleQA() {
+      qaOpen = !qaOpen;
+      document.getElementById('qaPanel').classList.toggle('active', qaOpen);
+    }
+
+    // Copy BibTeX
+    function copyBibTeX() {
+      const code = document.getElementById('bibtexCode').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('BibTeX copied to clipboard!');
+      });
+    }
+
+    // Scroll to top visibility
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.getElementById('scrollTop');
+      if (window.scrollY > 500) {
+        scrollTop.classList.add('visible');
+      } else {
+        scrollTop.classList.remove('visible');
+      }
+    });
+
+    // Initialize
+    initGallery();
+  </script>
+</body>
+</html>

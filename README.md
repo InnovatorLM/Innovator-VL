@@ -138,7 +138,15 @@ Innovator-VL adopts a principled architecture design optimized for scientific un
 <div align="center">
 <img src="asset/bar_figure_01.png" width="100%" alt="Performance Comparison">
 <br>
-<em><strong>Figure 3:</strong> Performance comparison with state-of-the-art MLLMs on scientific and general benchmarks</em>
+<em><strong>Figure 3:</strong> Performance comparison with state-of-the-art MLLMs on general vision, reasoning, anb scientific benchmarks</em>
+</div>
+
+<br>
+
+<div align="center">
+<img src="asset/main_results.png" width="100%" alt="main results">
+<br>
+<em><strong>Figure 4:</strong> Detailed comparison with state-of-the-art MLLMs across general, mathematical reasoning, and scientific benchmarks</em>
 </div>
 
 ## 🚀 Training Pipeline

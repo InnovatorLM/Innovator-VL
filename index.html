@@ -1065,7 +1065,7 @@
               <img
                 src="static/images/logo.png"
                 alt="Innovator-VL logo"
-                style="height: 64px; width: auto; display:block; transform: translate(260%, -30px);"
+                style="height: 40px; width: auto; display:block; transform: translate(440%, -20px);"
               >
               <span
                 style="
@@ -1275,14 +1275,14 @@
 
 <!-- End teaser video -->
 
-<!-- Paper abstract -->
+
+
 <section class="section hero is-light" id="Abstract">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+  <div class="container abstract-container" style="max-width: 950px;">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
         <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
           <p>
              We present Innovator-VL, a scientific multimodal large language model (MLLM) designed to advance multimodal understanding and reasoning across diverse scientific domains while still maintaining excellent performance on general vision tasks. Contrary to the prevailing trend of relying on massive domain-specific pretraining data and opaque training pipelines, our work demonstrates that principled training design and transparent methodology can yield strong scientific multimodal intelligence with substantially reduced data requirements. (i) First, we provide a fully transparent and end-to-end reproducible training pipeline for scientific multimodal modeling, covering all stages from data collection and cleaning to preprocessing, supervised fine-tuning, reinforcement learning, and evaluation, together with detailed optimization and hyperparameter recipes. This enables faithful reproduction of our results and facilitates systematic extension and adaptation by the community. (ii) Second, Innovator-VL exhibits remarkable data efficiency, achieving competitive performance on a wide range of scientific tasks using fewer than five million carefully curated scientific training samples, despite not relying on large-scale scientific pretraining. These results highlight that effective scientific multimodal reasoning can be achieved through principled data selection and training strategies rather than indiscriminate data scaling. (iii) Third, Innovator-VL demonstrates strong generalization beyond scientific domains, achieving competitive performance among MLLMs of comparable size on general vision benchmarks, multimodal reasoning benchmarks, and scientific benchmarks. This indicates that scientific alignment can be integrated into a unified multimodal model without compromising general-purpose capabilities. Together, our practices suggest that, in the absence of large-scale scientific data, efficient, reproducible, and high-performing scientific multimodal models can be built, thereby providing a practical and transparent foundation for future research in scientific multimodal modeling.
           </p>
@@ -1291,6 +1291,8 @@
     </div>
   </div>
 </section>
+
+
 <!-- End paper abstract -->
 
 

@@ -465,13 +465,34 @@
       .kpi{ grid-column: span 12; }
     }
 
-    /* Make your existing image sections look like "figure cards" without changing HTML */
-    section.hero.is-small .hero-body > .container > .columns.is-centered > .column.is-four-fifths{
+    /* Make each main section look like a white "paper card" without changing HTML */
+    section.hero .hero-body > .container > .columns.is-centered > .column.is-four-fifths,
+    section.section .container.is-max-desktop > .columns.is-centered > .column.is-four-fifths{
       background: rgba(255,255,255,.88);
       border: 1px solid var(--line);
       border-radius: var(--radius-2);
       box-shadow: var(--shadow);
       padding: 1.15rem;
+    }
+
+    /* Token Efficiency: use the inner white box, so keep the column itself clean */
+    #TokenEfficiency .columns.is-centered > .column{
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    /* Token Efficiency: widen the content card compared to other sections */
+    #TokenEfficiency .columns.is-centered > .column.is-four-fifths{
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    /* Scientific Data Overview: widen all white cards in this section */
+    #ScientificData .columns.is-centered > .column.is-four-fifths{
+      flex: 0 0 100%;
+      max-width: 100%;
     }
 
     /* Scientific Gallery Styles - Refined & Elegant */
@@ -1714,8 +1735,8 @@
     <div class="columns is-centered">
       <div class="column is-four-fifths">
 
-        <!-- White background wrapper -->
-        <div style="background:#ffffff; border-radius:24px; padding:1.25rem; box-shadow:0 10px 30px rgba(2,6,23,.08); border:1px solid rgba(15,23,42,.10);">
+        <!-- White background wrapper (wider for Token Efficiency section) -->
+        <div style="background:#ffffff; border-radius:24px; padding:1.75rem 2.25rem; box-shadow:0 10px 30px rgba(2,6,23,.08); border:1px solid rgba(15,23,42,.10);">
 
           <h2 class="title is-3 has-text-centered">On Token Efficiency of Reasoning</h2>
 
@@ -1793,6 +1814,43 @@
 <script>
 // Scientific Gallery Data
 const scientificGalleryData = [
+
+  {
+    image: 'static/case/math2.jpg',
+    alt: 'math sample 2',
+      response: {
+      question: 'Five sparrows are sitting on a rope (see picture). Some of them are looking to the left, some of them are looking to the right. Every sparrow whistles as many times as the number of sparrows he can see sitting in front of him. For example, the third sparrow whistles exactly twice. How often do all sparrows whistle altogether?',
+      output: `To solve this problem, we need to determine how many times each sparrow whistles based on the number of sparrows it can see in front of it. Let's analyze the situation step by step.
+
+<strong>Step 1: Understand the Problem</strong><br>
+<ul>
+  <li>There are 5 sparrows sitting on a rope.</li>
+  <li>Each sparrow whistles as many times as the number of sparrows it can see in front of it.</li>
+  <li>We need to calculate the total number of whistles from all sparrows.</li>
+</ul>
+
+<strong>Step 2: Analyze Each Sparrow</strong><br>
+Let's label the sparrows from left to right as \\(S_1, S_2, S_3, S_4, S_5\\).<br>
+<ul>
+  <li><strong>Sparrow \\(S_1\\):</strong> It can see 0 sparrows in front of it, so it whistles 0 times.</li>
+  <li><strong>Sparrow \\(S_2\\):</strong> It can see 1 sparrow (\\(S_1\\)) in front of it, so it whistles 1 time.</li>
+  <li><strong>Sparrow \\(S_3\\):</strong> It can see 2 sparrows (\\(S_1\\) and \\(S_2\\)) in front of it, so it whistles 2 times.</li>
+  <li><strong>Sparrow \\(S_4\\):</strong> It can see 3 sparrows (\\(S_1, S_2, S_3\\)) in front of it, so it whistles 3 times.</li>
+  <li><strong>Sparrow \\(S_5\\):</strong> It can see 4 sparrows (\\(S_1, S_2, S_3, S_4\\)) in front of it, so it whistles 4 times.</li>
+</ul>
+
+<strong>Step 3: Calculate the Total Number of Whistles</strong><br>
+\\[
+S_1: 0 \\quad S_2: 1 \\quad S_3: 2 \\quad S_4: 3 \\quad S_5: 4
+\\]<br>
+\\[
+\\text{Total whistles} = 0 + 1 + 2 + 3 + 4 = 10.
+\\]<br>
+\\[
+\\boxed{10}
+\\]`
+      }
+  },
   {
     image: 'static/case/math1.jpg',
     alt: 'math sample 1',
@@ -1844,42 +1902,6 @@ The image depicts a simple stick figure with a dress. The dress has a triangular
 <strong>Final Answer:</strong><br>
 \\[\\boxed{5}\\]`
     }
-  },
-  {
-    image: 'static/case/math2.jpg',
-    alt: 'math sample 2',
-      response: {
-      question: 'Five sparrows are sitting on a rope (see picture). Some of them are looking to the left, some of them are looking to the right. Every sparrow whistles as many times as the number of sparrows he can see sitting in front of him. For example, the third sparrow whistles exactly twice. How often do all sparrows whistle altogether?',
-      output: `To solve this problem, we need to determine how many times each sparrow whistles based on the number of sparrows it can see in front of it. Let's analyze the situation step by step.
-
-<strong>Step 1: Understand the Problem</strong><br>
-<ul>
-  <li>There are 5 sparrows sitting on a rope.</li>
-  <li>Each sparrow whistles as many times as the number of sparrows it can see in front of it.</li>
-  <li>We need to calculate the total number of whistles from all sparrows.</li>
-</ul>
-
-<strong>Step 2: Analyze Each Sparrow</strong><br>
-Let's label the sparrows from left to right as \\(S_1, S_2, S_3, S_4, S_5\\).<br>
-<ul>
-  <li><strong>Sparrow \\(S_1\\):</strong> It can see 0 sparrows in front of it, so it whistles 0 times.</li>
-  <li><strong>Sparrow \\(S_2\\):</strong> It can see 1 sparrow (\\(S_1\\)) in front of it, so it whistles 1 time.</li>
-  <li><strong>Sparrow \\(S_3\\):</strong> It can see 2 sparrows (\\(S_1\\) and \\(S_2\\)) in front of it, so it whistles 2 times.</li>
-  <li><strong>Sparrow \\(S_4\\):</strong> It can see 3 sparrows (\\(S_1, S_2, S_3\\)) in front of it, so it whistles 3 times.</li>
-  <li><strong>Sparrow \\(S_5\\):</strong> It can see 4 sparrows (\\(S_1, S_2, S_3, S_4\\)) in front of it, so it whistles 4 times.</li>
-</ul>
-
-<strong>Step 3: Calculate the Total Number of Whistles</strong><br>
-\\[
-S_1: 0 \\quad S_2: 1 \\quad S_3: 2 \\quad S_4: 3 \\quad S_5: 4
-\\]<br>
-\\[
-\\text{Total whistles} = 0 + 1 + 2 + 3 + 4 = 10.
-\\]<br>
-\\[
-\\boxed{10}
-\\]`
-      }
   },
   {
     image: 'static/case/sci1.png',

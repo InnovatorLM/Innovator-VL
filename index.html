@@ -76,8 +76,8 @@
   <title>Innovator-VL: A Multimodal Large Language Model for Scientific Discovery</title>
 
   <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="static/images/logo.png">
+  <link rel="apple-touch-icon" href="static/images/logo.png">
 
   <!-- Critical CSS - Load synchronously -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
@@ -107,6 +107,22 @@
   <script defer src="static/js/bulma-carousel.min.js"></script>
   <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
+
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <!-- Charts (for the new Scientific Data section) -->
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -449,13 +465,527 @@
       .kpi{ grid-column: span 12; }
     }
 
-    /* Make your existing image sections look like “figure cards” without changing HTML */
+    /* Make your existing image sections look like "figure cards" without changing HTML */
     section.hero.is-small .hero-body > .container > .columns.is-centered > .column.is-four-fifths{
       background: rgba(255,255,255,.88);
       border: 1px solid var(--line);
       border-radius: var(--radius-2);
       box-shadow: var(--shadow);
       padding: 1.15rem;
+    }
+
+    /* Scientific Gallery Styles - Refined & Elegant */
+    .scientific-display-container {
+      background: transparent;
+      border: none;
+      padding: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .scientific-image-wrapper {
+      position: relative;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      overflow: hidden;
+      border: none;
+      box-shadow: 0 2px 8px rgba(2, 6, 23, 0.04),
+                  0 8px 24px rgba(2, 6, 23, 0.06);
+      margin-bottom: 1.5rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .scientific-image-wrapper:hover {
+      box-shadow: 0 4px 16px rgba(2, 6, 23, 0.08),
+                  0 12px 32px rgba(2, 6, 23, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .scientific-image-clickable {
+      width: 100%;
+      height: 520px;
+      object-fit: contain;
+      display: block;
+      cursor: pointer;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(246, 248, 252, 0.95));
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .scientific-image-clickable:hover {
+      transform: scale(1.002);
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 2px 8px rgba(2, 6, 23, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+      letter-spacing: 0.02em;
+    }
+
+    /* Navigation Controls - Minimalist */
+    .scientific-nav-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .nav-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 6px rgba(2, 6, 23, 0.06);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .nav-button:hover:not(:disabled) {
+      background: rgba(37, 99, 235, 0.1);
+      border-color: rgba(37, 99, 235, 0.2);
+      transform: translateY(-1px) scale(1.05);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    }
+
+    .nav-button:active:not(:disabled) {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .nav-button:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .thumbnail-strip {
+      display: flex;
+      gap: 0.625rem;
+      flex: 1;
+      justify-content: center;
+      overflow-x: auto;
+      padding: 0.5rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .thumbnail-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .thumbnail-item {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 2px 6px rgba(2, 6, 23, 0.06);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .thumbnail-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .thumbnail-item:hover {
+      border-color: rgba(37, 99, 235, 0.3);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    }
+
+    .thumbnail-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .thumbnail-item.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15),
+                  0 4px 12px rgba(37, 99, 235, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Model Response Panel - Elegant */
+    .model-response-panel {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(2, 6, 23, 0.08),
+                  0 12px 32px rgba(2, 6, 23, 0.06);
+      margin-top: 1rem;
+      overflow: hidden;
+      animation: slideDownFade 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    @keyframes slideDownFade {
+      from {
+        opacity: 0;
+        transform: translateY(-16px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .response-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(135deg, 
+        rgba(37, 99, 235, 0.04), 
+        rgba(124, 58, 237, 0.02));
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .response-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .response-title i {
+      color: var(--accent);
+      opacity: 0.8;
+    }
+
+    .close-response-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .close-response-btn:hover {
+      background: rgba(11, 18, 32, 0.06);
+      transform: rotate(90deg) scale(1.1);
+      border-color: rgba(11, 18, 32, 0.15);
+    }
+
+    .response-content {
+      padding: 2rem;
+      color: var(--ink);
+      line-height: 1.85;
+      font-size: 0.95rem;
+    }
+
+    .response-content .response-section {
+      margin: 0;
+      animation: fadeInUp 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+    }
+
+    .response-content .response-text {
+      color: rgba(11, 18, 32, 0.85);
+      line-height: 1.9;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    .response-content .response-text strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .response-content .response-text ul,
+    .response-content .response-text ol {
+      margin: 0.5rem 0 0.5rem 1.5rem;
+      padding-left: 1rem;
+    }
+
+    .response-content .response-text li {
+      margin: 0.25rem 0;
+      line-height: 1.6;
+    }
+
+    .response-content .response-text ul ul,
+    .response-content .response-text ol ol,
+    .response-content .response-text ul ol,
+    .response-content .response-text ol ul {
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    /* MathJax styling */
+    .response-content .response-text .MathJax,
+    .response-content .response-text mjx-container {
+      margin: 0.75rem 0;
+      display: inline-block;
+    }
+
+    .response-content .response-text mjx-container[display="true"] {
+      display: block;
+      margin: 1rem 0;
+      text-align: center;
+    }
+
+    /* Question + Answer layout inside panel */
+    .qa-question {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: rgba(15, 23, 42, 0.9);
+      margin-bottom: 0.5rem;
+    }
+
+    .qa-answer-wrapper {
+      max-height: 220px;
+      overflow-y: auto;
+      padding-top: 0.35rem;
+      margin-top: 0.35rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(148, 163, 184, 0.7) transparent;
+    }
+
+    .qa-answer-wrapper::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .qa-answer-wrapper::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .qa-answer-wrapper::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.8);
+      border-radius: 999px;
+    }
+
+    .qa-answer {
+      margin-top: 0.35rem;
+    }
+
+    .view-full-btn {
+      margin-top: 0.75rem;
+      padding: 0;
+      border: none;
+      background: none;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      opacity: 0.85;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .view-full-btn:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .view-full-btn::after {
+      content: '↗';
+      font-size: 0.7rem;
+    }
+
+    /* Modal Styles */
+    .scientific-modal {
+      max-width: 800px;
+      width: 90%;
+      border-radius: var(--radius-2);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(2, 6, 23, 0.2);
+    }
+
+    .modal-card-head {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(124, 58, 237, 0.06));
+      border-bottom: 1px solid var(--line);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .modal-card-title {
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-card-body {
+      padding: 1.5rem;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+
+    .response-content-full {
+      color: var(--ink);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .response-content-full .response-text ul,
+    .response-content-full .response-text ol {
+      margin: 0.75rem 0 0.75rem 2rem;
+      padding-left: 1rem;
+    }
+
+    .response-content-full .response-text li {
+      margin: 0.5rem 0;
+      line-height: 1.7;
+    }
+
+    .response-content-full .response-text ul ul,
+    .response-content-full .response-text ol ol,
+    .response-content-full .response-text ul ol,
+    .response-content-full .response-text ol ul {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* MathJax styling in modal */
+    .response-content-full .response-text .MathJax,
+    .response-content-full .response-text mjx-container {
+      margin: 1rem 0;
+      display: inline-block;
+    }
+
+    .response-content-full .response-text mjx-container[display="true"] {
+      display: block;
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    /* Responsive - Refined */
+    @media (max-width: 1024px) {
+      .scientific-image-clickable {
+        height: 460px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .scientific-image-wrapper {
+        border-radius: 16px;
+        margin-bottom: 1.25rem;
+      }
+
+      .scientific-image-clickable {
+        height: 380px;
+      }
+      
+      .image-overlay {
+        top: 0.875rem;
+        right: 0.875rem;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.75rem;
+      }
+      
+      .scientific-nav-controls {
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .nav-button {
+        width: 36px;
+        height: 36px;
+      }
+      
+      .thumbnail-strip {
+        gap: 0.5rem;
+        padding: 0.375rem;
+      }
+      
+      .thumbnail-item {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+      }
+      
+      .response-header {
+        padding: 1.25rem 1.5rem;
+      }
+
+      .response-title {
+        font-size: 1rem;
+      }
+      
+      .response-content {
+        padding: 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .response-content .response-text {
+        font-size: 0.9rem;
+      }
+      
+      .scientific-modal {
+        width: 95%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .scientific-image-clickable {
+        height: 320px;
+      }
+
+      .thumbnail-item {
+        width: 44px;
+        height: 44px;
+      }
+
+      .response-content {
+        padding: 1.25rem;
+      }
     }
   </style>
 </head>
@@ -485,10 +1015,10 @@
             <a class="navbar-item" href="#Abstract">Abstract</a>
             <a class="navbar-item" href="#Overall">Overall</a>
             <a class="navbar-item" href="#Performance">Performance</a>
-            <a class="navbar-item" href="#TokenEfficiency">Token Efficiency</a>
             <a class="navbar-item" href="#TrainingData">Training Data</a>
             <a class="navbar-item" href="#DataPipeline">Pipeline</a>
             <a class="navbar-item" href="#ScientificData">Scientific Data</a>
+            <a class="navbar-item" href="#TokenEfficiency">Token Efficiency</a>
             <a class="navbar-item" href="#BibTeX">BibTeX</a>
           </div>
         </div>
@@ -514,10 +1044,24 @@
               <img
                 src="static/images/logo.png"
                 alt="Innovator-VL logo"
-                style="height: 64px; width: auto; display:block; transform: translate(180%, -50px);"
+                style="height: 64px; width: auto; display:block; transform: translate(260%, -30px);"
               >
-              <span>Innovator-VL: A Multimodal Large Language Model for Scientific Discovery</span>
+              <span
+                style="
+                  font-size: 2.2rem;
+                  line-height: 1.15;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 2;
+                  -webkit-box-orient: vertical;
+                  overflow: hidden;
+                  text-wrap: balance;
+                "
+              >
+                Innovator-VL: A Multimodal Large Language Model for Scientific Discovery
+              </span>
             </h1>
+
+
 
             <!-- <div class="is-size-5 publication-authors"> -->
               <!-- TODO: Replace with your paper authors and their personal links -->
@@ -553,6 +1097,7 @@
               <span class="author-block">Sihan Hu<sup>⁴</sup>,</span>
               <span class="author-block">Kun Chen<sup>⁴</sup>,</span>
               <span class="author-block">Yanfeng Wang<sup>¹</sup>,</span>
+              <br>
               <span class="author-block">Weinan E<sup>¹†</sup>,</span>
               <span class="author-block">Linfeng Zhang<sup>²†</sup></span>
               <span class="author-block">Linfeng Zhang<sup>¹†</sup></span>
@@ -566,8 +1111,18 @@
                 <sup>3</sup> MemTensor
                 <sup>4</sup> Institute of Theoretical Physics, Chinese Academy of Sciences
               </span>
-              <span class="eql-cntrb"><small><br><sup>*</sup> Indicates Equal Contribution</small></span>
-              <span class="eql-cntrb"><small><sup>†</sup> Indicates Corresponding Author</small></span>
+              <span class="eql-cntrb">
+                <small style="font-size:0.95rem; line-height:1.35;">
+                  <br><sup>*</sup> Indicates Equal Contribution
+                </small>
+              </span>
+
+              <span class="eql-cntrb">
+                <small style="font-size:0.95rem; line-height:1.35;">
+                  <sup>†</sup> Indicates Corresponding Author
+                </small>
+              </span>
+
             </div>
 
 
@@ -639,7 +1194,7 @@
                       </a>
                     </span>
                                         <!-- HuggingFace RL Data -->
-                    <span class="link-block">
+                    <!-- <span class="link-block">
                       <a href="https://huggingface.co/datasets/InnovatorLab/OpenRxn" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
@@ -667,7 +1222,7 @@
                         </span>
                         <span>Benchmark: MolParse</span>
                       </a>
-                    </span>
+                    </span> -->
 
 
             </div>
@@ -815,58 +1370,6 @@
     </div>
   </div>
 </section>
-
-
-<!-- End youtube video -->
-<!-- ====================================================================== -->
-<!-- ================== SECTION: TOKEN EFFICIENCY OF REASONING ============== -->
-<!-- ====================================================================== -->
- <section class="hero is-small is-centered" id="TokenEfficiency">
-
-<!-- <section class="section hero is-centered" id="TokenEfficiency"> -->
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-
-        <h2 class="title is-3 has-text-centered">On Token Efficiency of Reasoning</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            Innovator-VL exhibits strong efficiency in reasoning token consumption. As shown in Figure&nbsp;5,
-            Innovator-VL-8B-Thinking achieves competitive or superior accuracy on mathematical reasoning benchmarks
-            while using substantially fewer tokens than comparable baselines, leading to lower inference cost
-            and reduced latency.
-          </p>
-
-          <p>
-            This efficiency is primarily driven by the reinforcement learning stage, which encourages the model
-            to focus on critical reasoning steps and eliminate redundant computation, resulting in more compact
-            and effective reasoning trajectories. Such token-efficient reasoning is particularly beneficial for
-            scientific applications involving long-context and multi-step reasoning.
-          </p>
-        </div>
-
-
-        <!-- Figure -->
-        <div class="has-text-centered" style="margin-top: 1.25rem;">
-          <!-- 请把图片放到这个路径（或改成你的实际路径） -->
-          <img
-            src="static/images/token_efficiency_01.png"
-            alt="Accuracy and token efficiency comparison on mathematical reasoning benchmarks"
-            style="max-width: 100%; height: auto;"
-            loading="lazy"
-          >
-          <p class="has-text-grey is-size-6" style="margin-top: 0.5rem;">
-            Figure 3: Accuracy and token efficiency comparison on mathematical reasoning benchmarks.
-            Innovator-VL-8B-Thinking achieves the highest accuracy while consuming the fewest tokens across benchmarks.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <!-- Training Data -->
 <section class="hero is-small" id="TrainingData">
@@ -1080,8 +1583,7 @@
     <!-- ====================================================================== -->
 <!-- ================== NEW SECTION: SCIENTIFIC DATA GALLERY (CAROUSEL) ===== -->
 <!-- ====================================================================== -->
-<!-- ====================================================================== -->
-<!-- ================== SCIENTIFIC DATA GALLERY ============================ -->
+<!-- ================== SCIENTIFIC DATA GALLERY (INTERACTIVE) ============ -->
 <!-- ====================================================================== -->
 <section class="section hero is-light" id="scientific-gallery">
   <div class="container is-max-desktop">
@@ -1089,50 +1591,85 @@
     <!-- Title -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-centered">Scientific Data Gallery</h2>
+        <h2 class="title is-3 has-text-centered" style="margin-bottom: 0.5rem; font-weight: 700; letter-spacing: -0.02em;">
+          Data Gallery
+        </h2>
+        <p class="subtitle is-6 has-text-grey" style="margin-top: 0.25rem; font-weight: 500; opacity: 0.7;">
+          <i class="fas fa-mouse-pointer" style="font-size: 0.75rem; margin-right: 0.25rem;"></i>
+          Click on any sample to view model output.
+        </p>
       </div>
     </div>
 
-    <!-- Carousel -->
+    <!-- Image Grid with Single Display -->
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-
-        <!-- IMPORTANT: unique id to avoid being overridden by other carousels -->
-        <div id="scientificCarousel"
-             class="carousel scientific-carousel"
-             data-autoplay="false"
-             data-loop="true">
-
-          <div class="item">
-            <img src="static/images/reaction1.png" alt="Reaction sample 1">
+        
+        <!-- Main Display Area -->
+        <div class="scientific-display-container" style="margin-bottom: 2rem;">
+          <div class="scientific-image-wrapper" id="mainScientificImage">
+            <img id="currentScientificImage" 
+                 src="static/images/reaction1.png" 
+                 alt="Scientific sample"
+                 class="scientific-image-clickable">
+            <div class="image-overlay">
+              <span class="image-counter" id="imageCounter">1 / 6</span>
+            </div>
           </div>
-
-          <div class="item">
-            <img src="static/images/reaction2.png" alt="Reaction sample 2">
+          
+          <!-- Navigation Controls -->
+          <div class="scientific-nav-controls">
+            <button class="nav-button prev-button" id="prevScientificBtn" aria-label="Previous">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="thumbnail-strip" id="thumbnailStrip">
+              <!-- Thumbnails will be generated by JavaScript -->
+            </div>
+            <button class="nav-button next-button" id="nextScientificBtn" aria-label="Next">
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
+        </div>
 
-          <div class="item">
-            <img src="static/images/reaction3.png" alt="Reaction sample 3">
+        <!-- Model Response Panel (Initially Hidden) -->
+        <div class="model-response-panel" id="modelResponsePanel" style="display: none;">
+          <div class="response-header">
+            <h3 class="response-title">
+              <i class="fas fa-brain" style="margin-right: 0.5rem;"></i>
+              Model Analysis
+            </h3>
+            <button class="close-response-btn" id="closeResponseBtn" aria-label="Close">
+              <i class="fas fa-times"></i>
+            </button>
           </div>
-
-          <div class="item">
-            <img src="static/images/reaction4.png" alt="Reaction sample 4">
+          <div class="response-content" id="responseContent">
+            <!-- Model response will be inserted here -->
           </div>
-
-          <div class="item">
-            <img src="static/images/reaction5.png" alt="Reaction sample 5">
-          </div>
-
-          <div class="item">
-            <img src="static/images/reaction6.png" alt="Reaction sample 6">
-          </div>
-
         </div>
 
       </div>
     </div>
   </div>
 </section>
+
+<!-- Modal for Full Response View (Optional Enhancement) -->
+<div class="modal" id="responseModal">
+  <div class="modal-background" id="modalBackground"></div>
+  <div class="modal-card scientific-modal">
+    <header class="modal-card-head">
+      <p class="modal-card-title">
+        <i class="fas fa-microscope" style="margin-right: 0.5rem;"></i>
+        Detailed Model Analysis
+      </p>
+      <button class="delete" id="closeModalBtn" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="response-content-full" id="responseContentFull">
+        <!-- Full response content -->
+      </div>
+    </section>
+  </div>
+</div>
 
 
 
@@ -1171,6 +1708,54 @@
 <!-- ====================================================================== -->
 <!-- ================== END OF NEW SCIENTIFIC DATA SECTION ================= -->
 <!-- ====================================================================== -->
+
+<section class="hero is-small is-centered" id="TokenEfficiency">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <!-- White background wrapper -->
+        <div style="background:#ffffff; border-radius:24px; padding:1.25rem; box-shadow:0 10px 30px rgba(2,6,23,.08); border:1px solid rgba(15,23,42,.10);">
+
+          <h2 class="title is-3 has-text-centered">On Token Efficiency of Reasoning</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              Innovator-VL exhibits strong efficiency in reasoning token consumption. As shown in Figure&nbsp;5,
+              Innovator-VL-8B-Thinking achieves competitive or superior accuracy on mathematical reasoning benchmarks
+              while using substantially fewer tokens than comparable baselines, leading to lower inference cost
+              and reduced latency.
+            </p>
+
+            <p>
+              This efficiency is primarily driven by the reinforcement learning stage, which encourages the model
+              to focus on critical reasoning steps and eliminate redundant computation, resulting in more compact
+              and effective reasoning trajectories. Such token-efficient reasoning is particularly beneficial for
+              scientific applications involving long-context and multi-step reasoning.
+            </p>
+          </div>
+
+          <!-- Figure -->
+          <div class="has-text-centered" style="margin-top: 1.25rem;">
+            <img
+              src="static/images/token_efficiency_01.png"
+              alt="Accuracy and token efficiency comparison on mathematical reasoning benchmarks"
+              style="max-width: 100%; height: auto;"
+              loading="lazy"
+            >
+            <p class="has-text-grey is-size-6" style="margin-top: 0.5rem;">
+              Figure 3: Accuracy and token efficiency comparison on mathematical reasoning benchmarks.
+              Innovator-VL-8B-Thinking achieves the highest accuracy while consuming the fewest tokens across benchmarks.
+            </p>
+          </div>
+
+        </div>
+        <!-- End white background wrapper -->
+
+      </div>
+    </div>
+  </div>
+</section>
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
 
@@ -1190,7 +1775,6 @@
         <span>Copy</span>
       </button>
     </div>
-
 <pre id="bibtex-code"><code>@article{innovator_vl_2024,
   title   = {Innovator-VL: A Multimodal Large Language Model for Scientific Discovery},
   author  = {Wen, Zichen and Yang, Boxue and Chen, Shuang and Zhang, Yaojie and Han, Yuhang and Ke, Junlong and Zhang, Linfeng},
@@ -1205,6 +1789,362 @@
 <!--End BibTex citation -->
 
   <!-- ================== 原 BibTeX / Footer / Tracking 等内容继续保持 ================== -->
+
+<script>
+// Scientific Gallery Data
+const scientificGalleryData = [
+  {
+    image: 'static/case/math1.jpg',
+    alt: 'math sample 1',
+    response: {
+      question: 'How many triangles can you find in the picture?',
+      output: `To determine the number of triangles in the given image, let's break it down step by step:
+
+<strong>Step 1: Analyze the overall structure</strong><br>
+The image depicts a simple stick figure with a dress. The dress has a triangular skirt, and there are other triangular shapes in the figure's head and body.
+
+<strong>Step 2: Identify individual triangles</strong>
+<ol>
+  <li><strong>Head:</strong>
+  <ul>
+    <li>The bow on top of the head is composed of two triangles.</li>
+    <li>The face itself does not contain any triangles, but the eyes and mouth are simple shapes.</li>
+  </ul>
+  </li>
+
+  <li><strong>Dress:</strong>
+  <ul>
+    <li>The skirt of the dress is a large triangle.</li>
+  </ul>
+  </li>
+
+  <li><strong>Body:</strong>
+  <ul>
+    <li>There are no additional triangles in the body beyond the dress.</li>
+  </ul>
+  </li>
+
+  <li><strong>Feet:</strong>
+  <ul>
+    <li>Each foot is a triangle.</li>
+  </ul>
+  </li>
+</ol>
+
+<strong>Step 3: Count the triangles</strong>
+<ul>
+  <li><strong>Bow</strong>: 2 triangles (one for each half of the bow).</li>
+  <li><strong>Skirt</strong>: 1 triangle.</li>
+  <li><strong>Feet</strong>: 2 triangles (one for each foot).</li>
+</ul>
+
+<strong>Step 4: Sum up all the triangles</strong><br>
+\\[\\text{Total} = 2 + 1 + 2 = 5.\\]
+
+<strong>Final Answer:</strong><br>
+\\[\\boxed{5}\\]`
+    }
+  },
+  {
+    image: 'static/case/math2.jpg',
+    alt: 'math sample 2',
+      response: {
+      question: 'Five sparrows are sitting on a rope (see picture). Some of them are looking to the left, some of them are looking to the right. Every sparrow whistles as many times as the number of sparrows he can see sitting in front of him. For example, the third sparrow whistles exactly twice. How often do all sparrows whistle altogether?',
+      output: `To solve this problem, we need to determine how many times each sparrow whistles based on the number of sparrows it can see in front of it. Let's analyze the situation step by step.
+
+<strong>Step 1: Understand the Problem</strong><br>
+<ul>
+  <li>There are 5 sparrows sitting on a rope.</li>
+  <li>Each sparrow whistles as many times as the number of sparrows it can see in front of it.</li>
+  <li>We need to calculate the total number of whistles from all sparrows.</li>
+</ul>
+
+<strong>Step 2: Analyze Each Sparrow</strong><br>
+Let's label the sparrows from left to right as \\(S_1, S_2, S_3, S_4, S_5\\).<br>
+<ul>
+  <li><strong>Sparrow \\(S_1\\):</strong> It can see 0 sparrows in front of it, so it whistles 0 times.</li>
+  <li><strong>Sparrow \\(S_2\\):</strong> It can see 1 sparrow (\\(S_1\\)) in front of it, so it whistles 1 time.</li>
+  <li><strong>Sparrow \\(S_3\\):</strong> It can see 2 sparrows (\\(S_1\\) and \\(S_2\\)) in front of it, so it whistles 2 times.</li>
+  <li><strong>Sparrow \\(S_4\\):</strong> It can see 3 sparrows (\\(S_1, S_2, S_3\\)) in front of it, so it whistles 3 times.</li>
+  <li><strong>Sparrow \\(S_5\\):</strong> It can see 4 sparrows (\\(S_1, S_2, S_3, S_4\\)) in front of it, so it whistles 4 times.</li>
+</ul>
+
+<strong>Step 3: Calculate the Total Number of Whistles</strong><br>
+\\[
+S_1: 0 \\quad S_2: 1 \\quad S_3: 2 \\quad S_4: 3 \\quad S_5: 4
+\\]<br>
+\\[
+\\text{Total whistles} = 0 + 1 + 2 + 3 + 4 = 10.
+\\]<br>
+\\[
+\\boxed{10}
+\\]`
+      }
+  },
+  {
+    image: 'static/case/sci1.png',
+    alt: 'Reaction sample 3',
+    response: {
+      question: 'Carefully examine the electron microscopy image and answer the following question:\n\nIs the particle-area distribution uniform?\n\n(Define non-uniform as (max/min diameter) / mean > 30%)\n\n<br>Options:\n<br>A. Yes\n<br>B. No\n<br>C. Uncertain',
+      output: 'B'
+    }
+  },
+  {
+    image: 'static/case/sci2.png',
+    alt: 'Reaction sample 4',
+    response: {
+      question: '该反应的总体转化通式是什么？请用结构简式描述主要底物和产物。<br>\n\n选项：\n<br>A. 底物苯基炔（Ph–C≡CH）与N-氧化亚胺1在Cu催化和Et3N作用下，最终生成五元环化合物3。\n<br>B. 底物苯基炔（Ph–C≡CH）与N-氧化亚胺1在Cu催化和Et3N作用下，最终生成四元环化合物3。\n<br>C. 底物苯基炔（Ph–C≡CH）与N-氧化亚胺1在Cu催化和吡啶作用下，最终生成四元环化合物3。\nD. 底物苯基炔（Ph–C≡CH）与N-氧化亚胺1在Cu催化和Et3N作用下，最终生成桥环化合物3。\n\n<br>只输出单个字母（A, B, C 或 D），不要输出任何解释。',
+      output: 'A'
+    }
+  },
+  {
+    image: 'static/case/reaction1.png',
+    alt: 'Reaction sample 5',
+    response: {
+      question: 'Return the ESMILES of the select example with label <code>{q2}</code>.<br><br><code>&lt;E-SMILES&gt; OC(=O)c1cc(I)cc2c1OC(C(=O)O)C=C2 &lt;/E-SMILES&gt;</code>',
+      output: 'OC(=O)c1cc(I)cc2c1OC(C(=O)O)C=C2'
+    }
+  },
+
+    {
+    image: 'static/case/reaction2.png',
+    alt: 'Reaction sample 6',
+    response: {
+      question: `Question: Please summarize the four derivatization reactions (a--d) centered on 2-boryl-1,3-diene 2f in Scheme 4 and their corresponding products (3--6).<br><br>
+  <strong>Choices:</strong><br>
+  A. Scheme 4 shows four reaction pathways starting from 2-boryl-1,3-diene 2f:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;a) KHF$_2$/AcOH effects removal of Bpin to give the deborylated product 3 (yield 54\\%, $>$99:1 Z:E);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;b) Pd$_2$(dba)$_3$/SPhos-catalyzed Suzuki coupling with 4-iodobenzonitrile affords the arylated product 4 (yield 74\\%, $>$95:5 Z:E);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;c) H$_2$O$_2$/NaOH oxidation of the boronate gives the $\\alpha,\\beta,\\gamma,\\delta$-unsaturated ketone product 5 (yield 54\\%, $>$99:1 Z:E);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;d) <em>n</em>BuLi/CH$_2$Br$_2$ insertion followed by H$_2$O$_2$ oxidation provides the allylic alcohol product 6 (yield 40\\%, $>$99:1 Z:E).<br><br>
+
+  B. Scheme 4 shows four reaction pathways starting from 2-boryl-1,3-diene 2f:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;a) KHF$_2$/AcOH effects removal of Bpin to give the deborylated product 3 (yield 54\\%, 99:1 Z:E);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;b) Pd$_2$(dba)$_3$/SPhos-catalyzed Suzuki coupling with 4-iodobenzonitrile affords the arylated product 4 (yield 74\\%, $>$95:5 Z:E);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;c) H$_2$O$_2$/NaOH oxidation of the boronate gives the $\\alpha,\\beta,\\gamma,\\delta$-unsaturated ketone product 5 (yield 54\\%, $>$99:1 E:Z);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;d) <em>n</em>BuLi/CH$_2$Br$_2$ insertion followed by H$_2$O$_2$ oxidation provides the allylic alcohol product 6 (yield 40\\%, $>$99:1 Z:E).<br><br>
+
+  C. Scheme 4 shows four reaction pathways starting from 2-boryl-1,3-diene 2f:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;a) KHF$_2$/AcOH effects removal of Bpin to give the deborylated product 3 (yield 54\\%, $>$99:1 Z:E);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;b) Pd$_2$(dba)$_3$/SPhos-catalyzed Suzuki coupling with 4-iodobenzonitrile affords the arylated product 4 (yield 74\\%, $>$95:5 Z:E);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;c) H$_2$O$_2$/NaOH oxidation of the boronate gives the $\\alpha,\\beta,\\gamma,\\delta$-unsaturated ketone product 5 (yield 54\\%, $>$99:1 E:Z);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;d) <em>n</em>BuLi/CH$_2$Br$_2$ insertion followed by H$_2$O$_2$ oxidation provides the allylic alcohol product 6 (yield 40\\%, $>$99:1 Z:E).<br><br>
+
+  D. Scheme 4 shows four reaction pathways starting from 2-boryl-1,3-diene 2f:<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;a) KHF$_2$/AcOH effects removal of Bpin to give the deborylated product 3 (yield 54\\%, $>$99:1 Z:E);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;b) Pd$_2$(dba)$_3$/SPhos-catalyzed Suzuki coupling with 4-iodobenzonitrile affords the arylated product 4 (yield 74\\%, $>$95:5 Z:E);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;c) H$_2$O$_2$/NaOH oxidation of the boronate gives the $\\alpha,\\beta,\\gamma,\\delta$-unsaturated ketone product 5 (yield 54\\%, $>$99:1 E:Z);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;d) <em>n</em>BuLi/CH$_2$Br$_2$ insertion followed by O$_2$ oxidation provides the allylic alcohol product 6 (yield 40\\%, $>$99:1 Z:E).`,
+      output: 'C'
+    }
+  },
+];
+
+let currentScientificIndex = 0;
+
+// Initialize Scientific Gallery
+function initScientificGallery() {
+  const mainImage = document.getElementById('currentScientificImage');
+  const imageCounter = document.getElementById('imageCounter');
+  const prevBtn = document.getElementById('prevScientificBtn');
+  const nextBtn = document.getElementById('nextScientificBtn');
+  const thumbnailStrip = document.getElementById('thumbnailStrip');
+  const responsePanel = document.getElementById('modelResponsePanel');
+  const responseContent = document.getElementById('responseContent');
+  const closeResponseBtn = document.getElementById('closeResponseBtn');
+  const responseModal = document.getElementById('responseModal');
+  const responseContentFull = document.getElementById('responseContentFull');
+  const modalBackground = document.getElementById('modalBackground');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+
+  // Generate thumbnails
+  thumbnailStrip.innerHTML = '';
+  scientificGalleryData.forEach((item, index) => {
+    const thumbnail = document.createElement('div');
+    thumbnail.className = `thumbnail-item ${index === 0 ? 'active' : ''}`;
+    thumbnail.innerHTML = `<img src="${item.image}" alt="${item.alt}">`;
+    thumbnail.addEventListener('click', () => showScientificImage(index));
+    thumbnailStrip.appendChild(thumbnail);
+  });
+
+  // Update display with smooth transition
+  function updateDisplay(skipAnimation = false) {
+    const current = scientificGalleryData[currentScientificIndex];
+    const imageWrapper = document.getElementById('mainScientificImage');
+    
+    if (!skipAnimation) {
+      // Fade out
+      mainImage.style.opacity = '0';
+      mainImage.style.transform = 'scale(0.98)';
+      
+      setTimeout(() => {
+        mainImage.src = current.image;
+        mainImage.alt = current.alt;
+        imageCounter.textContent = `${currentScientificIndex + 1} / ${scientificGalleryData.length}`;
+        
+        // Fade in
+        mainImage.style.opacity = '1';
+        mainImage.style.transform = 'scale(1)';
+      }, 150);
+    } else {
+      mainImage.src = current.image;
+      mainImage.alt = current.alt;
+      imageCounter.textContent = `${currentScientificIndex + 1} / ${scientificGalleryData.length}`;
+    }
+    
+    // Update thumbnails with smooth transition
+    document.querySelectorAll('.thumbnail-item').forEach((thumb, idx) => {
+      const wasActive = thumb.classList.contains('active');
+      const isActive = idx === currentScientificIndex;
+      thumb.classList.toggle('active', isActive);
+      
+      if (wasActive && !isActive) {
+        thumb.style.transform = 'scale(1)';
+      }
+    });
+    
+    // Update buttons
+    prevBtn.disabled = currentScientificIndex === 0;
+    nextBtn.disabled = currentScientificIndex === scientificGalleryData.length - 1;
+  }
+
+  function showScientificImage(index) {
+    if (index === currentScientificIndex) return;
+    currentScientificIndex = index;
+    updateDisplay();
+    // Hide response panel when changing images
+    if (responsePanel.style.display !== 'none') {
+      responsePanel.style.display = 'none';
+    }
+  }
+
+  function showResponse() {
+    const current = scientificGalleryData[currentScientificIndex];
+    const response = current.response;
+    const questionText = response.question || 'Please analyze the scientific content shown in the figure and provide a detailed reasoning process.';
+    
+    // 截断长回答，只在面板里展示前一部分
+    const maxChars = 260;
+    let shortOutput = response.output || '';
+    let isTruncated = false;
+    if (shortOutput.length > maxChars) {
+      // 尝试在单词边界截断
+      const truncated = shortOutput.slice(0, maxChars);
+      const lastSpace = truncated.lastIndexOf(' ');
+      shortOutput = lastSpace > 0 ? truncated.slice(0, lastSpace) + '...' : truncated + '...';
+      isTruncated = true;
+    }
+    
+    // Question + (short) model output display
+    responseContent.innerHTML = `
+      <div class="response-section">
+        <h4 class="response-title">Question</h4>
+        <p class="response-text">${questionText}</p>
+      </div>
+      <div class="response-section" style="margin-top: 0.75rem;">
+        <h4 class="response-title">Model Answer</h4>
+        <div class="response-text" style="max-height: 7.5rem; overflow-y: auto; line-height: 1.5;">
+          ${shortOutput}
+        </div>
+        ${isTruncated ? `
+          <button class="button is-small is-link is-light view-full-btn" style="margin-top: 0.5rem;">
+            View full analysis
+          </button>
+        ` : ''}
+      </div>
+    `;
+    
+    // Render MathJax if available
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      MathJax.typesetPromise([responseContent]).catch((err) => console.log('MathJax error:', err));
+    }
+    
+    // Show panel without scrolling
+    if (responsePanel.style.display === 'none') {
+      responsePanel.style.display = 'block';
+    }
+  }
+
+  function showFullResponse() {
+    const current = scientificGalleryData[currentScientificIndex];
+    const response = current.response;
+    const questionText = response.question || 'Please analyze the scientific content shown in the figure and provide a detailed reasoning process.';
+    
+    responseContentFull.innerHTML = `
+      <div class="response-section">
+        <h4 class="response-title">Question</h4>
+        <p class="response-text">${questionText}</p>
+      </div>
+      <div class="response-section" style="margin-top: 0.75rem;">
+        <h4 class="response-title">Model Answer</h4>
+        <div class="response-text" style="line-height: 1.6;">
+          ${response.output}
+        </div>
+      </div>
+    `;
+    
+    // Render MathJax if available
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      MathJax.typesetPromise([responseContentFull]).catch((err) => console.log('MathJax error:', err));
+    }
+    
+    responseModal.classList.add('is-active');
+  }
+
+  // Event listeners
+  mainImage.addEventListener('click', showResponse);
+  prevBtn.addEventListener('click', () => {
+    if (currentScientificIndex > 0) {
+      showScientificImage(currentScientificIndex - 1);
+    }
+  });
+  nextBtn.addEventListener('click', () => {
+    if (currentScientificIndex < scientificGalleryData.length - 1) {
+      showScientificImage(currentScientificIndex + 1);
+    }
+  });
+  closeResponseBtn.addEventListener('click', () => {
+    responsePanel.style.display = 'none';
+  });
+  
+  // Optional: Add "View Full Analysis" button
+  responseContent.addEventListener('click', (e) => {
+    if (e.target.classList.contains('view-full-btn')) {
+      showFullResponse();
+    }
+  });
+  
+  // Modal controls
+  modalBackground.addEventListener('click', () => {
+    responseModal.classList.remove('is-active');
+  });
+  closeModalBtn.addEventListener('click', () => {
+    responseModal.classList.remove('is-active');
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' && currentScientificIndex > 0) {
+      showScientificImage(currentScientificIndex - 1);
+    } else if (e.key === 'ArrowRight' && currentScientificIndex < scientificGalleryData.length - 1) {
+      showScientificImage(currentScientificIndex + 1);
+    } else if (e.key === 'Escape') {
+      responsePanel.style.display = 'none';
+      responseModal.classList.remove('is-active');
+    }
+  });
+
+  // Initialize
+  updateDisplay();
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initScientificGallery);
+} else {
+  initScientificGallery();
+}
+</script>
 
 </body>
 </html>

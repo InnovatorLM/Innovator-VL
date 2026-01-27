@@ -6,7 +6,7 @@
 <div align="center">
 
 🤗 **[Models & Datasets](https://huggingface.co/collections/InnovatorLab/innovator-vl)** |
-🔗 **[Technical Report](https://arxiv.org/abs/2412.xxxxx)** |
+🔗 **[Technical Report](https://github.com/InnovatorLM/Innovator-VL/blob/main/asset/Innovator_VL.pdf)** |
 🖥️ **[Demo](https://huggingface.co/spaces/InnovatorLab/Innovator-VL)**
 
 </div>

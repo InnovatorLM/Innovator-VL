@@ -6,7 +6,7 @@
 <div align="center">
 
 🤗 **[Models & Datasets](https://huggingface.co/collections/InnovatorLab/innovator-vl)** |
-🔗 **[Technical Report](https://github.com/InnovatorLM/Innovator-VL/blob/main/asset/Innovator_VL.pdf)** |
+🔗 **[Technical Report](https://arxiv.org/pdf/2601.19325)** |
 🖥️ **[Demo](https://huggingface.co/spaces/InnovatorLab/Innovator-VL)**
 
 </div>
@@ -404,7 +404,12 @@ Innovator-VL/
 If you find Innovator-VL helpful for your research, please consider citing our technical report:
 
 ```bibtex
-
+@article{wen2026innovator,
+  title={Innovator-VL: A Multimodal Large Language Model for Scientific Discovery},
+  author={Wen, Zichen and Yang, Boxue and Chen, Shuang and Zhang, Yaojie and Han, Yuhang and Ke, Junlong and Wang, Cong and others},
+  journal={arXiv preprint arXiv:2601.19325},
+  year={2026}
+}
 ```
 
 ## 🙏 Acknowledgments

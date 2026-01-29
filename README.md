@@ -57,7 +57,9 @@
 ---
 
 ## 📰 News
-...
+* **`2026.1.28`** 🤗🤗 We release the [Innovator-VL Technical Report](https://arxiv.org/pdf/2601.19325)!
+* **`2026.1.26`** 🤗🤗 We release all of our code, model, data, and pipeline! Check out the [InnovatorVL collection on Hugging Face](https://huggingface.co/collections/InnovatorLab/innovator-vl)
+
 
 ## 📖 Table of Contents
 - [Introduction](#introduction)
@@ -422,6 +424,7 @@ We express our sincere gratitude to the open-source community for their invaluab
 - **[AReaL](https://github.com/inclusionAI/AReaL)**: A Large-Scale Asynchronous Reinforcement Learning Freamwork
 - **[lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval)**: A standardized evaluation framework for Large Multimodal Models
 - **[Megatron-LM](https://github.com/NVIDIA/Megatron-LM)**: Efficient, scalable training for large language models
+- **[Bee](https://huggingface.co/datasets/Open-Bee/Honey-Data-15M)**: A High-Quality Corpus and Full-Stack Suite to Unlock Advanced Fully Open MLLMs
 - **[OpenMMReasoner](https://github.com/EvolvingLMMs-Lab/OpenMMReasoner)**: Pushing the Frontiers for Multimodal Reasoning with an Open and General Recipe
 - **[SGLang](https://github.com/sgl-project/sglang)**: SGLang is a fast serving framework for large language models and vision language models
 - **[vLLM](https://github.com/vllm-project/vllm)**: A high-throughput and memory-efficient inference and serving engine for LLMs

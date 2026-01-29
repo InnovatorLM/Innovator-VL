@@ -57,6 +57,8 @@
 ---
 
 ## 📰 News
+* **`2026.1.29`** 🤗🤗 Our model has been officially released at the ["Agentic Science at Scale" workshop](https://mp.weixin.qq.com/s/8yl4bK8DL2UIsreXcjdbvg)!
+* **`2026.1.29`** 🤗🤗 We’ve already adapted it to [SciMaster](https://scimaster.bohrium.com/). Come and give it a try!
 * **`2026.1.28`** 🤗🤗 We release the [Innovator-VL Technical Report](https://arxiv.org/pdf/2601.19325)!
 * **`2026.1.26`** 🤗🤗 We release all of our code, model, data, and pipeline! Check out the [InnovatorVL collection on Hugging Face](https://huggingface.co/collections/InnovatorLab/innovator-vl)
 
